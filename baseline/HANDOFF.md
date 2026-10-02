@@ -24,6 +24,9 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
 7. 只修让工具能跑起来的问题，不修 MonoMorph 方法本身的缺陷（不感知 Spring、gRPC 服务端注册、资源全量复制、
    不改包名、不生成 Dockerfile 和根 pom 等）。每处修改都记在 README 的修改表里。
 
+8. （第二个会话）候选仓库推到本仓库（`HelloWorldGitHubUser/monomorph`）；每个应用跑 1 次；dry run 预测会在规划阶段崩溃的应用
+   （petclinic、gulimall、zlt）也照常跑，拿真实结果。规划阶段的崩溃属于方法缺陷，不修
+
 ## 3. 当前进度（分支 `claude/charming-ritchie-o7xgln`）
 
 已完成：
@@ -134,10 +137,11 @@ uv run python baseline/scripts/run_monomorph.py --tag v1 --image-suffix=-sandbox
 
 ## 6. 需要向用户确认的事
 
-1. 每个应用的时间和费用上限（目前默认 6 小时，没有费用上限）
-2. 候选仓库怎么交付：`runs/` 不进 git。候选包含整份复制的资源文件，gulimall 每个服务约 38MB × 10。
-   可选做法：推到单独的分支 / 单独的仓库 / 打包成压缩文件
-3. 每个应用跑几次（目前计划每个 1 次）
+1. 每个应用的时间和费用上限（目前默认 6 小时，没有费用上限）。MonoMorph 没有全局的 LLM 调用次数或费用上限：
+   决策和代码生成的 LangGraph 图用默认的 25 步上限；编译纠错每个服务最多 20 轮、每轮 100 步，
+   但撞到 100 步上限的那一轮不计数（`attempts -= 1`），理论上可以一直循环，只有我们的墙钟超时能截断
+2. ~~候选仓库怎么交付~~：已定，推到本仓库（具体分支/目录待确认；gulimall 每个服务约 38MB × 10）
+3. ~~每个应用跑几次~~：已定，1 次
 
 ## 7. 已知情况（避免重复排查）
 
