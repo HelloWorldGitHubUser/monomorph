@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package ltd.newbee.mall.monomorph.id.generated.proto.newbeeadminusertokenmapper;
+
+option java_multiple_files = true;
+option java_package = "ltd.newbee.mall.monomorph.id.generated.proto.newbeeadminusertokenmapper";
+
+import "shared.proto";
+import "admin_user_token.proto";
+
+service NewBeeAdminUserTokenMapperService {
+    rpc createObject(CreateObjectRequest) returns (ltd.newbee.mall.monomorph.id.shared.RefactoredObjectID);
+    rpc selectByToken(SelectByTokenRequest) returns (SelectByTokenResponse);
+}
+
+message CreateObjectRequest {
+    string clientID = 1;
+    ConstructorArgs constructorArgs = 2;
+}
+
+message ConstructorArgs {
+    // No constructor arguments: NewBeeAdminUserTokenMapper is an interface.
+}
+
+message SelectByTokenRequest {
+    ltd.newbee.mall.monomorph.id.shared.RefactoredObjectID object_id = 1;
+    string token = 2;
+}
+
+message SelectByTokenResponse {
+    ltd.newbee.mall.monomorph.dto.generated.proto.adminusertoken.AdminUserTokenDTO result = 1;
+}
