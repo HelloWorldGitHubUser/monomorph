@@ -57,7 +57,10 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
 - [x] `dry_run.py` 新增规划阶段检查：petclinic、gulimall、zlt 必然在规划阶段崩溃，ecommerce 视决策而定
 - [ ] 跑出 10 个候选仓库：`run_all_and_push.sh v1 claude/charming-ritchie-o7xgln --timeout-hours 3 --image-suffix=-sandboxca`
   - booking 第一次在 15 秒内因 record 引发的 `KeyError`（`decision/tools.py`）崩溃，已修复；旧结果已撤下，由并行 worker 重跑
-  - 06:3x 起改为 3 路并行（用户同意）：瓶颈是 DeepSeek 响应时间，机器空闲（4 核 / 15GB，单个应用约 0.5GB + 一个 Maven 容器）。
+  - 06:25 发现上游 `skip_standard_run` 导致所有应用在编译验证写日志时崩溃（`90859bc` 修复，用户确认）；停掉 lakeside/newbee/goodskill，
+    booking 在 `runs/dbg` 验证修复有效（flight、passenger 服务编译通过）后，07:1x 改为 **2 个 worker**（编译阶段 4 核 CPU 吃紧，
+    3 路只验证过 5 分钟）。被停的应用从各自 `llm_cache.db` 回放已完成的调用；booking 用 `runs/dbg` 的缓存
+  - 之前：06:18 起曾 3 路并行（用户同意）：瓶颈是 DeepSeek 响应时间，机器空闲（4 核 / 15GB，单个应用约 0.5GB + 一个 Maven 容器）。
     `run_parallel_and_push.sh v1 claude/charming-ritchie-o7xgln --timeout-hours 3 --image-suffix=-sandboxca` 启动 2 个 worker，
     另一个用 `--deliver lakeside` 等串行驱动留下的 lakeside 跑完、交付后再接活。日志 `runs/v1/worker-*.log`。
     中断后：删掉 `runs/v1/locks/` 里没交付的应用的锁，再启动 worker 即可续跑
@@ -70,6 +73,8 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
 |---|---|---|---|---|
 | booking | 1 | 15s | 无 | record 引发 `decision/tools.py` KeyError，已修复（`87c081b`），全部跑完后重跑 |
 | petclinic | 1 | 712s | 无 | 11 个决策全部解析成功；规划阶段 `RecursionError`（方法缺陷，按决定不修，与 dry run 预测一致） |
+| zlt | 1 | 247s | 无 | 规划阶段 `ValueError: Could not find a matching microservice`（方法缺陷，不修，与 dry run 预测一致） |
+| booking（v1 第 2 次，作废） | 1 | 28s | 部分 | 本地导入解析服务 15s 健康检查超时（3 路并行刚启动、机器忙时偶发；单独重跑正常），重跑 |
 
 ## 4. 新会话的环境搭建（Claude Code 云环境）
 
