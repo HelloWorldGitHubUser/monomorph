@@ -8,7 +8,7 @@ from typing import Optional, Type, Any, ClassVar
 from google.api_core.exceptions import InternalServerError
 from grpc import FutureTimeoutError
 from langchain_core.language_models import LanguageModelInput, BaseChatModel
-from langchain_core.messages import AIMessage
+from langchain_core.messages import AIMessage, SystemMessage
 from langchain_core.runnables import RunnableConfig, RunnableLambda
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_openai import ChatOpenAI, AzureChatOpenAI
@@ -167,8 +167,16 @@ class DeepSeekChat(ChatOpenAI):
         # DeepSeek does not support response_format=json_schema (ChatOpenAI's default method)
         method = method or os.getenv(self.STRUCTURED_OUTPUT_METHOD_ENV, "function_calling")
         structured = super().with_structured_output(schema, method=method, include_raw=True, **kwargs)
-        if method != "function_calling" or not (isinstance(schema, type) and issubclass(schema, BaseModel)):
+        is_pydantic = isinstance(schema, type) and issubclass(schema, BaseModel)
+        if method not in ("function_calling", "json_mode") or not is_pydantic:
             return structured if include_raw else structured | RunnableLambda(self._unwrap_structured_output)
+        if method == "json_mode":
+            # JSON mode only guarantees valid JSON: the schema (otherwise carried by the tool definition) must be in
+            # the prompt, and DeepSeek requires the word "json" in it
+            schema_message = SystemMessage(content="Respond with a single json object that conforms to this JSON "
+                                                   "schema:\n" + json.dumps(schema.model_json_schema()))
+            structured = RunnableLambda(
+                lambda input_: [schema_message] + self._convert_input(input_).to_messages()) | structured
 
         # The schema tool cannot be forced in thinking mode (see bind_tools), and the model sometimes writes the
         # JSON object in the message content instead of calling the tool. Parse it from there in that case.

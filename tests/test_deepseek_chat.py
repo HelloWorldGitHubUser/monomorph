@@ -114,6 +114,18 @@ class TestDeepSeekChat(unittest.TestCase):
         for content in ["I choose DTO-Based.", '{"unexpected": 1}']:
             self.assertIsNone(self._invoke_structured(AIMessage(content=content))["parsed"], content)
 
+    def test_json_mode_puts_schema_in_prompt(self):
+        model = DeepSeekChat("deepseek-v4-pro")
+        result = ChatResult(generations=[ChatGeneration(message=AIMessage(content='{"decision": "ID-Based"}'))])
+        with mock.patch.object(DeepSeekChat, "_generate", return_value=result) as generate:
+            output = model.with_structured_output(Decision, method="json_mode", include_raw=True).invoke("parse this")
+        self.assertEqual(output["parsed"], Decision(decision="ID-Based"))
+        sent = generate.call_args[0][0]
+        self.assertIn('"decision"', sent[0].content)
+        self.assertIn("json", sent[0].content)
+        self.assertEqual(sent[1].content, "parse this")
+        self.assertEqual(generate.call_args.kwargs["response_format"], {"type": "json_object"})
+
     def test_init_model_builds_tool_and_structured_models(self):
         tooling = init_model("mm_deepseek/deepseek-v4-pro::high", mode="tooling", tools=[get_class_code])
         self.assertEqual(tooling.kwargs["tools"][0]["function"]["name"], "get_class_code")
