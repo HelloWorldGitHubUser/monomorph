@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package com.lakesidemutual.monomorph.id.generated.proto.policyquoteservice;
+
+option java_multiple_files = true;
+option java_package = "com.lakesidemutual.monomorph.id.generated.proto.policyquoteservice";
+
+import "google/protobuf/timestamp.proto";
+import "shared.proto";
+import "insurance_quote_request_dto.proto";
+
+service PolicyQuoteServiceService {
+    rpc createObject(CreateObjectRequest) returns (com.lakesidemutual.monomorph.id.shared.RefactoredObjectID);
+
+    rpc handleCustomerDecision(HandleCustomerDecisionRequest) returns (HandleCustomerDecisionResponse);
+    rpc receiveInsuranceQuoteRequest(ReceiveInsuranceQuoteRequestRequest) returns (ReceiveInsuranceQuoteRequestResponse);
+}
+
+message CreateObjectRequest {
+    string clientID = 1;
+    ConstructorArgs constructorArgs = 2;
+}
+
+message ConstructorArgs {
+    // No constructor arguments; PolicyQuoteService has an implicit no-arg constructor.
+}
+
+message HandleCustomerDecisionRequest {
+    com.lakesidemutual.monomorph.id.shared.RefactoredObjectID object_id = 1;
+    int64 insurance_quote_request_id = 2;
+    bool quote_accepted = 3;
+    google.protobuf.Timestamp decision_date = 4;
+}
+
+message HandleCustomerDecisionResponse {
+    // Original method returns void.
+}
+
+message ReceiveInsuranceQuoteRequestRequest {
+    com.lakesidemutual.monomorph.id.shared.RefactoredObjectID object_id = 1;
+    com.lakesidemutual.monomorph.dto.generated.proto.insurancequoterequestdto.InsuranceQuoteRequestDtoDTO insurance_quote_request_dto = 2;
+}
+
+message ReceiveInsuranceQuoteRequestResponse {
+    // Original method returns void.
+}

@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+package com.lakesidemutual.monomorph.id.generated.proto.customerservice;
+
+option java_multiple_files = true;
+option java_package = "com.lakesidemutual.monomorph.id.generated.proto.customerservice";
+
+import "shared.proto";
+import "customer_profile_entity.proto";
+import "address.proto";
+import "page.proto";
+import "customer_aggregate_root.proto";
+import "customer_id.proto";
+
+service CustomerServiceService {
+    rpc createObject(CreateObjectRequest) returns (.com.lakesidemutual.monomorph.id.shared.RefactoredObjectID);
+
+    rpc createCustomer(CreateCustomerRequest) returns (CreateCustomerResponse);
+    rpc getCustomers(GetCustomersRequest) returns (GetCustomersResponse);
+    rpc getCustomersByFilter(GetCustomersByFilterRequest) returns (GetCustomersByFilterResponse);
+    rpc updateAddress(UpdateAddressRequest) returns (UpdateAddressResponse);
+    rpc updateCustomerProfile(UpdateCustomerProfileRequest) returns (UpdateCustomerProfileResponse);
+}
+
+message CreateObjectRequest {
+    string clientID = 1;
+    ConstructorArgs constructorArgs = 2;
+}
+
+message ConstructorArgs {
+    // CustomerService has no explicit constructor.
+}
+
+message CreateCustomerRequest {
+    .com.lakesidemutual.monomorph.id.shared.RefactoredObjectID id = 1;
+    CustomerProfileEntityDTO customerProfile = 2;
+}
+
+message CreateCustomerResponse {
+    CustomerAggregateRootDTO customer = 1;
+}
+
+message GetCustomersRequest {
+    .com.lakesidemutual.monomorph.id.shared.RefactoredObjectID id = 1;
+    string ids = 2;
+}
+
+message GetCustomersResponse {
+    repeated CustomerAggregateRootDTO customers = 1;
+}
+
+message GetCustomersByFilterRequest {
+    .com.lakesidemutual.monomorph.id.shared.RefactoredObjectID id = 1;
+    string filter = 2;
+    int32 limit = 3;
+    int32 offset = 4;
+}
+
+message GetCustomersByFilterResponse {
+    PageDTO page = 1;
+}
+
+message UpdateAddressRequest {
+    .com.lakesidemutual.monomorph.id.shared.RefactoredObjectID id = 1;
+    CustomerIdDTO customerId = 2;
+    AddressDTO updatedAddress = 3;
+}
+
+message UpdateAddressResponse {
+    optional CustomerAggregateRootDTO customer = 1;
+}
+
+message UpdateCustomerProfileRequest {
+    .com.lakesidemutual.monomorph.id.shared.RefactoredObjectID id = 1;
+    CustomerIdDTO customerId = 2;
+    CustomerProfileEntityDTO updatedCustomerProfile = 3;
+}
+
+message UpdateCustomerProfileResponse {
+    optional CustomerAggregateRootDTO customer = 1;
+}

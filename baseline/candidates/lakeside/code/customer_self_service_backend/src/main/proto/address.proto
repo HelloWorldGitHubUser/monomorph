@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package com.lakesidemutual.monomorph.dto.generated.proto.address;
+
+option java_multiple_files = true;
+option java_package = "com.lakesidemutual.monomorph.dto.generated.proto.address";
+
+message AddressDTO {
+    string streetAddress = 1;
+    string postalCode = 2;
+    string city = 3;
+}

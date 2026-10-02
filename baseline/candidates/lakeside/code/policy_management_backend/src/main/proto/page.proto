@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package com.lakesidemutual.monomorph.dto.generated.proto.page;
+
+import "google/protobuf/any.proto";
+
+option java_multiple_files = true;
+option java_package = "com.lakesidemutual.monomorph.dto.generated.proto.page";
+
+message PageDTO {
+    repeated google.protobuf.Any elements = 1;
+    int32 offset = 2;
+    int32 limit = 3;
+    int32 size = 4;
+}

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package com.lakesidemutual.monomorph.dto.generated.proto.customeraggregateroot;
+
+option java_multiple_files = true;
+option java_package = "com.lakesidemutual.monomorph.dto.generated.proto.customeraggregateroot";
+
+import "customer_profile_entity.proto"; // For CustomerProfileEntityDTO
+import "customer_id.proto"; // For CustomerIdDTO
+
+message CustomerAggregateRootDTO {
+  // Maps CustomerAggregateRoot.id -> CustomerIdDTO; required field: customerId
+  CustomerIdDTO customerId = 1;
+
+  // Maps CustomerAggregateRoot.customerProfile -> CustomerProfileEntityDTO;
+  // contains required fields: birthday, city, email, firstname, lastname,
+  // phoneNumber, postalCode, streetAddress
+  CustomerProfileEntityDTO customerProfile = 2;
+}

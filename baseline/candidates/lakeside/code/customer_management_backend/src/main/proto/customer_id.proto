@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package com.lakesidemutual.monomorph.dto.generated.proto.customerid;
+
+option java_multiple_files = true;
+option java_package = "com.lakesidemutual.monomorph.dto.generated.proto.customerid";
+
+message CustomerIdDTO {
+  string id = 1;
+  int64 serialVersionUID = 2;
+}
