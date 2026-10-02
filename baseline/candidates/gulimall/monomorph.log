@@ -1,0 +1,981 @@
+/home/user/monomorph/.venv/lib/python3.13/site-packages/fuzzywuzzy/fuzz.py:11: UserWarning: Using slow pure-python SequenceMatcher. Install python-Levenshtein to remove this warning
+  warnings.warn('Using slow pure-python SequenceMatcher. Install python-Levenshtein to remove this warning')
+[37m2026-10-02 10:38:46,416 [140521688907904] monomorph DEBUG main.py:239 - Using LLM cache[0m
+[37m2026-10-02 10:38:46,437 [140521688907904] monomorph DEBUG main.py:246 - Setting up checkpointing mechanism[0m
+[32m2026-10-02 10:38:46,437 [140521688907904] monomorph INFO main.py:254 - Initializing MonoMorph with app gulimall and package io.gulimall[0m
+[37m2026-10-02 10:38:46,437 [140521688907904] monomorph DEBUG checkpoints.py:104 - No existing checkpoints found for experiment: gulimall-v1[0m
+[32m2026-10-02 10:38:46,438 [140521688907904] monomorph INFO main.py:277 - Starting refactoring process[0m
+[32m2026-10-02 10:38:46,438 [140521688907904] monomorph INFO monomorph.py:145 - Starting the refactoring process for gulimall (run_id: gulimall-v1)[0m
+[37m2026-10-02 10:38:46,451 [140521688907904] monomorph DEBUG monomorph.py:152 - Loading the analysis model[0m
+[37m2026-10-02 10:38:57,540 [140521688907904] monomorph DEBUG monomorph.py:155 - Pre-processing the decomposition[0m
+[37m2026-10-02 10:38:57,545 [140521688907904] monomorph DEBUG preprocessing.py:52 - Excluding 0 test classes from duplication[0m
+[37m2026-10-02 10:38:57,546 [140521688907904] monomorph DEBUG preprocessing.py:57 - Excluding 18 generic or invalid classes from duplication[0m
+[37m2026-10-02 10:38:57,546 [140521688907904] monomorph DEBUG preprocessing.py:60 - Duplicating 10 classes[0m
+[37m2026-10-02 10:38:57,546 [140521688907904] monomorph DEBUG monomorph.py:160 - Detecting dependencies and inter-service communication[0m
+[37m2026-10-02 10:39:20,897 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.entity.member.MemberEntity not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,897 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.exception.PhoneNumExistException not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,897 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.exception.UserExistException not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,897 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.vo.member.MemberLoginVo not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,897 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.vo.member.MemberRegisterVo not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,898 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.controller.auth.OauthController$1 not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,898 [140521688907904] monomorph DEBUG dependencies.py:82 - Class T not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,898 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.utils.HttpUtils$1 not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,898 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.interceptor.LoginInterceptor not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,898 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.entity.product.SkuInfoEntity not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,898 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.service.product.SkuInfoService not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,898 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.utils.Constant$MenuType not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,898 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.utils.Constant$ScheduleStatus not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,898 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.utils.Constant$CloudService not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,898 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.interceptor.CartInterceptor not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,898 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.entity.member.MemberReceiveAddressEntity not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,898 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.entity.product.SpuInfoEntity not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,898 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.to.cart.UserInfoTo not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,898 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.service.product.impl.CategoryServiceImpl$1 not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,898 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.vo.product.Catalog2Vo$Catalog3Vo not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,898 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.to.seckill.SeckillSkuRedisTo not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,898 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.entity.coupon.SpuBoundsEntity not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,898 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.service.coupon.SpuBoundsService not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,898 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.to.es.SkuEsModel$Attr not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,898 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.constant.ProductConstant$AttrEnum not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,899 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.vo.product.AttrRespVo not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,899 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.vo.search.SearchResult$NavVo not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,899 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.vo.search.SearchResult$BrandVo not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,899 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.vo.search.SearchResult$AttrVo not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,899 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.vo.search.SearchResult$CatalogVo not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,899 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.entity.coupon.SeckillSessionEntity not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,899 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.entity.coupon.SeckillSkuRelationEntity not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,899 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.entity.order.OrderEntity not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,899 [140521688907904] monomorph DEBUG dependencies.py:82 - Class io.gulimall.service.ware.impl.WareSkuServiceImpl$SkuLockVo not found in inter-service method interactions[0m
+[37m2026-10-02 10:39:20,899 [140521688907904] monomorph DEBUG monomorph.py:172 - Starting the ID or DTO decision process[0m
+[37m2026-10-02 10:39:20,899 [140521688907904] monomorph DEBUG monomorph.py:249 - Initializing the decision workflow[0m
+[37m2026-10-02 10:39:20,899 [140521688907904] monomorph DEBUG monomorph.py:250 - Deciding the approach for 36 classes[0m
+[37m2026-10-02 10:39:22,210 [140521688907904] monomorph DEBUG workflow.py:39 - [workflow]: Using mm_deepseek/deepseek-v4-pro::high as a decision model[0m
+[37m2026-10-02 10:39:22,469 [140521688907904] monomorph DEBUG workflow.py:41 - [workflow]: Using mm_deepseek/deepseek-v4-pro::high as a parsing model[0m
+[37m2026-10-02 10:39:22,591 [140521688907904] monomorph DEBUG monomorph.py:259 - Processing microservice gulimall-third-party with 1 API classes[0m
+[37m2026-10-02 10:39:22,592 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.thirdparty.component.SmsComponent[0m
+[37m2026-10-02 10:39:22,592 [140521688907904] monomorph DEBUG monomorph.py:259 - Processing microservice gulimall-member with 8 API classes[0m
+[37m2026-10-02 10:39:22,592 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.service.member.MemberService[0m
+[37m2026-10-02 10:39:22,592 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.service.member.MemberReceiveAddressService[0m
+[37m2026-10-02 10:39:22,592 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.entity.member.MemberEntity[0m
+[37m2026-10-02 10:39:22,592 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.exception.PhoneNumExistException[0m
+[37m2026-10-02 10:39:22,592 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.exception.UserExistException[0m
+[37m2026-10-02 10:39:22,592 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.vo.member.MemberLoginVo[0m
+[37m2026-10-02 10:39:22,592 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.vo.member.MemberRegisterVo[0m
+[37m2026-10-02 10:39:22,592 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.entity.member.MemberReceiveAddressEntity[0m
+[37m2026-10-02 10:39:22,592 [140521688907904] monomorph DEBUG monomorph.py:259 - Processing microservice gulimall-product with 7 API classes[0m
+[37m2026-10-02 10:39:22,592 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.service.product.SkuSaleAttrValueService[0m
+[37m2026-10-02 10:39:22,592 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.service.product.SpuInfoService[0m
+[37m2026-10-02 10:39:22,592 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.service.product.AttrService[0m
+[37m2026-10-02 10:39:22,592 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.entity.product.SkuInfoEntity[0m
+[37m2026-10-02 10:39:22,592 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.service.product.SkuInfoService[0m
+[37m2026-10-02 10:39:22,592 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.entity.product.SpuInfoEntity[0m
+[37m2026-10-02 10:39:22,593 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.vo.product.AttrRespVo[0m
+[37m2026-10-02 10:39:22,593 [140521688907904] monomorph DEBUG monomorph.py:259 - Processing microservice gulimall-coupon with 7 API classes[0m
+[37m2026-10-02 10:39:22,593 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.service.coupon.CouponService[0m
+[37m2026-10-02 10:39:22,593 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.service.coupon.SkuFullReductionService[0m
+[37m2026-10-02 10:39:22,593 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.service.coupon.SeckillSessionService[0m
+[37m2026-10-02 10:39:22,593 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.entity.coupon.SpuBoundsEntity[0m
+[37m2026-10-02 10:39:22,593 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.service.coupon.SpuBoundsService[0m
+[37m2026-10-02 10:39:22,593 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.entity.coupon.SeckillSessionEntity[0m
+[37m2026-10-02 10:39:22,593 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.entity.coupon.SeckillSkuRelationEntity[0m
+[37m2026-10-02 10:39:22,593 [140521688907904] monomorph DEBUG monomorph.py:259 - Processing microservice gulimall-ware with 2 API classes[0m
+[37m2026-10-02 10:39:22,593 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.service.ware.WareSkuService[0m
+[37m2026-10-02 10:39:22,593 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.service.ware.WareInfoService[0m
+[37m2026-10-02 10:39:22,593 [140521688907904] monomorph DEBUG monomorph.py:259 - Processing microservice gulimall-cart with 5 API classes[0m
+[37m2026-10-02 10:39:22,593 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.service.cart.CartService[0m
+[37m2026-10-02 10:39:22,593 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.vo.cart.CartItemVo[0m
+[37m2026-10-02 10:39:22,593 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.vo.cart.CartVo[0m
+[37m2026-10-02 10:39:22,593 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.interceptor.CartInterceptor[0m
+[37m2026-10-02 10:39:22,593 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.to.cart.UserInfoTo[0m
+[37m2026-10-02 10:39:22,594 [140521688907904] monomorph DEBUG monomorph.py:259 - Processing microservice gulimall-seckill with 2 API classes[0m
+[37m2026-10-02 10:39:22,594 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.service.seckill.SeckillService[0m
+[37m2026-10-02 10:39:22,594 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.to.seckill.SeckillSkuRedisTo[0m
+[37m2026-10-02 10:39:22,594 [140521688907904] monomorph DEBUG monomorph.py:259 - Processing microservice gulimall-search with 1 API classes[0m
+[37m2026-10-02 10:39:22,594 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.service.search.ProductSaveService[0m
+[37m2026-10-02 10:39:22,594 [140521688907904] monomorph DEBUG monomorph.py:259 - Processing microservice gulimall-order with 3 API classes[0m
+[37m2026-10-02 10:39:22,594 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.service.order.OrderService[0m
+[37m2026-10-02 10:39:22,594 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.interceptor.LoginInterceptor[0m
+[37m2026-10-02 10:39:22,594 [140521688907904] monomorph DEBUG monomorph.py:261 - API Class: io.gulimall.entity.order.OrderEntity[0m
+[37m2026-10-02 10:39:22,594 [140521688907904] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class io.gulimall.thirdparty.component.SmsComponent in microservice gulimall-third-party[0m
+[37m2026-10-02 10:39:22,594 [140521688907904] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:39:22,712 [140521688907904] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:39:22,713 [140521688907904] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:39:22,713 [140521688907904] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:39:22,713 [140521688907904] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:39:22,713 [140521688907904] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:39:22,715 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:39:26,173 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 1 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:39:26,173 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 2c177eee9e869e53d02a4a0bf0d2c48a to experiment: gulimall-v1[0m
+[37m2026-10-02 10:39:26,173 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:39:26,173 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 1 tools[0m
+[37m2026-10-02 10:39:26,176 [140520810608320] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class SmsComponent[0m
+[37m2026-10-02 10:39:26,178 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:39:30,138 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 2 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:39:30,138 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 3d8e0596b7300c99a823fc08b8a620d4 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:39:30,138 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:39:30,139 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 1 tools[0m
+[37m2026-10-02 10:39:30,140 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class LoginController[0m
+[37m2026-10-02 10:39:30,141 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:39:52,235 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 3 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:39:52,235 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 09616b1acf79bce12400309b8b990398 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:39:52,235 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:39:52,236 [140521688907904] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:39:52,237 [140521688907904] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:39:52,237 [140521688907904] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:39:57,503 [140520810608320] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:39:57,510 [140521688907904] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:39:57,511 [140521688907904] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:39:57,511 [140521688907904] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:39:57,511 [140521688907904] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:39:57,511 [140521688907904] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:39:57,511 [140521688907904] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/gulimall/output/llm_responses/gulimall-2610021038-guli/io/gulimall/decision_logs/io.gulimall.thirdparty.component.SmsComponent.md[0m
+[37m2026-10-02 10:39:57,512 [140521688907904] monomorph DEBUG monomorph.py:291 - Decision workflow returned ID-based decision for class io.gulimall.thirdparty.component.SmsComponent[0m
+[37m2026-10-02 10:39:57,512 [140521688907904] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class io.gulimall.service.member.MemberService in microservice gulimall-member[0m
+[37m2026-10-02 10:39:57,512 [140521688907904] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:39:57,626 [140521688907904] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:39:57,627 [140521688907904] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:39:57,627 [140521688907904] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:39:57,627 [140521688907904] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:39:57,627 [140521688907904] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:39:57,628 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:40:03,211 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 4 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:40:03,211 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 3ba632d9de7df74346d87d1eaa5d462a to experiment: gulimall-v1[0m
+[37m2026-10-02 10:40:03,211 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:40:03,212 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 5 tools[0m
+[37m2026-10-02 10:40:03,213 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class MemberEntity[0m
+[37m2026-10-02 10:40:03,214 [140520810608320] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class MemberService[0m
+[37m2026-10-02 10:40:03,215 [140520792774336] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SocialUser[0m
+[37m2026-10-02 10:40:03,216 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class MemberRegisterVo[0m
+[37m2026-10-02 10:40:03,217 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class MemberLoginVo[0m
+[37m2026-10-02 10:40:03,219 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:40:08,433 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 5 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:40:08,433 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 53657866d3fe85c5049ce774eee3efde to experiment: gulimall-v1[0m
+[37m2026-10-02 10:40:08,434 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:40:08,435 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 4 tools[0m
+[37m2026-10-02 10:40:08,437 [140520792774336] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class MemberController[0m
+[37m2026-10-02 10:40:08,438 [140520792774336] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class OauthController[0m
+[37m2026-10-02 10:40:08,439 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class LoginController[0m
+[37m2026-10-02 10:40:08,439 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class AuthApiController[0m
+[37m2026-10-02 10:40:08,440 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:40:27,653 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 6 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:40:27,654 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 0802a4639fd25247e6b9429ec65062fc to experiment: gulimall-v1[0m
+[37m2026-10-02 10:40:27,654 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:40:27,655 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:40:27,657 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class MemberServiceImpl[0m
+[37m2026-10-02 10:40:27,658 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class MemberResponseVo[0m
+[37m2026-10-02 10:40:27,660 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:40:43,233 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 7 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:40:43,233 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 2a012a6802779155e3e50354299839b5 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:40:43,233 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:40:43,234 [140521688907904] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:40:43,234 [140521688907904] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:40:43,234 [140521688907904] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:40:49,952 [140520810608320] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:40:49,959 [140521688907904] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:40:49,960 [140521688907904] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:40:49,960 [140521688907904] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:40:49,960 [140521688907904] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:40:49,960 [140521688907904] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:40:49,960 [140521688907904] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/gulimall/output/llm_responses/gulimall-2610021038-guli/io/gulimall/decision_logs/io.gulimall.service.member.MemberService.md[0m
+[37m2026-10-02 10:40:49,960 [140521688907904] monomorph DEBUG monomorph.py:291 - Decision workflow returned ID-based decision for class io.gulimall.service.member.MemberService[0m
+[37m2026-10-02 10:40:49,961 [140521688907904] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class io.gulimall.service.member.MemberReceiveAddressService in microservice gulimall-member[0m
+[37m2026-10-02 10:40:49,961 [140521688907904] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:40:49,961 [140521688907904] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:40:49,961 [140521688907904] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:40:49,961 [140521688907904] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:40:49,961 [140521688907904] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:40:49,961 [140521688907904] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:40:49,962 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:40:55,172 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 8 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:40:55,172 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 37df1853f247f8a771680008834a85ca to experiment: gulimall-v1[0m
+[37m2026-10-02 10:40:55,173 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:40:55,173 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:40:55,175 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class MemberReceiveAddressEntity[0m
+[37m2026-10-02 10:40:55,175 [140520801167040] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class MemberReceiveAddressService[0m
+[37m2026-10-02 10:40:55,176 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:40:59,582 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 9 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:40:59,582 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 827ab53ace87b6c94211c290acda0e48 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:40:59,582 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:40:59,583 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:40:59,585 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class OrderServiceImpl[0m
+[37m2026-10-02 10:40:59,589 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class WareInfoServiceImpl[0m
+[37m2026-10-02 10:40:59,590 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:41:19,122 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 10 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:41:19,122 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 708092fbd28f642af445f740b97b9158 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:41:19,123 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:41:19,123 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 1 tools[0m
+[37m2026-10-02 10:41:19,125 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class MemberReceiveAddressController[0m
+[37m2026-10-02 10:41:19,127 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:41:34,451 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 11 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:41:34,451 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 766e82462dbfe859a3d4ebcf4480baf6 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:41:34,452 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:41:34,452 [140521688907904] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:41:34,453 [140521688907904] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:41:34,453 [140521688907904] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:41:39,287 [140520810608320] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:41:39,295 [140521688907904] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:41:39,295 [140521688907904] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:41:39,296 [140521688907904] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:41:39,296 [140521688907904] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:41:39,296 [140521688907904] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:41:39,296 [140521688907904] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/gulimall/output/llm_responses/gulimall-2610021038-guli/io/gulimall/decision_logs/io.gulimall.service.member.MemberReceiveAddressService.md[0m
+[37m2026-10-02 10:41:39,296 [140521688907904] monomorph DEBUG monomorph.py:291 - Decision workflow returned ID-based decision for class io.gulimall.service.member.MemberReceiveAddressService[0m
+[37m2026-10-02 10:41:39,296 [140521688907904] monomorph DEBUG monomorph.py:268 - Class io.gulimall.entity.member.MemberEntity is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:41:39,296 [140521688907904] monomorph DEBUG monomorph.py:268 - Class io.gulimall.exception.PhoneNumExistException is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:41:39,296 [140521688907904] monomorph DEBUG monomorph.py:268 - Class io.gulimall.exception.UserExistException is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:41:39,297 [140521688907904] monomorph DEBUG monomorph.py:268 - Class io.gulimall.vo.member.MemberLoginVo is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:41:39,297 [140521688907904] monomorph DEBUG monomorph.py:268 - Class io.gulimall.vo.member.MemberRegisterVo is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:41:39,297 [140521688907904] monomorph DEBUG monomorph.py:268 - Class io.gulimall.entity.member.MemberReceiveAddressEntity is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:41:39,297 [140521688907904] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class io.gulimall.service.product.SkuSaleAttrValueService in microservice gulimall-product[0m
+[37m2026-10-02 10:41:39,297 [140521688907904] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:41:39,433 [140521688907904] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:41:39,433 [140521688907904] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:41:39,433 [140521688907904] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:41:39,433 [140521688907904] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:41:39,433 [140521688907904] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:41:39,435 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:41:43,582 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 12 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:41:43,582 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 6ac36880c7506682d8871b4be876d616 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:41:43,582 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:41:43,583 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 3 tools[0m
+[37m2026-10-02 10:41:43,584 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SkuSaleAttrValueEntity[0m
+[37m2026-10-02 10:41:43,585 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SkuItemSaleAttrVo[0m
+[37m2026-10-02 10:41:43,586 [140520810608320] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class SkuSaleAttrValueService[0m
+[37m2026-10-02 10:41:43,587 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:41:51,126 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 13 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:41:51,126 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 85f51fa7161f5858d4a1819241598c59 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:41:51,126 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:41:51,126 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 4 tools[0m
+[37m2026-10-02 10:41:51,128 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class CartServiceImpl[0m
+[37m2026-10-02 10:41:51,130 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SkuSaleAttrValueServiceImpl[0m
+[37m2026-10-02 10:41:51,131 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SkuInfoServiceImpl[0m
+[37m2026-10-02 10:41:51,132 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SpuInfoServiceImpl[0m
+[37m2026-10-02 10:41:51,133 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:42:09,237 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 14 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:42:09,238 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 811900f10dfc56b3fe5be6d3eef6958d to experiment: gulimall-v1[0m
+[37m2026-10-02 10:42:09,238 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:42:09,239 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:42:09,241 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SkuSaleAttrValueDao[0m
+[37m2026-10-02 10:42:09,242 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class AttrValueWithSkuIdVo[0m
+[37m2026-10-02 10:42:09,244 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:42:27,422 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 15 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:42:27,422 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: d5627536ac2b519d3ec7085dcda30831 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:42:27,422 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:42:27,422 [140521688907904] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:42:27,423 [140521688907904] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:42:27,423 [140521688907904] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:42:36,562 [140520801167040] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:42:36,567 [140521688907904] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:42:36,567 [140521688907904] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:42:36,567 [140521688907904] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:42:36,567 [140521688907904] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:42:36,568 [140521688907904] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:42:36,568 [140521688907904] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/gulimall/output/llm_responses/gulimall-2610021038-guli/io/gulimall/decision_logs/io.gulimall.service.product.SkuSaleAttrValueService.md[0m
+[37m2026-10-02 10:42:36,568 [140521688907904] monomorph DEBUG monomorph.py:287 - Decision workflow returned DTO-based decision for class io.gulimall.service.product.SkuSaleAttrValueService[0m
+[37m2026-10-02 10:42:36,568 [140521688907904] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class io.gulimall.service.product.SpuInfoService in microservice gulimall-product[0m
+[37m2026-10-02 10:42:36,568 [140521688907904] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:42:36,568 [140521688907904] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:42:36,568 [140521688907904] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:42:36,568 [140521688907904] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:42:36,568 [140521688907904] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:42:36,568 [140521688907904] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:42:36,569 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:42:39,989 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 16 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:42:39,989 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: ddeaece212f9c24e0960c35477dd29b1 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:42:39,989 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:42:39,990 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 3 tools[0m
+[37m2026-10-02 10:42:39,991 [140520801167040] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class SpuInfoService[0m
+[37m2026-10-02 10:42:39,992 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SpuInfoEntity[0m
+[37m2026-10-02 10:42:39,993 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SpuSaveVo[0m
+[37m2026-10-02 10:42:39,994 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:42:43,400 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 17 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:42:43,400 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 9f87418d44fb5650478d8b8cc2fc582c to experiment: gulimall-v1[0m
+[37m2026-10-02 10:42:43,400 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:42:43,401 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:42:43,404 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class OrderServiceImpl[0m
+[37m2026-10-02 10:42:43,404 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SpuInfoController[0m
+[37m2026-10-02 10:42:43,406 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:43:09,705 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 18 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:43:09,705 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 254637c0baadccef077152a25e4fcb4c to experiment: gulimall-v1[0m
+[37m2026-10-02 10:43:09,706 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:43:09,706 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:43:09,708 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SpuInfoServiceImpl[0m
+[37m2026-10-02 10:43:09,709 [140520810608320] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class SpuInfoEntity[0m
+[37m2026-10-02 10:43:09,710 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:43:32,952 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 19 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:43:32,952 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: dbe387f79cbfff12e1611dd2a5db5465 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:43:32,952 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:43:32,953 [140521688907904] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:43:32,953 [140521688907904] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:43:32,953 [140521688907904] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:43:40,749 [140520810608320] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:43:40,755 [140521688907904] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:43:40,756 [140521688907904] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:43:40,756 [140521688907904] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:43:40,756 [140521688907904] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:43:40,757 [140521688907904] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:43:40,757 [140521688907904] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/gulimall/output/llm_responses/gulimall-2610021038-guli/io/gulimall/decision_logs/io.gulimall.service.product.SpuInfoService.md[0m
+[37m2026-10-02 10:43:40,757 [140521688907904] monomorph DEBUG monomorph.py:287 - Decision workflow returned DTO-based decision for class io.gulimall.service.product.SpuInfoService[0m
+[37m2026-10-02 10:43:40,758 [140521688907904] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class io.gulimall.service.product.AttrService in microservice gulimall-product[0m
+[37m2026-10-02 10:43:40,758 [140521688907904] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:43:40,758 [140521688907904] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:43:40,758 [140521688907904] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:43:40,758 [140521688907904] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:43:40,758 [140521688907904] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:43:40,758 [140521688907904] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:43:40,759 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:43:45,731 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 20 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:43:45,731 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 05df4cf200de5503a6011cf302072975 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:43:45,731 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:43:45,731 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 4 tools[0m
+[37m2026-10-02 10:43:45,733 [140520810608320] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class AttrService[0m
+[37m2026-10-02 10:43:45,734 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class AttrEntity[0m
+[37m2026-10-02 10:43:45,735 [140520792774336] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class AttrRespVo[0m
+[37m2026-10-02 10:43:45,736 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class ProductAttrValueEntity[0m
+[37m2026-10-02 10:43:45,738 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:43:50,357 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 21 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:43:50,358 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 619df3b92327400fa472b5b160970720 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:43:50,358 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:43:50,359 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 4 tools[0m
+[37m2026-10-02 10:43:50,361 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SearchServiceImpl[0m
+[37m2026-10-02 10:43:50,362 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class AttrController[0m
+[37m2026-10-02 10:43:50,363 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class AttrVo[0m
+[37m2026-10-02 10:43:50,364 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class AttrGroupController[0m
+[37m2026-10-02 10:43:50,365 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:44:10,540 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 22 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:44:10,540 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: d472ef2999f2de53cddc99a711cf64ef to experiment: gulimall-v1[0m
+[37m2026-10-02 10:44:10,540 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:44:10,541 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 3 tools[0m
+[37m2026-10-02 10:44:10,543 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SpuInfoServiceImpl[0m
+[37m2026-10-02 10:44:10,544 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class AttrGroupServiceImpl[0m
+[37m2026-10-02 10:44:10,544 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class AttrAttrgroupRelationEntity[0m
+[37m2026-10-02 10:44:10,545 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:44:15,295 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 23 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:44:15,295 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: e60bbfd99c0be131c28b3e6ffe540a08 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:44:15,295 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:44:15,296 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 4 tools[0m
+[37m2026-10-02 10:44:15,297 [140520801167040] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class AttrEntity[0m
+[37m2026-10-02 10:44:15,298 [140520801167040] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class ProductAttrValueEntity[0m
+[37m2026-10-02 10:44:15,299 [140520801167040] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class AttrRespVo[0m
+[37m2026-10-02 10:44:15,300 [140520810608320] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class AttrVo[0m
+[37m2026-10-02 10:44:15,303 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:44:53,020 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 24 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:44:53,021 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: c8fd03207c8463dbeb77539a75c40708 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:44:53,021 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:44:53,022 [140521688907904] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:44:53,022 [140521688907904] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:44:53,023 [140521688907904] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:44:58,010 [140520801167040] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:44:58,016 [140521688907904] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:44:58,017 [140521688907904] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:44:58,017 [140521688907904] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:44:58,017 [140521688907904] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:44:58,018 [140521688907904] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:44:58,018 [140521688907904] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/gulimall/output/llm_responses/gulimall-2610021038-guli/io/gulimall/decision_logs/io.gulimall.service.product.AttrService.md[0m
+[37m2026-10-02 10:44:58,018 [140521688907904] monomorph DEBUG monomorph.py:291 - Decision workflow returned ID-based decision for class io.gulimall.service.product.AttrService[0m
+[37m2026-10-02 10:44:58,018 [140521688907904] monomorph DEBUG monomorph.py:268 - Class io.gulimall.entity.product.SkuInfoEntity is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:44:58,018 [140521688907904] monomorph DEBUG monomorph.py:268 - Class io.gulimall.service.product.SkuInfoService is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:44:58,019 [140521688907904] monomorph DEBUG monomorph.py:268 - Class io.gulimall.entity.product.SpuInfoEntity is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:44:58,019 [140521688907904] monomorph DEBUG monomorph.py:268 - Class io.gulimall.vo.product.AttrRespVo is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:44:58,019 [140521688907904] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class io.gulimall.service.coupon.CouponService in microservice gulimall-coupon[0m
+[37m2026-10-02 10:44:58,019 [140521688907904] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:44:58,159 [140521688907904] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:44:58,159 [140521688907904] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:44:58,159 [140521688907904] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:44:58,159 [140521688907904] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:44:58,159 [140521688907904] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:44:58,160 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:45:01,643 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 25 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:45:01,643 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 41ece0d070eb68832e90973d1d29117f to experiment: gulimall-v1[0m
+[37m2026-10-02 10:45:01,644 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:45:01,644 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 3 tools[0m
+[37m2026-10-02 10:45:01,646 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class CouponEntity[0m
+[37m2026-10-02 10:45:01,647 [140520801167040] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class CouponService[0m
+[37m2026-10-02 10:45:01,647 [140520801167040] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class CouponEntity[0m
+[37m2026-10-02 10:45:01,649 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:45:06,294 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 26 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:45:06,294 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: f9fe0cc902e241b0ba0fbaf438c1b814 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:45:06,294 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:45:06,295 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:45:06,297 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class MemberController[0m
+[37m2026-10-02 10:45:06,298 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class CouponController[0m
+[37m2026-10-02 10:45:06,299 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:45:26,551 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 27 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:45:26,551 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 524763409f3b0243844975ff6e172f86 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:45:26,552 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:45:26,552 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:45:26,554 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class CouponServiceImpl[0m
+[37m2026-10-02 10:45:26,555 [140520801167040] monomorph DEBUG tools.py:92 - [tool]: 'get_method_source_code' invoked for class CouponServiceImpl and method listMemberCoupons()[0m
+[37m2026-10-02 10:45:26,557 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:45:52,905 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 28 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:45:52,905 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 05d4284035716a3d917e04e469218a6e to experiment: gulimall-v1[0m
+[37m2026-10-02 10:45:52,906 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:45:52,906 [140521688907904] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:45:52,907 [140521688907904] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:45:52,907 [140521688907904] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:45:59,826 [140520801167040] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:45:59,832 [140521688907904] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:45:59,832 [140521688907904] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:45:59,833 [140521688907904] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:45:59,833 [140521688907904] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:45:59,833 [140521688907904] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:45:59,833 [140521688907904] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/gulimall/output/llm_responses/gulimall-2610021038-guli/io/gulimall/decision_logs/io.gulimall.service.coupon.CouponService.md[0m
+[37m2026-10-02 10:45:59,833 [140521688907904] monomorph DEBUG monomorph.py:287 - Decision workflow returned DTO-based decision for class io.gulimall.service.coupon.CouponService[0m
+[37m2026-10-02 10:45:59,833 [140521688907904] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class io.gulimall.service.coupon.SkuFullReductionService in microservice gulimall-coupon[0m
+[37m2026-10-02 10:45:59,833 [140521688907904] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:45:59,834 [140521688907904] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:45:59,834 [140521688907904] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:45:59,834 [140521688907904] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:45:59,834 [140521688907904] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:45:59,834 [140521688907904] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:45:59,835 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:46:03,708 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 29 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:46:03,708 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 90ffc90694cac8347e2d17023faa50e8 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:46:03,709 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:46:03,709 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 3 tools[0m
+[37m2026-10-02 10:46:03,711 [140520801167040] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class SkuFullReductionService[0m
+[37m2026-10-02 10:46:03,713 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SkuFullReductionEntity[0m
+[37m2026-10-02 10:46:03,713 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SkuReductionTo[0m
+[37m2026-10-02 10:46:03,715 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:46:06,976 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 30 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:46:06,976 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: c87716f181ba77abdc26f1fde7947288 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:46:06,977 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:46:06,978 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:46:06,980 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SpuInfoServiceImpl[0m
+[37m2026-10-02 10:46:06,981 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SkuFullReductionController[0m
+[37m2026-10-02 10:46:06,983 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:46:09,346 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 31 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:46:09,346 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: ee2655c98f61d10a3552664be9f3625e to experiment: gulimall-v1[0m
+[37m2026-10-02 10:46:09,346 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:46:09,347 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:46:09,348 [140520801167040] monomorph DEBUG tools.py:92 - [tool]: 'get_method_source_code' invoked for class SkuFullReductionServiceImpl and method saveSkuReductionTo[0m
+[37m2026-10-02 10:46:09,350 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SkuFullReductionServiceImpl[0m
+[37m2026-10-02 10:46:09,351 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:46:35,808 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 32 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:46:35,809 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: caf0f7b6193c7062c003f4205b6656cb to experiment: gulimall-v1[0m
+[37m2026-10-02 10:46:35,809 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:46:35,810 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:46:35,811 [140520801167040] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class SkuReductionTo[0m
+[37m2026-10-02 10:46:35,812 [140520801167040] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class SkuFullReductionEntity[0m
+[37m2026-10-02 10:46:35,814 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:46:54,385 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 33 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:46:54,385 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 71401c2fff8cfee86c259f9d44d2df2d to experiment: gulimall-v1[0m
+[37m2026-10-02 10:46:54,386 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:46:54,387 [140521688907904] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:46:54,387 [140521688907904] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:46:54,387 [140521688907904] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:47:01,195 [140520801167040] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:47:01,202 [140521688907904] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:47:01,202 [140521688907904] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:47:01,202 [140521688907904] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:47:01,202 [140521688907904] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:47:01,202 [140521688907904] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:47:01,203 [140521688907904] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/gulimall/output/llm_responses/gulimall-2610021038-guli/io/gulimall/decision_logs/io.gulimall.service.coupon.SkuFullReductionService.md[0m
+[37m2026-10-02 10:47:01,203 [140521688907904] monomorph DEBUG monomorph.py:287 - Decision workflow returned DTO-based decision for class io.gulimall.service.coupon.SkuFullReductionService[0m
+[37m2026-10-02 10:47:01,203 [140521688907904] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class io.gulimall.service.coupon.SeckillSessionService in microservice gulimall-coupon[0m
+[37m2026-10-02 10:47:01,203 [140521688907904] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:47:01,203 [140521688907904] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:47:01,203 [140521688907904] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:47:01,203 [140521688907904] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:47:01,203 [140521688907904] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:47:01,204 [140521688907904] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:47:01,205 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:47:04,864 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 34 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:47:04,864 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: f7e4bb4019c3001542009052be960391 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:47:04,864 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:47:04,865 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:47:04,866 [140520801167040] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class SeckillSessionService[0m
+[37m2026-10-02 10:47:04,867 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SeckillSessionEntity[0m
+[37m2026-10-02 10:47:04,869 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:47:08,660 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 35 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:47:08,661 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 3e95759c59257fa29b999716d328c214 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:47:08,661 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:47:08,662 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:47:08,664 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SeckillServiceImpl[0m
+[37m2026-10-02 10:47:08,665 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SeckillSessionController[0m
+[37m2026-10-02 10:47:08,666 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:47:21,523 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 36 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:47:21,524 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 4252145590adc077ac97a62c88aa66db to experiment: gulimall-v1[0m
+[37m2026-10-02 10:47:21,524 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:47:21,525 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 1 tools[0m
+[37m2026-10-02 10:47:21,526 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SeckillSessionServiceImpl[0m
+[37m2026-10-02 10:47:21,527 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:47:38,311 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 37 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:47:38,312 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 2590f09264efb2ae6b4b3f10b690a289 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:47:38,312 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:47:38,312 [140521688907904] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:47:38,313 [140521688907904] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:47:38,313 [140521688907904] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:47:49,030 [140520810608320] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:47:49,036 [140521688907904] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:47:49,036 [140521688907904] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:47:49,037 [140521688907904] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:47:49,037 [140521688907904] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:47:49,037 [140521688907904] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:47:49,037 [140521688907904] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/gulimall/output/llm_responses/gulimall-2610021038-guli/io/gulimall/decision_logs/io.gulimall.service.coupon.SeckillSessionService.md[0m
+[37m2026-10-02 10:47:49,038 [140521688907904] monomorph DEBUG monomorph.py:287 - Decision workflow returned DTO-based decision for class io.gulimall.service.coupon.SeckillSessionService[0m
+[37m2026-10-02 10:47:49,038 [140521688907904] monomorph DEBUG monomorph.py:268 - Class io.gulimall.entity.coupon.SpuBoundsEntity is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:47:49,038 [140521688907904] monomorph DEBUG monomorph.py:268 - Class io.gulimall.service.coupon.SpuBoundsService is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:47:49,038 [140521688907904] monomorph DEBUG monomorph.py:268 - Class io.gulimall.entity.coupon.SeckillSessionEntity is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:47:49,038 [140521688907904] monomorph DEBUG monomorph.py:268 - Class io.gulimall.entity.coupon.SeckillSkuRelationEntity is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:47:49,038 [140521688907904] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class io.gulimall.service.ware.WareSkuService in microservice gulimall-ware[0m
+[37m2026-10-02 10:47:49,038 [140521688907904] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:47:49,239 [140521688907904] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:47:49,239 [140521688907904] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:47:49,239 [140521688907904] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:47:49,239 [140521688907904] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:47:49,240 [140521688907904] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:47:49,241 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:47:54,722 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 38 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:47:54,723 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 4b8274489fba444c9e67d6413ed2eded to experiment: gulimall-v1[0m
+[37m2026-10-02 10:47:54,723 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:47:54,724 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 4 tools[0m
+[37m2026-10-02 10:47:54,726 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class WareSkuEntity[0m
+[37m2026-10-02 10:47:54,727 [140520810608320] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class WareSkuService[0m
+[37m2026-10-02 10:47:54,728 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SkuHasStockVo[0m
+[37m2026-10-02 10:47:54,729 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class WareSkuLockVo[0m
+[37m2026-10-02 10:47:54,730 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:48:01,207 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 39 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:48:01,208 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: ef8a1bf7e70eeaa79dcf8cabaf0bac36 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:48:01,208 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:48:01,208 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 4 tools[0m
+[37m2026-10-02 10:48:01,210 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SpuInfoServiceImpl[0m
+[37m2026-10-02 10:48:01,211 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class OrderServiceImpl[0m
+[37m2026-10-02 10:48:01,212 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class WareSkuController[0m
+[37m2026-10-02 10:48:01,213 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class WareSkuServiceImpl[0m
+[37m2026-10-02 10:48:01,214 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:48:20,912 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 40 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:48:20,912 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 29d47b0a8800b92cf5868cd8249e6257 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:48:20,913 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:48:20,914 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:48:20,916 [140520810608320] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class WareSkuEntity[0m
+[37m2026-10-02 10:48:20,917 [140520810608320] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class SkuHasStockVo[0m
+[37m2026-10-02 10:48:20,919 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:48:35,110 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 41 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:48:35,110 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: d56e04dc1ba067f839a77e64a79ba0ee to experiment: gulimall-v1[0m
+[37m2026-10-02 10:48:35,110 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:48:35,111 [140521688907904] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:48:35,111 [140521688907904] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:48:35,111 [140521688907904] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:48:44,864 [140520810608320] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:48:44,870 [140521688907904] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:48:44,871 [140521688907904] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:48:44,871 [140521688907904] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:48:44,871 [140521688907904] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:48:44,872 [140521688907904] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:48:44,872 [140521688907904] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/gulimall/output/llm_responses/gulimall-2610021038-guli/io/gulimall/decision_logs/io.gulimall.service.ware.WareSkuService.md[0m
+[37m2026-10-02 10:48:44,872 [140521688907904] monomorph DEBUG monomorph.py:291 - Decision workflow returned ID-based decision for class io.gulimall.service.ware.WareSkuService[0m
+[37m2026-10-02 10:48:44,872 [140521688907904] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class io.gulimall.service.ware.WareInfoService in microservice gulimall-ware[0m
+[37m2026-10-02 10:48:44,872 [140521688907904] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:48:44,872 [140521688907904] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:48:44,872 [140521688907904] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:48:44,872 [140521688907904] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:48:44,873 [140521688907904] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:48:44,873 [140521688907904] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:48:44,874 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:48:50,089 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 42 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:48:50,089 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: a439e1442f772a4cb50e3063ef483a3f to experiment: gulimall-v1[0m
+[37m2026-10-02 10:48:50,090 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:48:50,090 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 3 tools[0m
+[37m2026-10-02 10:48:50,094 [140520801167040] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class WareInfoService[0m
+[37m2026-10-02 10:48:50,097 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class WareInfoEntity[0m
+[37m2026-10-02 10:48:50,097 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class FareVo[0m
+[37m2026-10-02 10:48:50,099 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:48:54,172 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 43 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:48:54,172 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 5c85555565f67eee6593a8442557b409 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:48:54,172 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:48:54,173 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 3 tools[0m
+[37m2026-10-02 10:48:54,175 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class OrderServiceImpl[0m
+[37m2026-10-02 10:48:54,176 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class WareInfoController[0m
+[37m2026-10-02 10:48:54,177 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class WareInfoServiceImpl[0m
+[37m2026-10-02 10:48:54,178 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:49:28,579 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 44 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:49:28,579 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 776ee475bff714f6a0ea252cf3630847 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:49:28,579 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:49:28,580 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:49:28,581 [140520801167040] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class WareInfoEntity[0m
+[37m2026-10-02 10:49:28,583 [140520801167040] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class FareVo[0m
+[37m2026-10-02 10:49:28,585 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:49:43,571 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 45 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:49:43,572 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 1248196e36ecbbc42f0c45b39658ecd7 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:49:43,572 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:49:43,572 [140521688907904] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:49:43,573 [140521688907904] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:49:43,573 [140521688907904] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:49:52,399 [140520801167040] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:49:52,408 [140521688907904] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:49:52,408 [140521688907904] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:49:52,408 [140521688907904] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:49:52,409 [140521688907904] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:49:52,409 [140521688907904] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:49:52,409 [140521688907904] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/gulimall/output/llm_responses/gulimall-2610021038-guli/io/gulimall/decision_logs/io.gulimall.service.ware.WareInfoService.md[0m
+[37m2026-10-02 10:49:52,410 [140521688907904] monomorph DEBUG monomorph.py:291 - Decision workflow returned ID-based decision for class io.gulimall.service.ware.WareInfoService[0m
+[37m2026-10-02 10:49:52,410 [140521688907904] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class io.gulimall.service.cart.CartService in microservice gulimall-cart[0m
+[37m2026-10-02 10:49:52,410 [140521688907904] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:49:52,589 [140521688907904] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:49:52,589 [140521688907904] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:49:52,589 [140521688907904] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:49:52,589 [140521688907904] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:49:52,589 [140521688907904] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:49:52,591 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:49:57,457 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 46 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:49:57,457 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 8802affef05d3c2adc01205b2769e34c to experiment: gulimall-v1[0m
+[37m2026-10-02 10:49:57,457 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:49:57,458 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 3 tools[0m
+[37m2026-10-02 10:49:57,459 [140520801167040] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class CartService[0m
+[37m2026-10-02 10:49:57,460 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class CartVo[0m
+[37m2026-10-02 10:49:57,461 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class CartItemVo[0m
+[37m2026-10-02 10:49:57,463 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:50:01,630 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 47 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:50:01,630 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 86020b701d66550554ae589608cdcd65 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:50:01,630 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:50:01,631 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:50:01,633 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class IndexController[0m
+[37m2026-10-02 10:50:01,634 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class OrderServiceImpl[0m
+[37m2026-10-02 10:50:01,635 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:50:24,629 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 48 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:50:24,629 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: fb43fff7fafeba439ad83cc1811c8a47 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:50:24,630 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:50:24,630 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:50:24,632 [140520801167040] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class CartItemVo[0m
+[37m2026-10-02 10:50:24,633 [140520801167040] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class CartVo[0m
+[37m2026-10-02 10:50:24,634 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:50:42,075 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 49 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:50:42,075 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 2f355bf1131aa208dddbdf5b9418c6d7 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:50:42,075 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:50:42,076 [140521688907904] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:50:42,076 [140521688907904] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:50:42,076 [140521688907904] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:50:47,085 [140520801167040] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:50:47,095 [140521688907904] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:50:47,096 [140521688907904] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:50:47,096 [140521688907904] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:50:47,096 [140521688907904] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:50:47,096 [140521688907904] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:50:47,097 [140521688907904] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/gulimall/output/llm_responses/gulimall-2610021038-guli/io/gulimall/decision_logs/io.gulimall.service.cart.CartService.md[0m
+[37m2026-10-02 10:50:47,097 [140521688907904] monomorph DEBUG monomorph.py:291 - Decision workflow returned ID-based decision for class io.gulimall.service.cart.CartService[0m
+[37m2026-10-02 10:50:47,097 [140521688907904] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class io.gulimall.vo.cart.CartItemVo in microservice gulimall-cart[0m
+[37m2026-10-02 10:50:47,097 [140521688907904] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:50:47,098 [140521688907904] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:50:47,098 [140521688907904] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:50:47,098 [140521688907904] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:50:47,098 [140521688907904] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:50:47,098 [140521688907904] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:50:47,100 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:50:50,748 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 50 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:50:50,748 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 773e1c0b99a35afabacd6f00a07d2278 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:50:50,748 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:50:50,749 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 1 tools[0m
+[37m2026-10-02 10:50:50,754 [140520801167040] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class CartItemVo[0m
+[37m2026-10-02 10:50:50,755 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:50:54,042 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 51 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:50:54,042 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 0948dfae2bc84149d3a3c167ab8851c0 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:50:54,042 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:50:54,043 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 3 tools[0m
+[37m2026-10-02 10:50:54,045 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class OrderServiceImpl[0m
+[37m2026-10-02 10:50:54,047 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class CartVo[0m
+[37m2026-10-02 10:50:54,047 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class CartServiceImpl[0m
+[37m2026-10-02 10:50:54,048 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:51:10,185 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 52 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:51:10,186 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: b6e5833e8bac1fc3c590de5c00fa3701 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:51:10,186 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:51:10,186 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:51:10,188 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class CartService[0m
+[37m2026-10-02 10:51:10,189 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class OrderItemVo[0m
+[37m2026-10-02 10:51:10,190 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:51:24,079 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 53 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:51:24,079 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 9d12ad6242e29e65d63743dd7516233f to experiment: gulimall-v1[0m
+[37m2026-10-02 10:51:24,079 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:51:24,080 [140521688907904] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:51:24,080 [140521688907904] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:51:24,080 [140521688907904] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:51:32,117 [140520801167040] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:51:32,125 [140521688907904] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:51:32,126 [140521688907904] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:51:32,126 [140521688907904] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:51:32,126 [140521688907904] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:51:32,127 [140521688907904] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:51:32,127 [140521688907904] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/gulimall/output/llm_responses/gulimall-2610021038-guli/io/gulimall/decision_logs/io.gulimall.vo.cart.CartItemVo.md[0m
+[37m2026-10-02 10:51:32,128 [140521688907904] monomorph DEBUG monomorph.py:287 - Decision workflow returned DTO-based decision for class io.gulimall.vo.cart.CartItemVo[0m
+[37m2026-10-02 10:51:32,128 [140521688907904] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class io.gulimall.vo.cart.CartVo in microservice gulimall-cart[0m
+[37m2026-10-02 10:51:32,128 [140521688907904] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:51:32,128 [140521688907904] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:51:32,128 [140521688907904] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:51:32,129 [140521688907904] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:51:32,129 [140521688907904] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:51:32,129 [140521688907904] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:51:32,130 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:51:34,640 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 54 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:51:34,640 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 587affacb3260ab995b99b3da1a6442e to experiment: gulimall-v1[0m
+[37m2026-10-02 10:51:34,640 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:51:34,640 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:51:34,642 [140520801167040] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class CartVo[0m
+[37m2026-10-02 10:51:34,643 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class CartItemVo[0m
+[37m2026-10-02 10:51:34,644 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:51:38,264 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 55 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:51:38,265 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 1d2bb7e7b522434df57d94acdfb4b3cd to experiment: gulimall-v1[0m
+[37m2026-10-02 10:51:38,265 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:51:38,265 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:51:38,269 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class IndexController[0m
+[37m2026-10-02 10:51:38,271 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class CartService[0m
+[37m2026-10-02 10:51:38,273 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:51:43,630 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 56 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:51:43,630 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 190e7b02f0114827e2a2f39326e9b4bd to experiment: gulimall-v1[0m
+[37m2026-10-02 10:51:43,630 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:51:43,631 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 1 tools[0m
+[37m2026-10-02 10:51:43,632 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class CartServiceImpl[0m
+[37m2026-10-02 10:51:43,634 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:51:57,612 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 57 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:51:57,612 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 488ab64998430b8dec4403231b9fae1a to experiment: gulimall-v1[0m
+[37m2026-10-02 10:51:57,612 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:51:57,613 [140521688907904] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:51:57,613 [140521688907904] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:51:57,614 [140521688907904] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:52:02,123 [140520810608320] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:52:02,129 [140521688907904] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:52:02,129 [140521688907904] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:52:02,130 [140521688907904] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:52:02,130 [140521688907904] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:52:02,130 [140521688907904] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:52:02,130 [140521688907904] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/gulimall/output/llm_responses/gulimall-2610021038-guli/io/gulimall/decision_logs/io.gulimall.vo.cart.CartVo.md[0m
+[37m2026-10-02 10:52:02,130 [140521688907904] monomorph DEBUG monomorph.py:287 - Decision workflow returned DTO-based decision for class io.gulimall.vo.cart.CartVo[0m
+[37m2026-10-02 10:52:02,131 [140521688907904] monomorph DEBUG monomorph.py:268 - Class io.gulimall.interceptor.CartInterceptor is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:52:02,131 [140521688907904] monomorph DEBUG monomorph.py:268 - Class io.gulimall.to.cart.UserInfoTo is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:52:02,131 [140521688907904] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class io.gulimall.service.seckill.SeckillService in microservice gulimall-seckill[0m
+[37m2026-10-02 10:52:02,131 [140521688907904] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:52:02,273 [140521688907904] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:52:02,273 [140521688907904] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:52:02,273 [140521688907904] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:52:02,273 [140521688907904] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:52:02,273 [140521688907904] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:52:02,274 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:52:05,980 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 58 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:52:05,981 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 54121545947afc6560a17f56b6b4219e to experiment: gulimall-v1[0m
+[37m2026-10-02 10:52:05,981 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:52:05,981 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:52:05,983 [140520810608320] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class SeckillService[0m
+[37m2026-10-02 10:52:05,984 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SeckillSkuRedisTo[0m
+[37m2026-10-02 10:52:05,986 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:52:09,937 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 59 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:52:09,937 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: cc810b9f747c7f552d8755f14ae52814 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:52:09,937 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:52:09,938 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 3 tools[0m
+[37m2026-10-02 10:52:09,940 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SkuInfoServiceImpl[0m
+[37m2026-10-02 10:52:09,941 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SeckillController[0m
+[37m2026-10-02 10:52:09,942 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SeckillSchedule[0m
+[37m2026-10-02 10:52:09,943 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:52:31,122 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 60 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:52:31,122 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: a6b9402d158c4969dd533728fe8c3732 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:52:31,122 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:52:31,123 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:52:31,125 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SeckillSkuVo[0m
+[37m2026-10-02 10:52:31,126 [140520801167040] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class SeckillSkuRedisTo[0m
+[37m2026-10-02 10:52:31,127 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:52:49,679 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 61 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:52:49,679 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 330f6b1df58ffb54b8fe2cf066316e49 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:52:49,679 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:52:49,680 [140521688907904] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:52:49,681 [140521688907904] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:52:49,681 [140521688907904] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:52:55,039 [140520801167040] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:52:55,045 [140521688907904] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:52:55,045 [140521688907904] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:52:55,046 [140521688907904] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:52:55,046 [140521688907904] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:52:55,046 [140521688907904] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:52:55,046 [140521688907904] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/gulimall/output/llm_responses/gulimall-2610021038-guli/io/gulimall/decision_logs/io.gulimall.service.seckill.SeckillService.md[0m
+[37m2026-10-02 10:52:55,046 [140521688907904] monomorph DEBUG monomorph.py:291 - Decision workflow returned ID-based decision for class io.gulimall.service.seckill.SeckillService[0m
+[37m2026-10-02 10:52:55,047 [140521688907904] monomorph DEBUG monomorph.py:268 - Class io.gulimall.to.seckill.SeckillSkuRedisTo is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:52:55,047 [140521688907904] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class io.gulimall.service.search.ProductSaveService in microservice gulimall-search[0m
+[37m2026-10-02 10:52:55,047 [140521688907904] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:52:55,176 [140521688907904] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:52:55,177 [140521688907904] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:52:55,177 [140521688907904] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:52:55,177 [140521688907904] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:52:55,177 [140521688907904] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:52:55,178 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:52:59,310 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 62 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:52:59,310 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 898cf67a79e4646d5d3a69e7a4b1b4d2 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:52:59,310 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:52:59,311 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 3 tools[0m
+[37m2026-10-02 10:52:59,312 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SkuEsModel[0m
+[37m2026-10-02 10:52:59,313 [140520801167040] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class ProductSaveService[0m
+[37m2026-10-02 10:52:59,314 [140520801167040] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class SkuEsModel[0m
+[37m2026-10-02 10:52:59,315 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:53:04,254 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 63 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:53:04,254 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: b60c98f6ea9c94165ae3ac722083ac0a to experiment: gulimall-v1[0m
+[37m2026-10-02 10:53:04,254 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:53:04,255 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:53:04,257 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SpuInfoServiceImpl[0m
+[37m2026-10-02 10:53:04,258 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class ElasticSaveController[0m
+[37m2026-10-02 10:53:04,259 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:53:18,066 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 64 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:53:18,066 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: b1b0c283749c46a59b0ece0e1b97b2aa to experiment: gulimall-v1[0m
+[37m2026-10-02 10:53:18,066 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:53:18,067 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 1 tools[0m
+[37m2026-10-02 10:53:18,068 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class ProductSaveServiceImpl[0m
+[33m2026-10-02 10:53:18,069 [140520810608320] monomorph WARNING tools.py:52 - [default]: Class None not found in the application model.[0m
+[37m2026-10-02 10:53:18,070 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:53:37,141 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 65 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:53:37,142 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 131e5870a53925dad90ad6ed7b5f3de6 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:53:37,142 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:53:37,142 [140521688907904] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:53:37,143 [140521688907904] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:53:37,143 [140521688907904] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:53:42,394 [140520810608320] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:53:42,401 [140521688907904] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:53:42,401 [140521688907904] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:53:42,401 [140521688907904] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:53:42,401 [140521688907904] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:53:42,402 [140521688907904] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:53:42,402 [140521688907904] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/gulimall/output/llm_responses/gulimall-2610021038-guli/io/gulimall/decision_logs/io.gulimall.service.search.ProductSaveService.md[0m
+[37m2026-10-02 10:53:42,402 [140521688907904] monomorph DEBUG monomorph.py:287 - Decision workflow returned DTO-based decision for class io.gulimall.service.search.ProductSaveService[0m
+[37m2026-10-02 10:53:42,402 [140521688907904] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class io.gulimall.service.order.OrderService in microservice gulimall-order[0m
+[37m2026-10-02 10:53:42,402 [140521688907904] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:53:42,519 [140521688907904] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:53:42,519 [140521688907904] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:53:42,519 [140521688907904] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:53:42,519 [140521688907904] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:53:42,519 [140521688907904] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:53:42,521 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:53:46,792 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 66 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:53:46,792 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: df0fe76e7c88e85d8e9ca66e6719bcf7 to experiment: gulimall-v1[0m
+[37m2026-10-02 10:53:46,792 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:53:46,793 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:53:46,794 [140520810608320] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class OrderService[0m
+[37m2026-10-02 10:53:46,796 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class OrderEntity[0m
+[37m2026-10-02 10:53:46,797 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:53:50,409 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 67 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:53:50,410 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 7e3c2aeb54289b694b8edf81a7c3bf8a to experiment: gulimall-v1[0m
+[37m2026-10-02 10:53:50,410 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:53:50,410 [140521688907904] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:53:50,412 [140520810608320] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SeckillServiceImpl[0m
+[37m2026-10-02 10:53:50,413 [140520801167040] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class WareSkuServiceImpl[0m
+[37m2026-10-02 10:53:50,415 [140521688907904] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:54:22,895 [140521688907904] monomorph DEBUG checkpoints.py:122 - Saved 68 checkpoints for experiment: gulimall-v1[0m
+[37m2026-10-02 10:54:22,895 [140521688907904] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 3828168b7f5688d099e7ea642143e6bf to experiment: gulimall-v1[0m
+[37m2026-10-02 10:54:22,899 [140521688907904] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:54:22,900 [140521688907904] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:54:22,901 [140521688907904] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:54:22,901 [140521688907904] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:54:28,154 [140520801167040] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:54:28,160 [140521688907904] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:54:28,161 [140521688907904] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:54:28,161 [140521688907904] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:54:28,161 [140521688907904] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:54:28,161 [140521688907904] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:54:28,161 [140521688907904] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/gulimall/output/llm_responses/gulimall-2610021038-guli/io/gulimall/decision_logs/io.gulimall.service.order.OrderService.md[0m
+[37m2026-10-02 10:54:28,162 [140521688907904] monomorph DEBUG monomorph.py:291 - Decision workflow returned ID-based decision for class io.gulimall.service.order.OrderService[0m
+[37m2026-10-02 10:54:28,162 [140521688907904] monomorph DEBUG monomorph.py:268 - Class io.gulimall.interceptor.LoginInterceptor is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:54:28,162 [140521688907904] monomorph DEBUG monomorph.py:268 - Class io.gulimall.entity.order.OrderEntity is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:54:28,162 [140521688907904] monomorph DEBUG monomorph.py:302 - Decision workflow completed[0m
+[37m2026-10-02 10:54:28,162 [140521688907904] monomorph DEBUG monomorph.py:303 - ID-based classes: 9[0m
+[37m2026-10-02 10:54:28,162 [140521688907904] monomorph DEBUG monomorph.py:304 - DTO-based classes: 8[0m
+[37m2026-10-02 10:54:28,162 [140521688907904] monomorph DEBUG monomorph.py:305 - DTO-only classes: 19[0m
+[37m2026-10-02 10:54:28,162 [140521688907904] monomorph DEBUG monomorph.py:306 - Failures: 0[0m
+[37m2026-10-02 10:54:28,162 [140521688907904] monomorph DEBUG monomorph.py:175 - Preparing the helper and template manager[0m
+[37m2026-10-02 10:54:28,162 [140521688907904] monomorph DEBUG monomorph.py:177 - Searching for nested classes[0m
+[37m2026-10-02 10:54:28,163 [140521688907904] monomorph DEBUG proxies.py:177 - Found a reference to io.gulimall.vo.SocialUser in io.gulimall.service.member.MemberService as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 10:54:28,164 [140521688907904] monomorph DEBUG proxies.py:177 - Found a reference to io.gulimall.entity.coupon.CouponEntity in io.gulimall.service.coupon.CouponService as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 10:54:28,164 [140521688907904] monomorph DEBUG proxies.py:177 - Found a reference to io.gulimall.to.SkuReductionTo in io.gulimall.service.coupon.SkuFullReductionService as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 10:54:28,164 [140521688907904] monomorph DEBUG proxies.py:177 - Found a reference to io.gulimall.vo.SkuHasStockVo in io.gulimall.service.ware.WareSkuService as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 10:54:28,164 [140521688907904] monomorph DEBUG proxies.py:177 - Found a reference to io.gulimall.to.mq.OrderTo in io.gulimall.service.ware.WareSkuService as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 10:54:28,164 [140521688907904] monomorph DEBUG proxies.py:177 - Found a reference to io.gulimall.vo.WareSkuLockVo in io.gulimall.service.ware.WareSkuService as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 10:54:28,165 [140521688907904] monomorph DEBUG proxies.py:177 - Found a reference to io.gulimall.vo.FareVo in io.gulimall.service.ware.WareInfoService as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 10:54:28,165 [140521688907904] monomorph DEBUG proxies.py:177 - Found a reference to io.gulimall.vo.seckill.SkuInfoVo in io.gulimall.to.seckill.SeckillSkuRedisTo as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 10:54:28,165 [140521688907904] monomorph DEBUG proxies.py:177 - Found a reference to io.gulimall.to.es.SkuEsModel in io.gulimall.service.search.ProductSaveService as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 10:54:28,165 [140521688907904] monomorph DEBUG proxies.py:177 - Found a reference to io.gulimall.to.mq.SeckillOrderTo in io.gulimall.service.order.OrderService as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 10:54:28,166 [140521688907904] monomorph DEBUG proxies.py:109 - Found 10 classes that were part of the API communication.[0m
+[37m2026-10-02 10:54:28,166 [140521688907904] monomorph DEBUG proxies.py:116 - Iteration 0 - Handling 10 new API classes.[0m
+[37m2026-10-02 10:54:28,166 [140521688907904] monomorph DEBUG proxies.py:118 - Treating class io.gulimall.entity.coupon.CouponEntity as DTO-Only.[0m
+[37m2026-10-02 10:54:28,166 [140521688907904] monomorph DEBUG proxies.py:118 - Treating class io.gulimall.vo.SocialUser as DTO-Only.[0m
+[37m2026-10-02 10:54:28,166 [140521688907904] monomorph DEBUG proxies.py:118 - Treating class io.gulimall.to.mq.SeckillOrderTo as DTO-Only.[0m
+[37m2026-10-02 10:54:28,166 [140521688907904] monomorph DEBUG proxies.py:118 - Treating class io.gulimall.vo.FareVo as DTO-Only.[0m
+[37m2026-10-02 10:54:28,166 [140521688907904] monomorph DEBUG proxies.py:177 - Found a reference to io.gulimall.vo.MemberAddressVo in io.gulimall.vo.FareVo as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 10:54:28,166 [140521688907904] monomorph DEBUG proxies.py:118 - Treating class io.gulimall.vo.SkuHasStockVo as DTO-Only.[0m
+[37m2026-10-02 10:54:28,166 [140521688907904] monomorph DEBUG proxies.py:118 - Treating class io.gulimall.to.SkuReductionTo as DTO-Only.[0m
+[37m2026-10-02 10:54:28,166 [140521688907904] monomorph DEBUG proxies.py:118 - Treating class io.gulimall.to.mq.OrderTo as DTO-Only.[0m
+[37m2026-10-02 10:54:28,167 [140521688907904] monomorph DEBUG proxies.py:118 - Treating class io.gulimall.vo.seckill.SkuInfoVo as DTO-Only.[0m
+[37m2026-10-02 10:54:28,167 [140521688907904] monomorph DEBUG proxies.py:118 - Treating class io.gulimall.vo.WareSkuLockVo as DTO-Only.[0m
+[37m2026-10-02 10:54:28,167 [140521688907904] monomorph DEBUG proxies.py:118 - Treating class io.gulimall.to.es.SkuEsModel as DTO-Only.[0m
+[37m2026-10-02 10:54:28,167 [140521688907904] monomorph DEBUG proxies.py:116 - Iteration 1 - Handling 1 new API classes.[0m
+[37m2026-10-02 10:54:28,167 [140521688907904] monomorph DEBUG proxies.py:118 - Treating class io.gulimall.vo.MemberAddressVo as DTO-Only.[0m
+[37m2026-10-02 10:54:28,167 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.controller.auth.LoginController to invoking classes of io.gulimall.thirdparty.component.SmsComponent in gulimall-auth-server[0m
+[37m2026-10-02 10:54:28,167 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.controller.auth.OauthController to invoking classes of io.gulimall.service.member.MemberService in gulimall-auth-server[0m
+[37m2026-10-02 10:54:28,168 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.controller.auth.LoginController to invoking classes of io.gulimall.service.member.MemberService in gulimall-auth-server[0m
+[37m2026-10-02 10:54:28,168 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.controller.auth.AuthApiController to invoking classes of io.gulimall.service.member.MemberService in gulimall-auth-server[0m
+[37m2026-10-02 10:54:28,168 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.ware.impl.WareInfoServiceImpl to invoking classes of io.gulimall.service.member.MemberReceiveAddressService in gulimall-ware[0m
+[37m2026-10-02 10:54:28,168 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.order.impl.OrderServiceImpl to invoking classes of io.gulimall.service.member.MemberReceiveAddressService in gulimall-order[0m
+[37m2026-10-02 10:54:28,168 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.controller.auth.OauthController to invoking classes of io.gulimall.entity.member.MemberEntity in gulimall-auth-server[0m
+[37m2026-10-02 10:54:28,168 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.controller.auth.LoginController to invoking classes of io.gulimall.entity.member.MemberEntity in gulimall-auth-server[0m
+[37m2026-10-02 10:54:28,168 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.controller.auth.AuthApiController to invoking classes of io.gulimall.entity.member.MemberEntity in gulimall-auth-server[0m
+[37m2026-10-02 10:54:28,168 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.controller.auth.LoginController to invoking classes of io.gulimall.exception.PhoneNumExistException in gulimall-auth-server[0m
+[37m2026-10-02 10:54:28,168 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.controller.auth.LoginController to invoking classes of io.gulimall.exception.UserExistException in gulimall-auth-server[0m
+[37m2026-10-02 10:54:28,168 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.controller.auth.LoginController to invoking classes of io.gulimall.vo.member.MemberLoginVo in gulimall-auth-server[0m
+[37m2026-10-02 10:54:28,168 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.controller.auth.AuthApiController to invoking classes of io.gulimall.vo.member.MemberLoginVo in gulimall-auth-server[0m
+[37m2026-10-02 10:54:28,168 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.controller.auth.LoginController to invoking classes of io.gulimall.vo.member.MemberRegisterVo in gulimall-auth-server[0m
+[37m2026-10-02 10:54:28,168 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.ware.impl.WareInfoServiceImpl to invoking classes of io.gulimall.entity.member.MemberReceiveAddressEntity in gulimall-ware[0m
+[37m2026-10-02 10:54:28,168 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.order.impl.OrderServiceImpl to invoking classes of io.gulimall.entity.member.MemberReceiveAddressEntity in gulimall-order[0m
+[37m2026-10-02 10:54:28,168 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.cart.impl.CartServiceImpl to invoking classes of io.gulimall.service.product.SkuSaleAttrValueService in gulimall-cart[0m
+[37m2026-10-02 10:54:28,168 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.order.impl.OrderServiceImpl to invoking classes of io.gulimall.service.product.SpuInfoService in gulimall-order[0m
+[37m2026-10-02 10:54:28,168 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.search.impl.SearchServiceImpl to invoking classes of io.gulimall.service.product.AttrService in gulimall-search[0m
+[37m2026-10-02 10:54:28,168 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.cart.impl.CartServiceImpl to invoking classes of io.gulimall.entity.product.SkuInfoEntity in gulimall-cart[0m
+[37m2026-10-02 10:54:28,169 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.ware.impl.WareSkuServiceImpl to invoking classes of io.gulimall.entity.product.SkuInfoEntity in gulimall-ware[0m
+[37m2026-10-02 10:54:28,169 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.order.impl.OrderServiceImpl to invoking classes of io.gulimall.entity.product.SkuInfoEntity in gulimall-order[0m
+[37m2026-10-02 10:54:28,169 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.seckill.impl.SeckillServiceImpl to invoking classes of io.gulimall.entity.product.SkuInfoEntity in gulimall-seckill[0m
+[37m2026-10-02 10:54:28,169 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.cart.impl.CartServiceImpl to invoking classes of io.gulimall.service.product.SkuInfoService in gulimall-cart[0m
+[37m2026-10-02 10:54:28,169 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.ware.impl.WareSkuServiceImpl to invoking classes of io.gulimall.service.product.SkuInfoService in gulimall-ware[0m
+[37m2026-10-02 10:54:28,169 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.order.impl.OrderServiceImpl to invoking classes of io.gulimall.service.product.SkuInfoService in gulimall-order[0m
+[37m2026-10-02 10:54:28,169 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.seckill.impl.SeckillServiceImpl to invoking classes of io.gulimall.service.product.SkuInfoService in gulimall-seckill[0m
+[37m2026-10-02 10:54:28,169 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.order.impl.OrderServiceImpl to invoking classes of io.gulimall.entity.product.SpuInfoEntity in gulimall-order[0m
+[37m2026-10-02 10:54:28,169 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.search.impl.SearchServiceImpl to invoking classes of io.gulimall.vo.product.AttrRespVo in gulimall-search[0m
+[37m2026-10-02 10:54:28,169 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.controller.member.MemberController to invoking classes of io.gulimall.service.coupon.CouponService in gulimall-member[0m
+[37m2026-10-02 10:54:28,169 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.product.impl.SpuInfoServiceImpl to invoking classes of io.gulimall.service.coupon.SkuFullReductionService in gulimall-product[0m
+[37m2026-10-02 10:54:28,169 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.seckill.impl.SeckillServiceImpl to invoking classes of io.gulimall.service.coupon.SeckillSessionService in gulimall-seckill[0m
+[37m2026-10-02 10:54:28,169 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.product.impl.SpuInfoServiceImpl to invoking classes of io.gulimall.entity.coupon.SpuBoundsEntity in gulimall-product[0m
+[37m2026-10-02 10:54:28,169 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.product.impl.SpuInfoServiceImpl to invoking classes of io.gulimall.service.coupon.SpuBoundsService in gulimall-product[0m
+[37m2026-10-02 10:54:28,169 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.seckill.impl.SeckillServiceImpl to invoking classes of io.gulimall.entity.coupon.SeckillSessionEntity in gulimall-seckill[0m
+[37m2026-10-02 10:54:28,169 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.seckill.impl.SeckillServiceImpl to invoking classes of io.gulimall.entity.coupon.SeckillSkuRelationEntity in gulimall-seckill[0m
+[37m2026-10-02 10:54:28,170 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.product.impl.SpuInfoServiceImpl to invoking classes of io.gulimall.service.ware.WareSkuService in gulimall-product[0m
+[37m2026-10-02 10:54:28,170 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.order.impl.OrderServiceImpl to invoking classes of io.gulimall.service.ware.WareSkuService in gulimall-order[0m
+[37m2026-10-02 10:54:28,170 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.order.impl.OrderServiceImpl to invoking classes of io.gulimall.service.ware.WareInfoService in gulimall-order[0m
+[37m2026-10-02 10:54:28,170 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.controller.product.IndexController to invoking classes of io.gulimall.service.cart.CartService in gulimall-product[0m
+[37m2026-10-02 10:54:28,170 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.order.impl.OrderServiceImpl to invoking classes of io.gulimall.service.cart.CartService in gulimall-order[0m
+[37m2026-10-02 10:54:28,170 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.order.impl.OrderServiceImpl to invoking classes of io.gulimall.vo.cart.CartItemVo in gulimall-order[0m
+[37m2026-10-02 10:54:28,170 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.controller.product.IndexController to invoking classes of io.gulimall.vo.cart.CartVo in gulimall-product[0m
+[37m2026-10-02 10:54:28,170 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.config.GulimallWebConfig to invoking classes of io.gulimall.interceptor.CartInterceptor in gulimall-seckill[0m
+[37m2026-10-02 10:54:28,170 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.config.GulimallWebConfig to invoking classes of io.gulimall.interceptor.CartInterceptor in gulimall-order[0m
+[37m2026-10-02 10:54:28,170 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.order.impl.OrderServiceImpl to invoking classes of io.gulimall.interceptor.CartInterceptor in gulimall-order[0m
+[37m2026-10-02 10:54:28,170 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.order.impl.OrderServiceImpl to invoking classes of io.gulimall.to.cart.UserInfoTo in gulimall-order[0m
+[37m2026-10-02 10:54:28,170 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.product.impl.SkuInfoServiceImpl to invoking classes of io.gulimall.service.seckill.SeckillService in gulimall-product[0m
+[37m2026-10-02 10:54:28,170 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.product.impl.SkuInfoServiceImpl to invoking classes of io.gulimall.to.seckill.SeckillSkuRedisTo in gulimall-product[0m
+[37m2026-10-02 10:54:28,170 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.product.impl.SpuInfoServiceImpl to invoking classes of io.gulimall.service.search.ProductSaveService in gulimall-product[0m
+[37m2026-10-02 10:54:28,170 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.ware.impl.WareSkuServiceImpl to invoking classes of io.gulimall.service.order.OrderService in gulimall-ware[0m
+[37m2026-10-02 10:54:28,170 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.seckill.impl.SeckillServiceImpl to invoking classes of io.gulimall.service.order.OrderService in gulimall-seckill[0m
+[37m2026-10-02 10:54:28,170 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.config.GulimallWebConfig to invoking classes of io.gulimall.interceptor.LoginInterceptor in gulimall-cart[0m
+[37m2026-10-02 10:54:28,171 [140521688907904] monomorph DEBUG monomorph.py:511 - Added io.gulimall.service.ware.impl.WareSkuServiceImpl to invoking classes of io.gulimall.entity.order.OrderEntity in gulimall-ware[0m
+Traceback (most recent call last):
+  File "/home/user/monomorph/cli.py", line 131, in <module>
+    cli()
+    ~~~^^
+  File "/home/user/monomorph/cli.py", line 97, in cli
+    run_monomorph(
+    ~~~~~~~~~~~~~^
+        app=args.app,
+        ^^^^^^^^^^^^^
+    ...<27 lines>...
+        use_multithreading=args.use_multithreading
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/user/monomorph/main.py", line 278, in run_monomorph
+    mono_refact.refactor()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/user/monomorph/monomorph/monomorph.py", line 182, in refactor
+    id_classes_per_ms, dto_classes_per_ms = self.sort_by_ms_and_approach(planned_api_classes)
+                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/monomorph/monomorph/monomorph.py", line 355, in sort_by_ms_and_approach
+    ms_name = self._assign_microservice(planned_api_class)
+  File "/home/user/monomorph/monomorph/monomorph.py", line 329, in _assign_microservice
+    raise ValueError(f"Could not find a matching microservice for class {api_class.name}")
+ValueError: Could not find a matching microservice for class io.gulimall.vo.SocialUser
