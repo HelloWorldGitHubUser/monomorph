@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package com.goodskill.monomorph.id.generated.proto.seckillmockcontroller;
+
+option java_multiple_files = true;
+option java_package = "com.goodskill.monomorph.id.generated.proto.seckillmockcontroller";
+
+import "shared.proto";
+import "result.proto";
+import "seckill_web_mock_request_dto.proto";
+
+service SeckillMockControllerService {
+    rpc createObject(CreateObjectRequest) returns (com.goodskill.monomorph.id.shared.RefactoredObjectID);
+
+    rpc doWithSychronized(DoWithSychronizedRequest) returns (DoWithSychronizedResponse);
+    rpc getTaskTimeInfo(GetTaskTimeInfoRequest) returns (GetTaskTimeInfoResponse);
+}
+
+message CreateObjectRequest {
+    string clientID = 1;
+    ConstructorArgs constructorArgs = 2;
+}
+
+message ConstructorArgs {
+    // SeckillMockController has no explicit constructor arguments.
+    // This message is intentionally empty.
+}
+
+message DoWithSychronizedRequest {
+    com.goodskill.monomorph.id.shared.RefactoredObjectID object_id = 1;
+    com.goodskill.monomorph.dto.generated.proto.seckillwebmockrequestdto.SeckillWebMockRequestDTODTO dto = 2;
+}
+
+message DoWithSychronizedResponse {
+    com.goodskill.monomorph.dto.generated.proto.result.ResultDTO result = 1;
+}
+
+message GetTaskTimeInfoRequest {
+    com.goodskill.monomorph.id.shared.RefactoredObjectID object_id = 1;
+    int64 seckillId = 2;
+}
+
+message GetTaskTimeInfoResponse {
+    com.goodskill.monomorph.dto.generated.proto.result.ResultDTO result = 1;
+}

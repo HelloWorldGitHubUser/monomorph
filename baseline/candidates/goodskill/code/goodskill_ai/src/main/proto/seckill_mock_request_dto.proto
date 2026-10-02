@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package com.goodskill.monomorph.dto.generated.proto.seckillmockrequestdto;
+
+option java_multiple_files = true;
+option java_package = "com.goodskill.monomorph.dto.generated.proto.seckillmockrequestdto";
+
+message SeckillMockRequestDTODTO {
+  int64 seckillId = 1;
+  int32 count = 2;
+  string phoneNumber = 3;
+  string requestTime = 4;
+  string taskId = 5;
+  int64 serialVersionUID = 6;
+}
