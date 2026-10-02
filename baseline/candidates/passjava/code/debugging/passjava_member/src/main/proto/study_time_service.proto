@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package com.passjava.monomorph.id.generated.proto.studytimeservice;
+
+option java_multiple_files = true;
+option java_package = "com.passjava.monomorph.id.generated.proto.studytimeservice";
+
+import "shared.proto";
+import "r.proto";
+
+service StudyTimeServiceService {
+    rpc createObject(CreateObjectRequest) returns (com.passjava.monomorph.id.shared.RefactoredObjectID);
+    rpc getMemberStudyTimeListTest(GetMemberStudyTimeListTestRequest) returns (com.passjava.monomorph.dto.generated.proto.r.RDTO);
+}
+
+message CreateObjectRequest {
+    string clientID = 1;
+    ConstructorArgs constructorArgs = 2;
+}
+
+message ConstructorArgs {
+    // StudyTimeService is an interface and exposes no constructor parameters.
+}
+
+message GetMemberStudyTimeListTestRequest {
+    com.passjava.monomorph.id.shared.RefactoredObjectID refactoredObjectId = 1;
+    int64 id = 2;
+}

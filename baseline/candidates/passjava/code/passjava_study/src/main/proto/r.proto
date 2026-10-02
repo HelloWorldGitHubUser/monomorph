@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package com.passjava.monomorph.dto.generated.proto.r;
+
+import "google/protobuf/struct.proto";
+
+option java_multiple_files = true;
+option java_package = "com.passjava.monomorph.dto.generated.proto.r";
+
+message RDTO {
+  // HashMap constants. Protobuf has no constant/default-value mechanism,
+  // so the Java values are recorded in comments and must be enforced by application code.
+  int32 default_initial_capacity = 1; // Java constant DEFAULT_INITIAL_CAPACITY = 16
+  float default_load_factor = 2;      // Java constant DEFAULT_LOAD_FACTOR = 0.75
+  int32 maximum_capacity = 3;         // Java constant MAXIMUM_CAPACITY = 1 << 30
+  int32 min_treeify_capacity = 4;     // Java constant MIN_TREEIFY_CAPACITY = 64
+  int32 treeify_threshold = 5;        // Java constant TREEIFY_THRESHOLD = 8
+  int32 untreeify_threshold = 6;      // Java constant UNTREEIFY_THRESHOLD = 6
+
+  // HashMap internal fields.
+  repeated EntryDTO entry_set = 7;
+  repeated string key_set = 8;
+  float load_factor = 9;
+  int32 mod_count = 10;
+  int64 serial_version_uid = 11; // duplicate Java field from R and HashMap collapsed into one field
+  int32 size = 12;
+  repeated NodeDTO table = 13;
+  int32 threshold = 14;
+  repeated google.protobuf.Value values = 15;
+
+  message EntryDTO {
+    string key = 1;
+    google.protobuf.Value value = 2;
+  }
+
+  message NodeDTO {
+    int32 hash = 1;
+    string key = 2;
+    google.protobuf.Value value = 3;
+    NodeDTO next = 4;
+  }
+}

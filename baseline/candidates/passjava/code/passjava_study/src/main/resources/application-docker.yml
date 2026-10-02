@@ -1,0 +1,103 @@
+# Docker 环境配置
+server:
+  port: 8080
+
+spring:
+  application:
+    name: passjava-monolith
+  
+  datasource:
+    url: jdbc:mysql://mysql:3306/passjava_all?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: root123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      connection-timeout: 30000
+  
+  redis:
+    host: redis
+    port: 6379
+    timeout: 10000ms
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+
+  # Spring Boot Elasticsearch 自动配置（用于 Actuator 健康检查）
+  elasticsearch:
+    rest:
+      uris: http://elasticsearch:9200
+
+springdoc:
+  group-configs:
+    - group: AccessTokenController
+      paths-to-match: /channel/accesstoken/**
+    - group: BannerController
+      paths-to-match: /content/banner/**
+    - group: ChannelController
+      paths-to-match: /channel/channel/**
+    - group: GrowthChangeHistoryController
+      paths-to-match: /member/growthchangehistory/**
+    - group: MemberController
+      paths-to-match: /member/member/**
+    - group: NewsController
+      paths-to-match: /content/news/**
+    - group: OssController
+      paths-to-match: /thirdparty/v1/admin/oss/**
+    - group: QuestionAppController
+      paths-to-match: /question/v1/app/question/**
+    - group: QuestionController
+      paths-to-match: /question/v1/admin/question/**
+    - group: SearchController
+      paths-to-match: /search/**
+    - group: StudyTimeController
+      paths-to-match: /study/studytime/**
+    - group: TypeController
+      paths-to-match: /question/type/**
+    - group: ViewLogController
+      paths-to-match: /study/viewlog/**
+
+# MyBatis-Plus 配置
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: delFlag
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
+    # 生产环境关闭 SQL 日志
+    # log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# Elasticsearch 配置（自定义配置，用于 ElasticsearchConfig）
+elasticsearch:
+  enabled: true
+  host: elasticsearch
+  port: 9200
+
+# JWT 配置
+jwt:
+  header: Authorization
+  secret: passjava-secret-key
+  expiration: 604800
+
+# 日志配置
+logging:
+  level:
+    com.passjava: info
+    root: info
+
+# Actuator 配置 (健康检查)
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: when-authorized

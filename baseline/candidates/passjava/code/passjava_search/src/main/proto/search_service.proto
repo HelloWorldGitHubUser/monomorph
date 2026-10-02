@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package com.passjava.monomorph.dto.generated.proto.searchservice;
+
+option java_multiple_files = true;
+option java_package = "com.passjava.monomorph.dto.generated.proto.searchservice";
+
+import "question_es_model.proto";
+import "r.proto";
+
+service SearchServiceService {
+  rpc saveQuestion(SaveQuestionRequest) returns (SaveQuestionResponse);
+}
+
+message SearchServiceDTO {
+  string answer = 1;
+  int64 id = 2;
+  string title = 3;
+  string typeName = 4;
+}
+
+message SaveQuestionRequest {
+  SearchServiceDTO dto = 1;
+  .com.passjava.monomorph.dto.generated.proto.questionesmodel.QuestionEsModelDTO questionEsModel = 2;
+}
+
+message SaveQuestionResponse {
+  SearchServiceDTO dto = 1;
+  .com.passjava.monomorph.dto.generated.proto.r.RDTO result = 2;
+}

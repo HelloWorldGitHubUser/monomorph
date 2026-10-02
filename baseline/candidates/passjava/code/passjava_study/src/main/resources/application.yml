@@ -1,0 +1,76 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: passjava-monolith
+  
+  datasource:
+    url: jdbc:mysql://localhost:3306/passjava_all?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  
+  redis:
+    host: localhost
+    port: 6379
+
+springdoc:
+  group-configs:
+    - group: AccessTokenController
+      paths-to-match: /channel/accesstoken/**
+    - group: BannerController
+      paths-to-match: /content/banner/**
+    - group: ChannelController
+      paths-to-match: /channel/channel/**
+    - group: GrowthChangeHistoryController
+      paths-to-match: /member/growthchangehistory/**
+    - group: MemberController
+      paths-to-match: /member/member/**
+    - group: NewsController
+      paths-to-match: /content/news/**
+    - group: OssController
+      paths-to-match: /thirdparty/v1/admin/oss/**
+    - group: QuestionAppController
+      paths-to-match: /question/v1/app/question/**
+    - group: QuestionController
+      paths-to-match: /question/v1/admin/question/**
+    - group: SearchController
+      paths-to-match: /search/**
+    - group: StudyTimeController
+      paths-to-match: /study/studytime/**
+    - group: TypeController
+      paths-to-match: /question/type/**
+    - group: ViewLogController
+      paths-to-match: /study/viewlog/**
+
+# MyBatis-Plus 配置
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: delFlag
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# Elasticsearch 配置
+elasticsearch:
+  host: localhost
+  port: 9200
+
+
+# JWT 配置
+jwt:
+  header: Authorization
+  secret: passjava-secret-key
+  expiration: 604800
+
+# 日志配置
+logging:
+  level:
+    com.passjava: debug
+
