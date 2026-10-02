@@ -113,8 +113,9 @@ MonoMorph 只会按 decomposition 拆分代码并做编译纠错，不会生成 
 | petclinic | `RecursionError` | `RecursionError` | `_assign_client_microservice` 没有环检测，互相引用的 API 类（`Pet`↔`Visit`，JPA 双向关联）无限递归。pilot 实测在此崩溃 |
 | gulimall | `ValueError` | `ValueError` | `Could not find a matching microservice for class io.gulimall.vo.SocialUser`：input-kit `shared` 中没有任何服务列出的类，按转换规则不进任何 partition（由 MonoMorph 复制到所有服务），但它又成了 API 类，`_assign_microservice` 只在 partition 里找归属 |
 | zlt | `ValueError` | `ValueError` | 同上（`com.central.entity.SysUser`、`SysRole` 等） |
+| lakeside | 客户端服务 `None` | 客户端服务 `None` | `sort_by_ms_and_approach` 按遍历顺序逐个分配归属服务，`_get_invoking_classes` 读到还没分配的引用类的服务（`None`），`MoneyAmountDto` 的客户端服务里因此有 `None`；规划不报错，但之后代码生成报 `Invalid parameters for client prompt generation: None, ...`。v1 实测在此崩溃 |
 | ecommerce | ok | `ValueError` | 内部类 `ProductDataChangeEvent$Operation` 不在 partition 中（partition 只列外部类）；是否触发取决于 LLM 决策 |
-| 其余 6 个 | ok | ok | |
+| 其余 5 个 | ok | ok | |
 
 用户决定：这些都属于 MonoMorph 方法本身的缺陷，**不修**，作为 baseline 的真实表现记录。
 曾经给 `_assign_client_microservice` 加过环检测（`ea31240`），但这实际上替原方法决定了环上传递关系怎么算（结果依赖遍历顺序），已撤回。

@@ -84,11 +84,16 @@ def check_sorting(approach: ApproachType, model, cfg: dict, updated, detector, m
         setattr(mono, name, types.MethodType(getattr(MonoMorph, name), mono))
     try:
         mono.sort_by_ms_and_approach(planned)
-        return "ok"
     except RecursionError:
         return "RecursionError"
     except Exception as e:
         return f"{type(e).__name__}: {e}"
+    # A client microservice of None (an invoking class whose own microservice was not assigned yet, as classes are
+    # assigned in iteration order) makes code generation fail later with "Invalid parameters for client prompt"
+    none_clients = sorted(c.name for c in planned.values() if c.client_microservices and None in c.client_microservices)
+    if none_clients:
+        return f"client microservice None for {none_clients}"
+    return "ok"
 
 
 def main():
