@@ -41,6 +41,7 @@
 | 文件 | 修改 | 原因 |
 |---|---|---|
 | `monomorph/llm/custom_chat.py`, `monomorph/llm/factory.py` | 新增 `DeepSeekChat`，模型名 `mm_deepseek/<model>::<effort>` | 接入 DeepSeek；thinking 模式下多轮工具调用必须回传 `reasoning_content`，langchain-openai 0.3.11 不支持；结构化输出改用 function calling（DeepSeek 不支持 `json_schema`）；thinking 模式忽略 temperature |
+| `monomorph/llm/custom_chat.py` | `DeepSeekChat.bind_tools` 把强制的 `tool_choice`（`required`、指定工具名等）降级为 `auto` | 真实 API 验证：thinking 模式对任何强制 `tool_choice` 返回 400 `Thinking mode does not support this tool_choice`，而 `with_structured_output`（function calling）默认强制调用 schema 工具。降级后模型仍会调用唯一的 schema 工具 |
 | `monomorph/llm/factory.py` | fallback 包装的调用超时可由 `MONOMORPH_LLM_INVOKE_TIMEOUT_SECONDS` 配置（默认仍为 60s，运行脚本设为 900s） | thinking=high 的调用常超过 60s，超时会在 fallback 上重跑一遍 |
 | `monomorph/planning/inheritance.py`, `monomorph/planning/dependencies.py` | 跳过静态分析中不存在的类 | MonoMorph 的分析器忽略 Java record（booking 45 个、ecommerce 26 个），原代码遇到会 KeyError 崩溃。这些类仍按 decomposition 复制，但 MonoMorph 看不到它们的跨服务使用 |
 

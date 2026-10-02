@@ -153,6 +153,13 @@ class DeepSeekChat(ChatOpenAI):
                     message_dict["reasoning_content"] = message.additional_kwargs.get("reasoning_content", "")
         return payload
 
+    def bind_tools(self, tools, *, tool_choice=None, **kwargs):
+        # Thinking mode rejects any forced tool_choice ("required", a tool name, ...) with HTTP 400; only "auto"
+        # (or none) is accepted. with_structured_output forces its schema tool, so the choice is relaxed to "auto".
+        if tool_choice not in (None, "auto", "none"):
+            tool_choice = "auto"
+        return super().bind_tools(tools, tool_choice=tool_choice, **kwargs)
+
     def with_structured_output(self, schema=None, *, method: Optional[str] = None, **kwargs):
         # DeepSeek does not support response_format=json_schema (ChatOpenAI's default method)
         method = method or os.getenv(self.STRUCTURED_OUTPUT_METHOD_ENV, "function_calling")

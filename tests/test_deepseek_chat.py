@@ -79,6 +79,16 @@ class TestDeepSeekChat(unittest.TestCase):
         self.assertIn("tools", bound.kwargs)
         self.assertNotIn("response_format", bound.kwargs)
 
+    def test_forced_tool_choice_is_relaxed_to_auto(self):
+        # Thinking mode answers 400 "Thinking mode does not support this tool_choice" to any forced choice
+        model = DeepSeekChat("deepseek-v4-pro")
+        structured = model.with_structured_output(Decision, include_raw=True)
+        self.assertEqual(structured.first.steps__["raw"].kwargs["tool_choice"], "auto")
+        for forced in ["required", "any", True, "get_class_code"]:
+            bound = model.bind_tools([get_class_code], tool_choice=forced)
+            self.assertEqual(bound.kwargs["tool_choice"], "auto", forced)
+        self.assertNotIn("tool_choice", model.bind_tools([get_class_code]).kwargs)
+
     def test_init_model_builds_tool_and_structured_models(self):
         tooling = init_model("mm_deepseek/deepseek-v4-pro::high", mode="tooling", tools=[get_class_code])
         self.assertEqual(tooling.kwargs["tools"][0]["function"]["name"], "get_class_code")

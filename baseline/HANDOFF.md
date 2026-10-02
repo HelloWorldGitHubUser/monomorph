@@ -35,10 +35,13 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
 - [x] 修补 MonoMorph 遇到 Java record 时崩溃的问题（分析器漏掉 record）
 - [x] `dry_run.py`：10 个应用不调用 LLM 的部分全部跑通
 - [x] `run_monomorph.py` 批量运行脚本
+- [x] 真实 DeepSeek API 冒烟测试（第二个会话）：普通调用、多轮工具调用回传 `reasoning_content`、历史中空 `reasoning_content` 都被接受；
+  thinking 模式拒绝任何强制 `tool_choice`（400），已在 `DeepSeekChat.bind_tools` 降级为 `auto` 并补测试（6 个通过）
+- [x] dry run 在新环境重跑，10 个应用结果与 README 表一致
 
 **未完成**：
 
-- [ ] 用真实 key 调用 DeepSeek。上一个会话启动时 `DEEPSEEK_API_KEY` 还没加进云环境，所以从没真正调用过 API
+- [ ] petclinic pilot（`runs/pilot/petclinic/`）：进行中
 - [ ] 跑出 10 个候选仓库
 - [ ] 候选仓库交付给用户的方式（见第 6 节）
 
@@ -66,6 +69,9 @@ export CUSTOM_DOCKER_SOCKET=unix:///var/run/docker.sock
 
 # 5. 云环境的出口网关会对 TLS 重新签名，容器里的 Maven 会报 PKIX 错误。
 #    构建信任网关 CA 的镜像，运行时加 --image-suffix -sandboxca
+#    Docker Hub 可能对匿名拉取返回 429 Too Many Requests；这时先从 Google 的 Docker Hub 镜像拉基础镜像并打本地 tag：
+#    for jdk in 8 17 21; do docker pull mirror.gcr.io/library/maven:3.9-eclipse-temurin-$jdk && \
+#      docker tag mirror.gcr.io/library/maven:3.9-eclipse-temurin-$jdk maven:3.9-eclipse-temurin-$jdk; done
 baseline/scripts/build_sandbox_images.sh
 
 # 6. 验证 DeepSeek 可达（返回 200 说明 key 有效；401 是 key 问题；403 是网络策略拦截）
@@ -93,11 +99,12 @@ petclinic 跑完后先检查 `runs/pilot/petclinic/monomorph.log`：
   决策失败时 MonoMorph 会打出 `Decision workflow returned an invalid decision ... Defaulting to ID-Based`
 - 有没有大量 `Model invocation timed out`：说明 `MONOMORPH_LLM_INVOKE_TIMEOUT_SECONDS`（脚本默认 900）还不够
 
-**尚未在真实 API 上验证的点：**
+**已在真实 API 上验证（第二个会话）：**
 
-- DeepSeek thinking 模式是否接受 function calling 强制指定工具（`tool_choice`）。如果解析器报错，
-  设 `DEEPSEEK_STRUCTURED_OUTPUT_METHOD=json_mode` 再试
-- 历史里没有 reasoning 的 assistant 消息补的是空字符串 `reasoning_content: ""`，需确认 API 接受
+- thinking 模式**不接受**强制 `tool_choice`（`required` 或指定工具名都返回 400），只接受 `auto`/不传。
+  `DeepSeekChat.bind_tools` 已把强制选择降级为 `auto`；结构化输出因此依赖模型自己调用 schema 工具，
+  如果日志里出现大量解析结果为空，可设 `DEEPSEEK_STRUCTURED_OUTPUT_METHOD=json_mode` 对比
+- 历史里没有 reasoning 的 assistant 消息补空字符串 `reasoning_content: ""`：API 接受
 
 适配代码在 `monomorph/llm/custom_chat.py` 的 `DeepSeekChat`。
 
