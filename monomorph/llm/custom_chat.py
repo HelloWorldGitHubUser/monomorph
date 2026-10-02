@@ -1,3 +1,4 @@
+import json
 import logging
 import os
 import time
@@ -7,13 +8,14 @@ from typing import Optional, Type, Any, ClassVar
 from google.api_core.exceptions import InternalServerError
 from grpc import FutureTimeoutError
 from langchain_core.language_models import LanguageModelInput, BaseChatModel
-from langchain_core.runnables import RunnableConfig
+from langchain_core.messages import AIMessage
+from langchain_core.runnables import RunnableConfig, RunnableLambda
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_openai import ChatOpenAI, AzureChatOpenAI
 import dotenv
 from langchain_openai.chat_models.base import BaseChatOpenAI
 from openai import RateLimitError
-from pydantic import Field, PrivateAttr
+from pydantic import BaseModel, Field, PrivateAttr, ValidationError
 
 from monomorph.llm.tracking.usage import CallbackContext, UsageCallbackHandler
 from monomorph.llm.tracking.checkpoints import CheckpointLogger
@@ -160,10 +162,43 @@ class DeepSeekChat(ChatOpenAI):
             tool_choice = "auto"
         return super().bind_tools(tools, tool_choice=tool_choice, **kwargs)
 
-    def with_structured_output(self, schema=None, *, method: Optional[str] = None, **kwargs):
+    def with_structured_output(self, schema=None, *, method: Optional[str] = None, include_raw: bool = False,
+                               **kwargs):
         # DeepSeek does not support response_format=json_schema (ChatOpenAI's default method)
         method = method or os.getenv(self.STRUCTURED_OUTPUT_METHOD_ENV, "function_calling")
-        return super().with_structured_output(schema, method=method, **kwargs)
+        structured = super().with_structured_output(schema, method=method, include_raw=True, **kwargs)
+        if method != "function_calling" or not (isinstance(schema, type) and issubclass(schema, BaseModel)):
+            return structured if include_raw else structured | RunnableLambda(self._unwrap_structured_output)
+
+        # The schema tool cannot be forced in thinking mode (see bind_tools), and the model sometimes writes the
+        # JSON object in the message content instead of calling the tool. Parse it from there in that case.
+        def parse_content_fallback(output: dict):
+            if output.get("parsed") is None and isinstance(output.get("raw"), AIMessage) \
+                    and not output["raw"].tool_calls:
+                parsed = self._parse_json_content(output["raw"].content, schema)
+                if parsed is not None:
+                    output = {**output, "parsed": parsed, "parsing_error": None}
+            return output if include_raw else self._unwrap_structured_output(output)
+
+        return structured | RunnableLambda(parse_content_fallback)
+
+    @staticmethod
+    def _unwrap_structured_output(output: dict):
+        if output.get("parsing_error") is not None:
+            raise output["parsing_error"]
+        return output.get("parsed")
+
+    @staticmethod
+    def _parse_json_content(content, schema: Type[BaseModel]) -> Optional[BaseModel]:
+        if not isinstance(content, str):
+            return None
+        start, end = content.find("{"), content.rfind("}")
+        if start < 0 or end <= start:
+            return None
+        try:
+            return schema.model_validate(json.loads(content[start:end + 1]))
+        except (ValueError, ValidationError):
+            return None
 
 
 class AzureFoundryChat(AzureChatOpenAI):

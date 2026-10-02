@@ -36,7 +36,9 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
 - [x] `dry_run.py`：10 个应用不调用 LLM 的部分全部跑通
 - [x] `run_monomorph.py` 批量运行脚本
 - [x] 真实 DeepSeek API 冒烟测试（第二个会话）：普通调用、多轮工具调用回传 `reasoning_content`、历史中空 `reasoning_content` 都被接受；
-  thinking 模式拒绝任何强制 `tool_choice`（400），已在 `DeepSeekChat.bind_tools` 降级为 `auto` 并补测试（6 个通过）
+  thinking 模式拒绝任何强制 `tool_choice`（400），已在 `DeepSeekChat.bind_tools` 降级为 `auto` 并补测试
+- [x] 第一次 pilot 发现 `auto` 下模型常把 JSON 写在文本里（13 次 parser 调用中 5 次），导致决策被默认成 ID-Based；
+  已在 `DeepSeekChat.with_structured_output` 加文本 JSON 兜底解析并补测试（9 个通过），pilot 已停止并重跑
 - [x] dry run 在新环境重跑，10 个应用结果与 README 表一致
 
 **未完成**：
@@ -104,7 +106,10 @@ petclinic 跑完后先检查 `runs/pilot/petclinic/monomorph.log`：
 
 - thinking 模式**不接受**强制 `tool_choice`（`required` 或指定工具名都返回 400），只接受 `auto`/不传。
   `DeepSeekChat.bind_tools` 已把强制选择降级为 `auto`；结构化输出因此依赖模型自己调用 schema 工具，
-  如果日志里出现大量解析结果为空，可设 `DEEPSEEK_STRUCTURED_OUTPUT_METHOD=json_mode` 对比
+  模型有时不调用工具而把 JSON 写在文本里，`with_structured_output` 会从文本兜底解析。
+  如果日志里仍有 `Parsing failed`，可设 `DEEPSEEK_STRUCTURED_OUTPUT_METHOD=json_mode` 对比
+- 每次 parser 调用都会出现 `Cannot save checkpoint - no checkpoint_id generated` 警告：parser 响应不写 checkpoint，
+  但仍会写进 `llm_cache.db`，不影响结果。MonoMorph 的解析重试第 2、3 次 prompt 相同，第 3 次会直接命中缓存
 - 历史里没有 reasoning 的 assistant 消息补空字符串 `reasoning_content: ""`：API 接受
 
 适配代码在 `monomorph/llm/custom_chat.py` 的 `DeepSeekChat`。

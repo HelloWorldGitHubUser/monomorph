@@ -3,6 +3,7 @@ import unittest
 from unittest import mock
 
 from langchain_core.messages import AIMessage, HumanMessage, ToolMessage
+from langchain_core.outputs import ChatGeneration, ChatResult
 from langchain_core.tools import tool
 from pydantic import BaseModel
 
@@ -88,6 +89,30 @@ class TestDeepSeekChat(unittest.TestCase):
             bound = model.bind_tools([get_class_code], tool_choice=forced)
             self.assertEqual(bound.kwargs["tool_choice"], "auto", forced)
         self.assertNotIn("tool_choice", model.bind_tools([get_class_code]).kwargs)
+
+    def _invoke_structured(self, message: AIMessage, include_raw: bool = True):
+        model = DeepSeekChat("deepseek-v4-pro")
+        result = ChatResult(generations=[ChatGeneration(message=message)])
+        with mock.patch.object(DeepSeekChat, "_generate", return_value=result):
+            return model.with_structured_output(Decision, include_raw=include_raw).invoke("parse this")
+
+    def test_structured_output_uses_tool_call(self):
+        message = AIMessage(content="", tool_calls=[{"name": "Decision", "args": {"decision": "ID-Based"},
+                                                     "id": "call_1"}])
+        self.assertEqual(self._invoke_structured(message)["parsed"], Decision(decision="ID-Based"))
+
+    def test_structured_output_falls_back_to_json_in_content(self):
+        # With tool_choice relaxed to "auto", the model sometimes answers with the JSON object as plain content
+        message = AIMessage(content='```json\n{\n  "decision": "DTO-Based"\n}\n```')
+        output = self._invoke_structured(message)
+        self.assertEqual(output["parsed"], Decision(decision="DTO-Based"))
+        self.assertIsNone(output["parsing_error"])
+        self.assertIs(output["raw"].content, message.content)
+        self.assertEqual(self._invoke_structured(message, include_raw=False), Decision(decision="DTO-Based"))
+
+    def test_structured_output_without_json_stays_unparsed(self):
+        for content in ["I choose DTO-Based.", '{"unexpected": 1}']:
+            self.assertIsNone(self._invoke_structured(AIMessage(content=content))["parsed"], content)
 
     def test_init_model_builds_tool_and_structured_models(self):
         tooling = init_model("mm_deepseek/deepseek-v4-pro::high", mode="tooling", tools=[get_class_code])
