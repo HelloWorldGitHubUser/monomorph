@@ -44,7 +44,10 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
 **未完成**：
 
 - [x] 运行脚本修正：`--image-suffix=-sandboxca` 必须带等号；分析数据路径不能含应用名（见 README「运行脚本自身的修正」）
-- [ ] petclinic pilot（`runs/pilot/petclinic/`）：进行中
+- [x] petclinic pilot（`runs/pilot/petclinic/`）：11 个 ID/DTO 决策全部解析成功（修复后），之后在规划阶段 `RecursionError` 崩溃，
+  **没有产出候选代码**。用户决定不修（见 README「规划阶段的崩溃」）。旧日志 `monomorph.attempt1.log`（解析问题）、
+  `monomorph.attempt2.log`（崩溃）；`monomorph.attempt3-void.log` 是用已撤回的环检测跑的第三次，作废
+- [x] `dry_run.py` 新增规划阶段检查：petclinic、gulimall、zlt 必然在规划阶段崩溃，ecommerce 视决策而定
 - [ ] 跑出 10 个候选仓库
 - [ ] 候选仓库交付给用户的方式（见第 6 节）
 
@@ -143,6 +146,7 @@ uv run python baseline/scripts/run_monomorph.py --tag v1 --image-suffix=-sandbox
   - 会忽略 Java record，影响 booking 和 ecommerce，已修补成跳过
   - 在 booking 的 `Mediator.java` 一处 pattern-matching instanceof 上崩溃，已在 `prepare_inputs.py` 里改写
 - **booking**：dry run 检测到 0 个跨服务 API 类（交互走 mediator 反射和事件），MonoMorph 只会拆分代码和纠错
+- **`uv.lock`**：`uv run` 会改写它，不要提交。用 `uv run --frozen ...` 可避免改写，或事后 `git checkout uv.lock`
 - **MonoMorph 本身不做的事**：
   - 不生成 Dockerfile 和 docker-compose（`build_config_files` / `build_docker_files` 是空实现）
   - 编译纠错只跑 `mvn compile` / `test-compile`，不启动应用

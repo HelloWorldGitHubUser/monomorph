@@ -97,3 +97,19 @@ uv run python baseline/scripts/run_monomorph.py --tag v1       # 全部 10 个�
 
 booking 检测不到任何跨服务调用：它的服务间交互走 mediator 反射分发和事件，加上 record 不在分析结果里，
 MonoMorph 只会按 decomposition 拆分代码并做编译纠错，不会生成 gRPC 通信代码。
+
+### 规划阶段的崩溃（不修，如实记录）
+
+`dry_run.py` 还会用两种极端决策（全部 ID-Based、全部 DTO-Based）调用 MonoMorph **未修改的** `sort_by_ms_and_approach`。
+这一步紧跟在 LLM 决策之后，这里抛异常时，决策阶段的 token 已经花掉了，而且不会产出任何候选代码。
+
+| 应用 | 全部 ID-Based | 全部 DTO-Based | 原因 |
+|---|---|---|---|
+| petclinic | `RecursionError` | `RecursionError` | `_assign_client_microservice` 没有环检测，互相引用的 API 类（`Pet`↔`Visit`，JPA 双向关联）无限递归。pilot 实测在此崩溃 |
+| gulimall | `ValueError` | `ValueError` | `Could not find a matching microservice for class io.gulimall.vo.SocialUser`：input-kit `shared` 中没有任何服务列出的类，按转换规则不进任何 partition（由 MonoMorph 复制到所有服务），但它又成了 API 类，`_assign_microservice` 只在 partition 里找归属 |
+| zlt | `ValueError` | `ValueError` | 同上（`com.central.entity.SysUser`、`SysRole` 等） |
+| ecommerce | ok | `ValueError` | 内部类 `ProductDataChangeEvent$Operation` 不在 partition 中（partition 只列外部类）；是否触发取决于 LLM 决策 |
+| 其余 6 个 | ok | ok | |
+
+用户决定：这些都属于 MonoMorph 方法本身的缺陷，**不修**，作为 baseline 的真实表现记录。
+曾经给 `_assign_client_microservice` 加过环检测（`ea31240`），但这实际上替原方法决定了环上传递关系怎么算（结果依赖遍历顺序），已撤回。
