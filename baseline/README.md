@@ -16,6 +16,8 @@
 | `scripts/prepare_inputs.py` | 把 `inputs/` 复制到 `work/<app>/source` 并做必要的结构调整 |
 | `scripts/dry_run.py` | 不调用 LLM，跑静态分析、依赖检测、规划和项目组装，提前发现输入问题 |
 | `scripts/run_monomorph.py` | 正式运行 MonoMorph，输出到 `runs/<tag>/<app>/` |
+| `scripts/run_all_and_push.sh` | 按规模从小到大逐个运行，每跑完一个就把结果复制到 `candidates/<app>/` 并提交推送 |
+| `candidates/<app>/` | 交付物：`code/`（候选微服务，去掉 `.git` 和 `target/`）、`monomorph.log`、`run_result.json`；崩溃或超时的应用只有日志和结果 |
 | `scripts/build_sandbox_images.sh` | 仅 Claude Code 云环境需要：构建信任出口代理 CA 的 Maven 镜像 |
 
 `work/` 和 `runs/` 不进 git。

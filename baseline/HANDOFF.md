@@ -27,6 +27,10 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
 8. （第二个会话）候选仓库推到本仓库（`HelloWorldGitHubUser/monomorph`）；每个应用跑 1 次；dry run 预测会在规划阶段崩溃的应用
    （petclinic、gulimall、zlt）也照常跑，拿真实结果。规划阶段的崩溃属于方法缺陷，不修
 
+9. （第二个会话）每个应用墙钟上限 3 小时（`--timeout-hours 3`）；按服务数、再按代码行数从小到大运行：
+   booking(3) → petclinic(4) → lakeside(4) → zlt(5) → newbee(5) → goodskill(6) → youlai(6) → passjava(7) → gulimall(10) → ecommerce(13)
+   候选推到分支 `claude/charming-ritchie-o7xgln` 的 `baseline/candidates/<app>/`
+
 ## 3. 当前进度（分支 `claude/charming-ritchie-o7xgln`）
 
 已完成：
@@ -51,7 +55,8 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
   **没有产出候选代码**。用户决定不修（见 README「规划阶段的崩溃」）。旧日志 `monomorph.attempt1.log`（解析问题）、
   `monomorph.attempt2.log`（崩溃）；`monomorph.attempt3-void.log` 是用已撤回的环检测跑的第三次，作废
 - [x] `dry_run.py` 新增规划阶段检查：petclinic、gulimall、zlt 必然在规划阶段崩溃，ecommerce 视决策而定
-- [ ] 跑出 10 个候选仓库
+- [ ] 跑出 10 个候选仓库：`run_all_and_push.sh v1 claude/charming-ritchie-o7xgln --timeout-hours 3 --image-suffix=-sandboxca`
+  在后台运行中（tag `v1`）。已交付的应用会跳过，中断后重跑同一命令即可续跑
 - [ ] 候选仓库交付给用户的方式（见第 6 节）
 
 ## 4. 新会话的环境搭建（Claude Code 云环境）
