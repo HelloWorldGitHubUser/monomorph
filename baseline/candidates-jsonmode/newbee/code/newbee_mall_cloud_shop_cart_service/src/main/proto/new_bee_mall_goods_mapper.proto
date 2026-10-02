@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package ltd.newbee.mall.monomorph.id.generated.proto.newbeemallgoodsmapper;
+
+option java_multiple_files = true;
+option java_package = "ltd.newbee.mall.monomorph.id.generated.proto.newbeemallgoodsmapper";
+
+import "shared.proto";
+import "new_bee_mall_goods.proto";
+import "stock_num_dto.proto";
+
+service NewBeeMallGoodsMapperService {
+  rpc createObject(CreateObjectRequest) returns (ltd.newbee.mall.monomorph.id.shared.RefactoredObjectID);
+
+  rpc recoverStockNum(RecoverStockNumRequest) returns (RecoverStockNumResponse);
+  rpc selectByPrimaryKey(SelectByPrimaryKeyRequest) returns (SelectByPrimaryKeyResponse);
+  rpc selectByPrimaryKeys(SelectByPrimaryKeysRequest) returns (SelectByPrimaryKeysResponse);
+  rpc updateStockNum(UpdateStockNumRequest) returns (UpdateStockNumResponse);
+}
+
+message CreateObjectRequest {
+  string clientID = 1;
+  ConstructorArgs constructorArgs = 2;
+}
+
+message ConstructorArgs {
+  // NewBeeMallGoodsMapper is an interface with no explicit constructor arguments.
+}
+
+message RecoverStockNumRequest {
+  ltd.newbee.mall.monomorph.id.shared.RefactoredObjectID refactored_object_id = 1;
+  repeated ltd.newbee.mall.monomorph.dto.generated.proto.stocknumdto.StockNumDTODTO stock_num_dtos = 2;
+}
+
+message RecoverStockNumResponse {
+  int32 result = 1;
+}
+
+message SelectByPrimaryKeyRequest {
+  ltd.newbee.mall.monomorph.id.shared.RefactoredObjectID refactored_object_id = 1;
+  int64 goods_id = 2;
+}
+
+message SelectByPrimaryKeyResponse {
+  ltd.newbee.mall.monomorph.dto.generated.proto.newbeemallgoods.NewBeeMallGoodsDTO goods = 1;
+}
+
+message SelectByPrimaryKeysRequest {
+  ltd.newbee.mall.monomorph.id.shared.RefactoredObjectID refactored_object_id = 1;
+  repeated int64 goods_ids = 2;
+}
+
+message SelectByPrimaryKeysResponse {
+  repeated ltd.newbee.mall.monomorph.dto.generated.proto.newbeemallgoods.NewBeeMallGoodsDTO goods_list = 1;
+}
+
+message UpdateStockNumRequest {
+  ltd.newbee.mall.monomorph.id.shared.RefactoredObjectID refactored_object_id = 1;
+  repeated ltd.newbee.mall.monomorph.dto.generated.proto.stocknumdto.StockNumDTODTO stock_num_dtos = 2;
+}
+
+message UpdateStockNumResponse {
+  int32 result = 1;
+}

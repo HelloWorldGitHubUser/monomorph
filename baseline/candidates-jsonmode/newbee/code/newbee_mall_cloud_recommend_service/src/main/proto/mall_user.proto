@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package ltd.newbee.mall.monomorph.dto.generated.proto.malluser;
+
+option java_multiple_files = true;
+option java_package = "ltd.newbee.mall.monomorph.dto.generated.proto.malluser";
+
+import "google/protobuf/timestamp.proto";
+
+message MallUserDTO {
+  int64 userId = 1;
+  string nickName = 2;
+  string loginName = 3;
+  string passwordMd5 = 4;
+  string introduceSign = 5;
+  int32 isDeleted = 6;
+  int32 lockedFlag = 7;
+  google.protobuf.Timestamp createTime = 8;
+}

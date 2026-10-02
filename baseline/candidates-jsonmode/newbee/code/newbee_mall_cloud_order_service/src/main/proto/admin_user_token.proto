@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package ltd.newbee.mall.monomorph.dto.generated.proto.adminusertoken;
+
+import "google/protobuf/timestamp.proto";
+
+option java_multiple_files = true;
+option java_package = "ltd.newbee.mall.monomorph.dto.generated.proto.adminusertoken";
+
+message AdminUserTokenDTO {
+  int64 adminUserId = 1;
+  string token = 2;
+  google.protobuf.Timestamp updateTime = 3;
+  google.protobuf.Timestamp expireTime = 4;
+}

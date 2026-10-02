@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package ltd.newbee.mall.monomorph.dto.generated.proto.stocknumdto;
+
+option java_multiple_files = true;
+option java_package = "ltd.newbee.mall.monomorph.dto.generated.proto.stocknumdto";
+
+message StockNumDTODTO {
+  int64 goodsId = 1;
+  int32 goodsCount = 2;
+}

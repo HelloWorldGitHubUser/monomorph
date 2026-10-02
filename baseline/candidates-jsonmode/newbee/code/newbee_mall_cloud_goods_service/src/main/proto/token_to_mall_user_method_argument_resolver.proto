@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package ltd.newbee.mall.monomorph.dto.generated.proto.tokentomallusermethodargumentresolver;
+
+option java_multiple_files = true;
+option java_package = "ltd.newbee.mall.monomorph.dto.generated.proto.tokentomallusermethodargumentresolver";
+
+import "shared.proto"; // for RefactoredObjectID
+import "mall_user_mapper.proto"; // For MallUserMapperDTO
+
+message TokenToMallUserMethodArgumentResolverDTO {
+  ltd.newbee.mall.monomorph.dto.generated.proto.mallusermapper.MallUserMapperDTO mallUserMapper = 1;
+  ltd.newbee.mall.monomorph.id.shared.RefactoredObjectID newBeeMallUserTokenMapper = 2;
+}
+

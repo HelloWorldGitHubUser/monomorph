@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package ltd.newbee.mall.monomorph.dto.generated.proto.mallusertoken;
+
+option java_multiple_files = true;
+option java_package = "ltd.newbee.mall.monomorph.dto.generated.proto.mallusertoken";
+
+import "google/protobuf/timestamp.proto";
+
+message MallUserTokenDTO {
+  int64 userId = 1;
+  string token = 2;
+  google.protobuf.Timestamp updateTime = 3;
+  google.protobuf.Timestamp expireTime = 4;
+}

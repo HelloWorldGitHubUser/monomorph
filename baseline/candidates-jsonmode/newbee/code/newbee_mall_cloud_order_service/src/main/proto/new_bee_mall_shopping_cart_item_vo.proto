@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package ltd.newbee.mall.monomorph.dto.generated.proto.newbeemallshoppingcartitemvo;
+
+option java_multiple_files = true;
+option java_package = "ltd.newbee.mall.monomorph.dto.generated.proto.newbeemallshoppingcartitemvo";
+
+message NewBeeMallShoppingCartItemVODTO {
+    int64 cartItemId = 1;
+    int64 goodsId = 2;
+    int32 goodsCount = 3;
+    string goodsName = 4;
+    string goodsCoverImg = 5;
+    int32 sellingPrice = 6;
+}

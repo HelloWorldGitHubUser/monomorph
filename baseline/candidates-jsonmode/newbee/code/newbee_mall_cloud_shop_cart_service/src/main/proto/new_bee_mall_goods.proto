@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package ltd.newbee.mall.monomorph.dto.generated.proto.newbeemallgoods;
+
+option java_multiple_files = true;
+option java_package = "ltd.newbee.mall.monomorph.dto.generated.proto.newbeemallgoods";
+
+import "google/protobuf/timestamp.proto";
+
+message NewBeeMallGoodsDTO {
+  int64 goodsId = 1;
+  string goodsName = 2;
+  string goodsIntro = 3;
+  int64 goodsCategoryId = 4;
+  string goodsCoverImg = 5;
+  string goodsCarousel = 6;
+  int32 originalPrice = 7;
+  int32 sellingPrice = 8;
+  int32 stockNum = 9;
+  string tag = 10;
+  int32 goodsSellStatus = 11;
+  int32 createUser = 12;
+  google.protobuf.Timestamp createTime = 13;
+  int32 updateUser = 14;
+  google.protobuf.Timestamp updateTime = 15;
+  string goodsDetailContent = 16;
+}

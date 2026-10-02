@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package ltd.newbee.mall.monomorph.id.generated.proto.newbeemallshoppingcartservice;
+
+option java_multiple_files = true;
+option java_package = "ltd.newbee.mall.monomorph.id.generated.proto.newbeemallshoppingcartservice";
+
+import "shared.proto";
+import "new_bee_mall_shopping_cart_item_vo.proto";
+
+service NewBeeMallShoppingCartServiceService {
+  rpc createObject(CreateObjectRequest) returns (ltd.newbee.mall.monomorph.id.shared.RefactoredObjectID);
+  rpc getCartItemsForSettle(GetCartItemsForSettleRequest) returns (GetCartItemsForSettleResponse);
+}
+
+message CreateObjectRequest {
+  string clientID = 1;
+  ConstructorArgs constructorArgs = 2;
+}
+
+message ConstructorArgs {
+  // No constructor parameters for the NewBeeMallShoppingCartService interface.
+}
+
+message GetCartItemsForSettleRequest {
+  ltd.newbee.mall.monomorph.id.shared.RefactoredObjectID refactoredObjectId = 1;
+  repeated int64 cartItemIds = 2;
+  int64 newBeeMallUserId = 3;
+}
+
+message GetCartItemsForSettleResponse {
+  repeated ltd.newbee.mall.monomorph.dto.generated.proto.newbeemallshoppingcartitemvo.NewBeeMallShoppingCartItemVODTO items = 1;
+}

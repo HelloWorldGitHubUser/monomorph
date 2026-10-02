@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package ltd.newbee.mall.monomorph.dto.generated.proto.mallusermapper;
+
+option java_multiple_files = true;
+option java_package = "ltd.newbee.mall.monomorph.dto.generated.proto.mallusermapper";
+
+import "mall_user.proto"; // For MallUserDTO
+
+service MallUserMapperService {
+    rpc selectByPrimaryKey(SelectByPrimaryKeyRequest) returns (SelectByPrimaryKeyResponse);
+}
+
+message MallUserMapperDTO {
+    int64 userId = 1;
+    string loginName = 2;
+    string nickName = 3;
+}
+
+message SelectByPrimaryKeyRequest {
+    MallUserMapperDTO dto = 1;
+    int64 userId = 2;
+}
+
+message SelectByPrimaryKeyResponse {
+    MallUserMapperDTO dto = 1;
+    ltd.newbee.mall.monomorph.dto.generated.proto.malluser.MallUserDTO mallUser = 2;
+}
+

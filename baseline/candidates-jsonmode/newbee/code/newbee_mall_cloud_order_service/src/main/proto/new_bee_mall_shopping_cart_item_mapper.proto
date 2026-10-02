@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package ltd.newbee.mall.monomorph.id.generated.proto.newbeemallshoppingcartitemmapper;
+
+option java_multiple_files = true;
+option java_package = "ltd.newbee.mall.monomorph.id.generated.proto.newbeemallshoppingcartitemmapper";
+
+import "shared.proto";
+
+service NewBeeMallShoppingCartItemMapperService {
+    rpc createObject(CreateObjectRequest) returns (ltd.newbee.mall.monomorph.id.shared.RefactoredObjectID);
+    rpc deleteBatch(DeleteBatchRequest) returns (DeleteBatchResponse);
+}
+
+message CreateObjectRequest {
+    string clientID = 1;
+    ConstructorArgs constructorArgs = 2;
+}
+
+message ConstructorArgs {
+    // No constructor arguments: NewBeeMallShoppingCartItemMapper is an interface.
+}
+
+message DeleteBatchRequest {
+    ltd.newbee.mall.monomorph.id.shared.RefactoredObjectID objectId = 1;
+    repeated int64 ids = 2;
+}
+
+message DeleteBatchResponse {
+    int32 deletedCount = 1;
+}
