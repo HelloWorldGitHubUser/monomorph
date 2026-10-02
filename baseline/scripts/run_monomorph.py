@@ -67,6 +67,12 @@ def run_app(app: str, cfg: dict, args, run_root: Path) -> dict:
     run_dir.mkdir(parents=True, exist_ok=True)
     source = prepare_inputs.prepare(app, cfg, REPO_DIR / "work")
     dockerfile = write_run_dockerfile(app, run_dir, args.image_suffix)
+    # MonoMorph reads the analysis from <path>/<app>/ only when the app name does not occur anywhere in <path>
+    # (monomorph.py: `create_subdirs = app_name not in analysis_path`), but the analysis jar always writes there.
+    # So the data goes to runs/<tag>/analysis/<app>/ rather than under run_dir, whose path contains the app name.
+    analysis_path = run_root / "analysis"
+    if app in str(analysis_path):
+        sys.exit(f"The analysis path {analysis_path} must not contain the app name '{app}'; use another --runs-dir/--tag")
     command = [
         sys.executable, str(REPO_DIR / "cli.py"),
         "--app", app,
@@ -82,7 +88,7 @@ def run_app(app: str, cfg: dict, args, run_root: Path) -> dict:
         "--decision-model", args.model,
         "--correction-model", args.model,
         "--fallback-model", args.model,
-        "--analysis-data-path", str(run_dir / "analysis"),
+        "--analysis-data-path", str(analysis_path),
         "--out-path", str(run_dir / "output"),
         "--llm-cache-path", str(run_dir / "llm_cache.db"),
         "--run-id", f"{app}-{args.tag}",

@@ -2,7 +2,7 @@
 # Only needed in the Claude Code cloud environment, whose egress gateway re-signs outbound TLS: containers there
 # must trust the gateway CAs or Maven cannot download anything (PKIX errors). This builds
 # maven:3.9-eclipse-temurin-{8,17,21}-sandboxca on top of the official images; use them with
-# `run_monomorph.py --image-suffix -sandboxca`. Not needed on a normal machine.
+# `run_monomorph.py --image-suffix=-sandboxca`. Not needed on a normal machine.
 set -euo pipefail
 
 CA_BUNDLE="${CA_BUNDLE:-/root/.ccr/ca-bundle.crt}"

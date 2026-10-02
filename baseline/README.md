@@ -45,6 +45,13 @@
 | `monomorph/llm/factory.py` | fallback 包装的调用超时可由 `MONOMORPH_LLM_INVOKE_TIMEOUT_SECONDS` 配置（默认仍为 60s，运行脚本设为 900s） | thinking=high 的调用常超过 60s，超时会在 fallback 上重跑一遍 |
 | `monomorph/planning/inheritance.py`, `monomorph/planning/dependencies.py` | 跳过静态分析中不存在的类 | MonoMorph 的分析器忽略 Java record（booking 45 个、ecommerce 26 个），原代码遇到会 KeyError 崩溃。这些类仍按 decomposition 复制，但 MonoMorph 看不到它们的跨服务使用 |
 
+运行脚本自身的修正（不是对 MonoMorph 的修改）：
+
+| 文件 | 修改 | 原因 |
+|---|---|---|
+| `scripts/run_monomorph.py` | 静态分析数据放到 `runs/<tag>/analysis/<app>/`，不再放在 `runs/<tag>/<app>/analysis/` | MonoMorph 用 `app_name not in analysis_path`（子串判断）决定是否到 `<path>/<app>/` 读取，而分析 jar 总是写到 `<path>/<app>/`；路径里含应用名时读写目录不一致，启动即 `FileNotFoundError: typeData.json`。dry run 直接调用 `LocalAnalysis`，没有暴露这个问题 |
+| `README.md`, `HANDOFF.md`, `scripts/build_sandbox_images.sh` | 命令写成 `--image-suffix=-sandboxca` | 不带等号时 argparse 把 `-sandboxca` 当成选项，报 `expected one argument` |
+
 方法本身的局限（不感知 Spring、gRPC 服务端注册、资源全量复制、不改包名等）一律不修。
 
 ## 运行
@@ -64,7 +71,7 @@ uv run python baseline/scripts/dry_run.py                      # 不调用 LLM �
 uv run python baseline/scripts/run_monomorph.py petclinic      # 先跑一个小应用
 uv run python baseline/scripts/run_monomorph.py --tag v1       # 全部 10 个应用
 ```
-在 Claude Code 云环境中先执行 `baseline/scripts/build_sandbox_images.sh`，运行时加 `--image-suffix -sandboxca`。
+在 Claude Code 云环境中先执行 `baseline/scripts/build_sandbox_images.sh`，运行时加 `--image-suffix=-sandboxca`。
 
 所有 LLM 角色（代码生成、ID/DTO 决策、解析、编译纠错、fallback）都用 `mm_deepseek/deepseek-v4-pro::high`，
 其余参数取 MonoMorph 默认值：Hybrid、restrictive、不含测试、启用编译纠错。每个应用默认 6 小时上限（`--timeout-hours`）。

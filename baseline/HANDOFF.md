@@ -41,6 +41,7 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
 
 **未完成**：
 
+- [x] 运行脚本修正：`--image-suffix=-sandboxca` 必须带等号；分析数据路径不能含应用名（见 README「运行脚本自身的修正」）
 - [ ] petclinic pilot（`runs/pilot/petclinic/`）：进行中
 - [ ] 跑出 10 个候选仓库
 - [ ] 候选仓库交付给用户的方式（见第 6 节）
@@ -68,7 +69,7 @@ uv sync && git checkout uv.lock
 export CUSTOM_DOCKER_SOCKET=unix:///var/run/docker.sock
 
 # 5. 云环境的出口网关会对 TLS 重新签名，容器里的 Maven 会报 PKIX 错误。
-#    构建信任网关 CA 的镜像，运行时加 --image-suffix -sandboxca
+#    构建信任网关 CA 的镜像，运行时加 --image-suffix=-sandboxca（必须带等号，否则 argparse 把 -sandboxca 当成选项）
 #    Docker Hub 可能对匿名拉取返回 429 Too Many Requests；这时先从 Google 的 Docker Hub 镜像拉基础镜像并打本地 tag：
 #    for jdk in 8 17 21; do docker pull mirror.gcr.io/library/maven:3.9-eclipse-temurin-$jdk && \
 #      docker tag mirror.gcr.io/library/maven:3.9-eclipse-temurin-$jdk maven:3.9-eclipse-temurin-$jdk; done
@@ -89,7 +90,7 @@ curl -sS -o /dev/null -w "%{http_code}\n" https://api.deepseek.com/models -H "Au
 uv run python baseline/scripts/dry_run.py
 
 # 先跑一个小应用，验证 DeepSeek 在真实 API 上能用
-uv run python baseline/scripts/run_monomorph.py petclinic --tag pilot --image-suffix -sandboxca
+uv run python baseline/scripts/run_monomorph.py petclinic --tag pilot --image-suffix=-sandboxca
 ```
 
 petclinic 跑完后先检查 `runs/pilot/petclinic/monomorph.log`：
@@ -111,7 +112,7 @@ petclinic 跑完后先检查 `runs/pilot/petclinic/monomorph.log`：
 pilot 没问题后跑全部：
 
 ```bash
-uv run python baseline/scripts/run_monomorph.py --tag v1 --image-suffix -sandboxca
+uv run python baseline/scripts/run_monomorph.py --tag v1 --image-suffix=-sandboxca
 ```
 
 - 应用串行运行，每个默认 6 小时上限（`--timeout-hours`），超时记为失败，**不要中途手工修代码**
@@ -119,6 +120,7 @@ uv run python baseline/scripts/run_monomorph.py --tag v1 --image-suffix -sandbox
 - 每个应用的结果在 `runs/<tag>/<app>/`：
   - `output/refactored_code/<app>-<时间>-<id>/<服务>/`：候选代码
   - `monomorph.log`：完整日志
+  - 静态分析数据在 `runs/<tag>/analysis/<app>/`（不在应用目录下，原因见 README）
   - `run_result.json`：返回码和耗时
 - 全部完成后有 `runs/<tag>/summary.json`
 
