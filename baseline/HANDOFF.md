@@ -39,8 +39,6 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
   thinking 模式拒绝任何强制 `tool_choice`（400），已在 `DeepSeekChat.bind_tools` 降级为 `auto` 并补测试
 - [x] 第一次 pilot 发现 `auto` 下模型常把 JSON 写在文本里（13 次 parser 调用中 5 次），导致决策被默认成 ID-Based；
   已在 `DeepSeekChat.with_structured_output` 加文本 JSON 兜底解析并补测试（9 个通过），pilot 已停止并重跑
-- [x] 重跑 pilot：11 个决策全部解析成功；随后在规划阶段 `_assign_client_microservice` 因 `Pet`↔`Visit` 互相引用无限递归崩溃，
-  已加环检测并补测试（见 README 修改表）
 - [x] dry run 在新环境重跑，10 个应用结果与 README 表一致
 
 **未完成**：
@@ -145,7 +143,6 @@ uv run python baseline/scripts/run_monomorph.py --tag v1 --image-suffix=-sandbox
   - 会忽略 Java record，影响 booking 和 ecommerce，已修补成跳过
   - 在 booking 的 `Mediator.java` 一处 pattern-matching instanceof 上崩溃，已在 `prepare_inputs.py` 里改写
 - **booking**：dry run 检测到 0 个跨服务 API 类（交互走 mediator 反射和事件），MonoMorph 只会拆分代码和纠错
-- **`uv.lock`**：每次 `uv run` 都会改写它，不要提交，`git checkout uv.lock` 还原即可
 - **MonoMorph 本身不做的事**：
   - 不生成 Dockerfile 和 docker-compose（`build_config_files` / `build_docker_files` 是空实现）
   - 编译纠错只跑 `mvn compile` / `test-compile`，不启动应用

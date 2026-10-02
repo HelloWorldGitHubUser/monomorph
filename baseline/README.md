@@ -44,7 +44,6 @@
 | `monomorph/llm/custom_chat.py` | `DeepSeekChat.bind_tools` 把强制的 `tool_choice`（`required`、指定工具名等）降级为 `auto` | 真实 API 验证：thinking 模式对任何强制 `tool_choice` 返回 400 `Thinking mode does not support this tool_choice`，而 `with_structured_output`（function calling）默认强制调用 schema 工具。降级后模型多数时候仍调用 schema 工具 |
 | `monomorph/llm/custom_chat.py` | `DeepSeekChat.with_structured_output`：没有工具调用时，从消息文本里取第一个 `{` 到最后一个 `}` 按 schema 解析 | `tool_choice=auto` 下模型有时把 JSON 直接写在文本里而不调用工具。petclinic pilot 中 13 次 parser 调用有 5 次如此，其中 NamedEntity 三次重试都失败（第 3 次命中第 2 次的缓存），被默认成 ID-Based，而模型实际结论是 DTO-Based |
 | `monomorph/llm/factory.py` | fallback 包装的调用超时可由 `MONOMORPH_LLM_INVOKE_TIMEOUT_SECONDS` 配置（默认仍为 60s，运行脚本设为 900s） | thinking=high 的调用常超过 60s，超时会在 fallback 上重跑一遍 |
-| `monomorph/monomorph.py` | `_assign_client_microservice` 加环检测：正在计算的 API 类再次遇到时跳过 | 互相调用的 API 类（如 petclinic 中 `Pet`↔`Visit` 的 JPA 双向关联）会无限递归，`RecursionError` 崩溃，什么都产出不了。无环时结果与原代码相同；有环时客户端服务集合按遍历顺序传播（测试 `tests/test_client_microservice_cycles.py`） |
 | `monomorph/planning/inheritance.py`, `monomorph/planning/dependencies.py` | 跳过静态分析中不存在的类 | MonoMorph 的分析器忽略 Java record（booking 45 个、ecommerce 26 个），原代码遇到会 KeyError 崩溃。这些类仍按 decomposition 复制，但 MonoMorph 看不到它们的跨服务使用 |
 
 运行脚本自身的修正（不是对 MonoMorph 的修改）：
