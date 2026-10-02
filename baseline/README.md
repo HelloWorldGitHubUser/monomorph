@@ -1,6 +1,7 @@
 # MonoMorph baseline on input-kit
 
 用 MonoMorph 为 input-kit 的 10 个单体应用生成微服务候选仓库，作为单体→微服务转换的 baseline。
+在新会话中接手前先读 [`HANDOFF.md`](HANDOFF.md)（目标、已定决策、进度、环境搭建、下一步）。
 只使用 input-kit 提供的输入（单体源码 + decomposition），不使用 MonoMorph 作者发布的任何样例或产物。
 
 ## 目录
