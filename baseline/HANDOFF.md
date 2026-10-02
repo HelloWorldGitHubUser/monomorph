@@ -61,6 +61,13 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
   在后台运行中（tag `v1`，驱动日志 `runs/v1/driver.log`；用 `setsid nohup` 启动，不受会话后台任务 2 小时限制）。已交付的应用会跳过，中断后重跑同一命令即可续跑
 - [ ] 候选仓库交付给用户的方式（见第 6 节）
 
+### v1 结果（每个应用跑完更新）
+
+| 应用 | 返回码 | 耗时 | 候选代码 | 说明 |
+|---|---|---|---|---|
+| booking | 1 | 15s | 无 | record 引发 `decision/tools.py` KeyError，已修复（`87c081b`），全部跑完后重跑 |
+| petclinic | 1 | 712s | 无 | 11 个决策全部解析成功；规划阶段 `RecursionError`（方法缺陷，按决定不修，与 dry run 预测一致） |
+
 ## 4. 新会话的环境搭建（Claude Code 云环境）
 
 云环境容器每次都是新的，上一个会话装的东西不会保留。依次执行：
