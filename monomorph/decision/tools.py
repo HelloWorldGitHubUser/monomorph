@@ -27,6 +27,9 @@ class AnalysisTools:
         self.references_dict = {}
         self.references_matrices = {}
         self.names = list(relevant_classes) if relevant_classes else app_model.get_class_names()
+        # The static analysis misses some classes (e.g. Java records); they have no rows in the reference matrices
+        analyzed = set(app_model.get_class_names())
+        self.names = [c for c in self.names if c in analyzed]
         self.method_names = [m for m in app_model.get_method_names() if m.split("::")[0] in self.names]
         self.logger = ConsolePrinter.get_printer("monomorph")
         self._build_interaction_dict()
