@@ -55,7 +55,7 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
   **没有产出候选代码**。用户决定不修（见 README「规划阶段的崩溃」）。旧日志 `monomorph.attempt1.log`（解析问题）、
   `monomorph.attempt2.log`（崩溃）；`monomorph.attempt3-void.log` 是用已撤回的环检测跑的第三次，作废
 - [x] `dry_run.py` 新增规划阶段检查：petclinic、gulimall、zlt 必然在规划阶段崩溃，lakeside 必然在之后的代码生成崩溃（客户端服务 `None`），ecommerce 视决策而定
-- [ ] 跑出 10 个候选仓库：`run_all_and_push.sh v1 claude/charming-ritchie-o7xgln --timeout-hours 3 --image-suffix=-sandboxca`
+- [x] 跑出 10 个候选仓库（v1 全部完成，2026-10-02 16:20；结果见下表）：`run_all_and_push.sh v1 claude/charming-ritchie-o7xgln --timeout-hours 3 --image-suffix=-sandboxca`
   - booking 第一次在 15 秒内因 record 引发的 `KeyError`（`decision/tools.py`）崩溃，已修复；旧结果已撤下，由并行 worker 重跑
   - 06:25 发现上游 `skip_standard_run` 导致所有应用在编译验证写日志时崩溃（`90859bc` 修复，用户确认）；停掉 lakeside/newbee/goodskill，
     booking 在 `runs/dbg` 验证修复有效（flight、passenger 服务编译通过）后，07:1x 改为 **2 个 worker**（编译阶段 4 核 CPU 吃紧，
@@ -69,7 +69,16 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
     另一个用 `--deliver lakeside` 等串行驱动留下的 lakeside 跑完、交付后再接活。日志 `runs/v1/worker-*.log`。
     中断后：删掉 `runs/v1/locks/` 里没交付的应用的锁，再启动 worker 即可续跑
   在后台运行中（tag `v1`，驱动日志 `runs/v1/driver.log`；用 `setsid nohup` 启动，不受会话后台任务 2 小时限制）。已交付的应用会跳过，中断后重跑同一命令即可续跑
-- [ ] 候选仓库交付给用户的方式（见第 6 节）
+- [x] 候选仓库交付：已推送到本分支的 `baseline/candidates/<app>/`（用户决定）
+
+### v1 总结（10 个应用全部跑完）
+
+- **2 个全部服务编译通过**：booking（3/3，0 个 API 类，无 gRPC 代码）、youlai（6/6，12 个 API 类，50 个 proto）
+- **2 个超时（3 小时）**：passjava（2/7）、goodskill（2/6），都是一个服务陷在编译纠错里出不来（撞图递归上限的轮次不计数）
+- **4 个规划阶段崩溃**：petclinic（循环引用递归）、zlt、gulimall（`shared` 里的类无归属服务）、ecommerce（内部类无归属服务）
+- **1 个代码生成崩溃**：lakeside（客户端服务为 `None`）
+- **1 个解析失败**：newbee（模型偶发输出非法 JSON；json_mode 对照能通过这一步，但同样超时，2/5 个服务通过）
+- 以上崩溃/超时都是 MonoMorph 方法或模型输出的问题，按决定不修；本次修过的只有让工具跑起来的问题（见 README 修改表）
 
 ### v1 结果（每个应用跑完更新）
 
