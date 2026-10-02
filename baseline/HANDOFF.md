@@ -56,8 +56,11 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
   `monomorph.attempt2.log`（崩溃）；`monomorph.attempt3-void.log` 是用已撤回的环检测跑的第三次，作废
 - [x] `dry_run.py` 新增规划阶段检查：petclinic、gulimall、zlt 必然在规划阶段崩溃，ecommerce 视决策而定
 - [ ] 跑出 10 个候选仓库：`run_all_and_push.sh v1 claude/charming-ritchie-o7xgln --timeout-hours 3 --image-suffix=-sandboxca`
-  - booking 第一次在 15 秒内因 record 引发的 `KeyError`（`decision/tools.py`）崩溃，已修复。驱动脚本运行中不能改，
-    **全部跑完后要删掉 `baseline/candidates/booking/` 再执行同一命令重跑 booking**
+  - booking 第一次在 15 秒内因 record 引发的 `KeyError`（`decision/tools.py`）崩溃，已修复；旧结果已撤下，由并行 worker 重跑
+  - 06:3x 起改为 3 路并行（用户同意）：瓶颈是 DeepSeek 响应时间，机器空闲（4 核 / 15GB，单个应用约 0.5GB + 一个 Maven 容器）。
+    `run_parallel_and_push.sh v1 claude/charming-ritchie-o7xgln --timeout-hours 3 --image-suffix=-sandboxca` 启动 2 个 worker，
+    另一个用 `--deliver lakeside` 等串行驱动留下的 lakeside 跑完、交付后再接活。日志 `runs/v1/worker-*.log`。
+    中断后：删掉 `runs/v1/locks/` 里没交付的应用的锁，再启动 worker 即可续跑
   在后台运行中（tag `v1`，驱动日志 `runs/v1/driver.log`；用 `setsid nohup` 启动，不受会话后台任务 2 小时限制）。已交付的应用会跳过，中断后重跑同一命令即可续跑
 - [ ] 候选仓库交付给用户的方式（见第 6 节）
 
