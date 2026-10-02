@@ -1,0 +1,9 @@
+package io.bookingmonolith.flight.aircrafts.features.createaircraft;
+
+import buildingblocks.core.event.DomainEvent;
+
+import java.util.UUID;
+
+public record AircraftCreatedDomainEvent(UUID id) implements DomainEvent {
+}
+
