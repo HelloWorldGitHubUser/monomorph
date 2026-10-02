@@ -2,7 +2,7 @@ import logging
 import os
 import time
 from concurrent.futures.thread import ThreadPoolExecutor
-from typing import Optional, Type, Any
+from typing import Optional, Type, Any, ClassVar
 
 from google.api_core.exceptions import InternalServerError
 from grpc import FutureTimeoutError
@@ -93,6 +93,70 @@ class OpenRouterChat(ChatOpenAI):
             temperature=temperature,
             *args, **merged_kwargs
         )
+
+
+class DeepSeekChat(ChatOpenAI):
+    """
+    Custom ChatOpenAI class for the DeepSeek API (OpenAI-compatible endpoint) with thinking mode.
+
+    In thinking mode, once a tool call has happened, every later assistant message sent back to the API must carry
+    its `reasoning_content`, otherwise the API rejects the request. langchain-openai neither keeps nor sends this
+    field, so this class stores it in the AIMessage's additional_kwargs and puts it back in the request payload.
+    Thinking mode ignores temperature, so it is not sent.
+    """
+    STRUCTURED_OUTPUT_METHOD_ENV: ClassVar[str] = "DEEPSEEK_STRUCTURED_OUTPUT_METHOD"
+
+    def __init__(self, model_name: str, require_parameters: bool = False, deny_data_collection: bool = True,
+                 callback_context: Optional[CallbackContext] = None, temperature: Optional[float] = None,
+                 reasoning_effort: str = "high", *args, **kwargs):
+        dotenv.load_dotenv()
+        DEEPSEEK_API = os.getenv("DEEPSEEK_API_BASE", "https://api.deepseek.com")
+        DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
+        if DEEPSEEK_API_KEY is None:
+            raise ValueError("DEEPSEEK_API_KEY not found!")
+        default_kwargs = dict(
+            extra_body={"thinking": {"type": "enabled"}, "reasoning_effort": reasoning_effort},
+            timeout=float(os.getenv("DEEPSEEK_REQUEST_TIMEOUT_SECONDS", "900")),
+            max_retries=3,
+        )
+        if callback_context:
+            callback_context.model_name = model_name
+            callbacks = [UsageCallbackHandler(callback_context)]
+            default_kwargs["callbacks"] = callbacks
+        merged_kwargs = merge_dicts_recursive(default_kwargs, kwargs)
+        super().__init__(
+            openai_api_key=DEEPSEEK_API_KEY,
+            openai_api_base=DEEPSEEK_API,
+            model_name=model_name,
+            temperature=None,
+            *args, **merged_kwargs
+        )
+
+    def _create_chat_result(self, response, generation_info: Optional[dict] = None):
+        result = super()._create_chat_result(response, generation_info)
+        response_dict = response if isinstance(response, dict) else response.model_dump()
+        for generation, choice in zip(result.generations, response_dict.get("choices", [])):
+            reasoning_content = (choice.get("message") or {}).get("reasoning_content")
+            if reasoning_content is not None:
+                generation.message.additional_kwargs["reasoning_content"] = reasoning_content
+        return result
+
+    def _get_request_payload(self, input_: LanguageModelInput, *, stop: Optional[list[str]] = None,
+                             **kwargs) -> dict:
+        payload = super()._get_request_payload(input_, stop=stop, **kwargs)
+        messages = self._convert_input(input_).to_messages()
+        payload_messages = payload.get("messages", [])
+        if len(messages) == len(payload_messages):
+            for message, message_dict in zip(messages, payload_messages):
+                if message_dict.get("role") == "assistant":
+                    # An empty string is sent for assistant messages that have no stored reasoning
+                    message_dict["reasoning_content"] = message.additional_kwargs.get("reasoning_content", "")
+        return payload
+
+    def with_structured_output(self, schema=None, *, method: Optional[str] = None, **kwargs):
+        # DeepSeek does not support response_format=json_schema (ChatOpenAI's default method)
+        method = method or os.getenv(self.STRUCTURED_OUTPUT_METHOD_ENV, "function_calling")
+        return super().with_structured_output(schema, method=method, **kwargs)
 
 
 class AzureFoundryChat(AzureChatOpenAI):

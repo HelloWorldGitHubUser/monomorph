@@ -1,12 +1,13 @@
 import importlib.resources
 import json
 import logging
+import os
 from typing import Optional, Callable, Type
 
 from langchain_openai.chat_models.base import BaseChatOpenAI
 from pydantic import BaseModel
 
-from .custom_chat import (OpenRouterChat, AzureFoundryChat, GeminiChat, create_class_with_checkpoint,
+from .custom_chat import (OpenRouterChat, AzureFoundryChat, GeminiChat, DeepSeekChat, create_class_with_checkpoint,
                           create_class_with_fallback)
 from .tracking.usage import CallbackContext
 
@@ -42,7 +43,10 @@ def init_model(model_name: Optional[str], mode: str = "tooling", tools: Optional
         BaseClassToUse, full_model_name, kwargs = get_chat_class(model_name, block_paid_api)
         ChatClass = BaseClassToUse if not checkpoint else create_class_with_checkpoint(BaseClassToUse)
         if fallback_model:
-            ChatClass = create_class_with_fallback(ChatClass, fallback_model=fallback_model)
+            # Calls slower than this are abandoned and retried on the fallback model (default: 60s)
+            invoke_timeout = float(os.getenv("MONOMORPH_LLM_INVOKE_TIMEOUT_SECONDS", "60"))
+            ChatClass = create_class_with_fallback(ChatClass, invoke_timeout=invoke_timeout,
+                                                   fallback_model=fallback_model)
         model = ChatClass(full_model_name, require_parameters=True, callback_context=callback_context,
                           temperature=temperature, **kwargs)
         if tools is not None:
@@ -79,6 +83,12 @@ def get_chat_class(model_name: str, block_paid_api: bool = False) -> tuple[Type[
     elif parts[0] == "mm_azure":
         # Azure foundry/openai deployment
         return AzureFoundryChat, name, {}
+    elif parts[0] == "mm_deepseek":
+        # DeepSeek API, e.g. "mm_deepseek/deepseek-v4-pro::high" (the suffix is the reasoning effort)
+        name_split = name.split("::")
+        if len(name_split) > 1:
+            return DeepSeekChat, name_split[0], {"reasoning_effort": name_split[1]}
+        return DeepSeekChat, name, {}
     elif parts[0] == "mm_google":
         # Google Gemini model
         name_split = name.split("::")
