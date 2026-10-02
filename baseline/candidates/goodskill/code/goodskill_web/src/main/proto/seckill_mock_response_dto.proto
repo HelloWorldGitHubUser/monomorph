@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package com.goodskill.monomorph.dto.generated.proto.seckillmockresponsedto;
+
+option java_multiple_files = true;
+option java_package = "com.goodskill.monomorph.dto.generated.proto.seckillmockresponsedto";
+
+message SeckillMockResponseDTODTO {
+    // Java serialization identifier
+    int64 serialVersionUID = 1;
+
+    // 秒杀活动id
+    int64 seckillId = 2;
+
+    // 备注
+    string note = 3;
+
+    // 秒杀活动状态,true已终止
+    bool status = 4;
+
+    // 秒杀任务id
+    string taskId = 5;
+}
