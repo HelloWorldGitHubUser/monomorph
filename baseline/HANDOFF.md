@@ -83,6 +83,7 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
 | ecommerce | 1 | 298s | 无 | 6 个决策全部解析成功（5 个 DTO-based、1 个 ID-based）；规划阶段 `ValueError: Could not find a matching microservice for class ...ProductDataChangeEvent$Operation`（内部类不在任何 partition 中，partition 只列外部类；dry run 预测「全 DTO-Based 会崩」，LLM 的实际决策触发了它；方法缺陷，不修） |
 | **youlai** | **0** | 5428s（含启动失败后的重试） | **有** | 6 个服务全部编译通过（含测试）：mall-oms、mall-pms、mall-sms、mall-ums、youlai-auth、youlai-system，各 1～2 轮纠错，最长一个约 30 分钟。第 1、2 次运行因导入解析服务启动超时作废 |
 | passjava | timeout | 10800s | 部分 | 7 个服务里 passjava-member、passjava-question 编译通过（各 1 轮）；**passjava-search 卡了约 2 小时 45 分**，纠错 20 轮都没通过，其中 20 次触发图递归上限 100 步（撞上限的轮次不计数，所以永远到不了 20 轮上限），3 小时到点被终止。后面 4 个服务一个都没轮到。3 小时是容器第二次重启后从 13:10 重新计时的（之前的纠错调用走缓存回放） |
+| goodskill | timeout | 10800s | 部分 | 6 个服务里 goodskill-ai、goodskill-order 编译通过（各 1 轮）；**goodskill-seckill 卡了约 2 小时 15 分**，纠错 15 轮没通过，19 次触发图递归上限，3 小时到点被终止；后面 3 个服务没轮到。3 小时从 13:19 重新计时 |
 | lakeside | 1 | 约 36min + 582s | 部分 | 决策和 ID 类、大部分 DTO 类代码生成成功；DTO 客户端生成时 `client_ms=None` 崩溃（规划阶段顺序缺陷，方法缺陷不修，dry run 已能预测）。第一段因修 `skip_standard_run` 被停，第二段从缓存回放后继续 |
 | newbee | 1 | 1114s | 部分 | ID 类 `NewBeeMallGoodsMapper` 的服务端代码生成后，parser 解析 3 次失败 → `Server file generation failed`。原因：DeepSeek 把思考内容混进工具参数，JSON 不合法（全部 537 次工具调用中仅此 1 次）；第 3 次重试与第 2 次 prompt 相同，命中缓存。偶发模型错误 + MonoMorph 重试设计，按实记录 |
 | booking（v1 第 2 次，作废） | 1 | 28s | 部分 | 本地导入解析服务 15s 健康检查超时（3 路并行刚启动、机器忙时偶发；单独重跑正常），重跑 |
