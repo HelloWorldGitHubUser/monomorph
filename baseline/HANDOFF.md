@@ -78,6 +78,7 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
 | zlt | 1 | 247s | 无 | 规划阶段 `ValueError: Could not find a matching microservice`（方法缺陷，不修，与 dry run 预测一致） |
 | newbee（json_mode 对照，tag `v1-jsonmode`，不替代 v1） | 运行中 | | | 用户要求：只对 newbee 设 `DEEPSEEK_STRUCTURED_OUTPUT_METHOD=json_mode`，复制 v1 的 `llm_cache.db`，代码生成调用回放、只有 parser 换成 JSON 模式。真实 API 上已能解析 v1 失败的那段输出 |
 | gulimall | 1 | 946s | 无 | 17 个 ID/DTO 决策全部解析成功；规划阶段 `ValueError: Could not find a matching microservice for class io.gulimall.vo.SocialUser`（`shared` 中的类按规则不属于任何 partition，却成了 API 类；方法缺陷，不修，与 dry run 预测一致） |
+| ecommerce | 1 | 298s | 无 | 6 个决策全部解析成功（5 个 DTO-based、1 个 ID-based）；规划阶段 `ValueError: Could not find a matching microservice for class ...ProductDataChangeEvent$Operation`（内部类不在任何 partition 中，partition 只列外部类；dry run 预测「全 DTO-Based 会崩」，LLM 的实际决策触发了它；方法缺陷，不修） |
 | lakeside | 1 | 约 36min + 582s | 部分 | 决策和 ID 类、大部分 DTO 类代码生成成功；DTO 客户端生成时 `client_ms=None` 崩溃（规划阶段顺序缺陷，方法缺陷不修，dry run 已能预测）。第一段因修 `skip_standard_run` 被停，第二段从缓存回放后继续 |
 | newbee | 1 | 1114s | 部分 | ID 类 `NewBeeMallGoodsMapper` 的服务端代码生成后，parser 解析 3 次失败 → `Server file generation failed`。原因：DeepSeek 把思考内容混进工具参数，JSON 不合法（全部 537 次工具调用中仅此 1 次）；第 3 次重试与第 2 次 prompt 相同，命中缓存。偶发模型错误 + MonoMorph 重试设计，按实记录 |
 | booking（v1 第 2 次，作废） | 1 | 28s | 部分 | 本地导入解析服务 15s 健康检查超时（3 路并行刚启动、机器忙时偶发；单独重跑正常），重跑 |
