@@ -1,0 +1,300 @@
+/home/user/monomorph/.venv/lib/python3.13/site-packages/fuzzywuzzy/fuzz.py:11: UserWarning: Using slow pure-python SequenceMatcher. Install python-Levenshtein to remove this warning
+  warnings.warn('Using slow pure-python SequenceMatcher. Install python-Levenshtein to remove this warning')
+[37m2026-10-02 06:17:59,748 [140662139433088] monomorph DEBUG main.py:239 - Using LLM cache[0m
+[37m2026-10-02 06:17:59,774 [140662139433088] monomorph DEBUG main.py:246 - Setting up checkpointing mechanism[0m
+[32m2026-10-02 06:17:59,775 [140662139433088] monomorph INFO main.py:254 - Initializing MonoMorph with app zlt and package com.central[0m
+[37m2026-10-02 06:17:59,775 [140662139433088] monomorph DEBUG checkpoints.py:104 - No existing checkpoints found for experiment: zlt-v1[0m
+[32m2026-10-02 06:17:59,776 [140662139433088] monomorph INFO main.py:277 - Starting refactoring process[0m
+[32m2026-10-02 06:17:59,776 [140662139433088] monomorph INFO monomorph.py:145 - Starting the refactoring process for zlt (run_id: zlt-v1)[0m
+[37m2026-10-02 06:17:59,800 [140662139433088] monomorph DEBUG monomorph.py:152 - Loading the analysis model[0m
+[37m2026-10-02 06:18:09,428 [140662139433088] monomorph DEBUG monomorph.py:155 - Pre-processing the decomposition[0m
+[37m2026-10-02 06:18:09,428 [140662139433088] monomorph DEBUG preprocessing.py:52 - Excluding 0 test classes from duplication[0m
+[37m2026-10-02 06:18:09,429 [140662139433088] monomorph DEBUG preprocessing.py:57 - Excluding 9 generic or invalid classes from duplication[0m
+[37m2026-10-02 06:18:09,429 [140662139433088] monomorph DEBUG preprocessing.py:60 - Duplicating 39 classes[0m
+[37m2026-10-02 06:18:09,429 [140662139433088] monomorph DEBUG monomorph.py:160 - Detecting dependencies and inter-service communication[0m
+[37m2026-10-02 06:18:10,342 [140662139433088] monomorph DEBUG dependencies.py:82 - Class com.central.model.dto.LogicDelDto not found in inter-service method interactions[0m
+[37m2026-10-02 06:18:10,343 [140662139433088] monomorph DEBUG dependencies.py:82 - Class com.central.model.dto.SearchDto not found in inter-service method interactions[0m
+[37m2026-10-02 06:18:10,343 [140662139433088] monomorph DEBUG dependencies.py:82 - Class T not found in inter-service method interactions[0m
+[37m2026-10-02 06:18:10,343 [140662139433088] monomorph DEBUG dependencies.py:82 - Class com.central.config.SecurityProperties$AuthProperties not found in inter-service method interactions[0m
+[37m2026-10-02 06:18:10,343 [140662139433088] monomorph DEBUG dependencies.py:82 - Class com.central.config.SecurityProperties$UrlPermissionProperties not found in inter-service method interactions[0m
+[37m2026-10-02 06:18:10,343 [140662139433088] monomorph DEBUG dependencies.py:82 - Class com.central.config.SecurityProperties$IgnoreProperties not found in inter-service method interactions[0m
+[37m2026-10-02 06:18:10,343 [140662139433088] monomorph DEBUG dependencies.py:82 - Class com.central.datascope.DataScopeInnerInterceptor$1 not found in inter-service method interactions[0m
+[37m2026-10-02 06:18:10,343 [140662139433088] monomorph DEBUG dependencies.py:82 - Class com.central.service.impl.IndexServiceImpl$1 not found in inter-service method interactions[0m
+[37m2026-10-02 06:18:10,343 [140662139433088] monomorph DEBUG monomorph.py:172 - Starting the ID or DTO decision process[0m
+[37m2026-10-02 06:18:10,343 [140662139433088] monomorph DEBUG monomorph.py:249 - Initializing the decision workflow[0m
+[37m2026-10-02 06:18:10,343 [140662139433088] monomorph DEBUG monomorph.py:250 - Deciding the approach for 6 classes[0m
+[37m2026-10-02 06:18:10,465 [140662139433088] monomorph DEBUG workflow.py:39 - [workflow]: Using mm_deepseek/deepseek-v4-pro::high as a decision model[0m
+[37m2026-10-02 06:18:10,733 [140662139433088] monomorph DEBUG workflow.py:41 - [workflow]: Using mm_deepseek/deepseek-v4-pro::high as a parsing model[0m
+[37m2026-10-02 06:18:10,842 [140662139433088] monomorph DEBUG monomorph.py:259 - Processing microservice search-center with 4 API classes[0m
+[37m2026-10-02 06:18:10,842 [140662139433088] monomorph DEBUG monomorph.py:261 - API Class: com.central.service.ISearchService[0m
+[37m2026-10-02 06:18:10,842 [140662139433088] monomorph DEBUG monomorph.py:261 - API Class: com.central.service.IAggregationService[0m
+[37m2026-10-02 06:18:10,842 [140662139433088] monomorph DEBUG monomorph.py:261 - API Class: com.central.model.dto.LogicDelDto[0m
+[37m2026-10-02 06:18:10,842 [140662139433088] monomorph DEBUG monomorph.py:261 - API Class: com.central.model.dto.SearchDto[0m
+[37m2026-10-02 06:18:10,842 [140662139433088] monomorph DEBUG monomorph.py:259 - Processing microservice user-center with 2 API classes[0m
+[37m2026-10-02 06:18:10,842 [140662139433088] monomorph DEBUG monomorph.py:261 - API Class: com.central.service.ISysUserService[0m
+[37m2026-10-02 06:18:10,842 [140662139433088] monomorph DEBUG monomorph.py:261 - API Class: com.central.entity.SuperEntity[0m
+[37m2026-10-02 06:18:10,842 [140662139433088] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class com.central.service.ISearchService in microservice search-center[0m
+[37m2026-10-02 06:18:10,842 [140662139433088] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 06:18:10,871 [140662139433088] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 06:18:10,871 [140662139433088] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 06:18:10,871 [140662139433088] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 06:18:10,872 [140662139433088] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 06:18:10,872 [140662139433088] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 06:18:10,873 [140662139433088] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 06:18:15,189 [140662139433088] monomorph DEBUG checkpoints.py:122 - Saved 1 checkpoints for experiment: zlt-v1[0m
+[37m2026-10-02 06:18:15,189 [140662139433088] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: b7262819c3cfd343e97fcba4c86fc48f to experiment: zlt-v1[0m
+[37m2026-10-02 06:18:15,189 [140662139433088] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 06:18:15,189 [140662139433088] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 3 tools[0m
+[37m2026-10-02 06:18:15,192 [140661309339328] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class ISearchService[0m
+[37m2026-10-02 06:18:15,193 [140661309339328] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SearchDto[0m
+[37m2026-10-02 06:18:15,194 [140661300946624] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class LogicDelDto[0m
+[37m2026-10-02 06:18:15,195 [140662139433088] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 06:18:21,576 [140662139433088] monomorph DEBUG checkpoints.py:122 - Saved 2 checkpoints for experiment: zlt-v1[0m
+[37m2026-10-02 06:18:21,576 [140662139433088] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 03a74e15449e459903e3f2b4eea0c6c6 to experiment: zlt-v1[0m
+[37m2026-10-02 06:18:21,576 [140662139433088] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 06:18:21,577 [140662139433088] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 4 tools[0m
+[37m2026-10-02 06:18:21,578 [140661309339328] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SysUserController[0m
+[37m2026-10-02 06:18:21,579 [140661309339328] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SysLogController[0m
+[37m2026-10-02 06:18:21,580 [140661309339328] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SlowQueryLogController[0m
+[37m2026-10-02 06:18:21,581 [140661309339328] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class AuditLogController[0m
+[37m2026-10-02 06:18:21,583 [140662139433088] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 06:18:36,975 [140662139433088] monomorph DEBUG checkpoints.py:122 - Saved 3 checkpoints for experiment: zlt-v1[0m
+[37m2026-10-02 06:18:36,975 [140662139433088] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: af8e945a9e5b82ce5b0daaaebb8836d7 to experiment: zlt-v1[0m
+[37m2026-10-02 06:18:36,976 [140662139433088] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 06:18:36,976 [140662139433088] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 1 tools[0m
+[37m2026-10-02 06:18:36,978 [140661309339328] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SearchServiceImpl[0m
+[37m2026-10-02 06:18:36,979 [140662139433088] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 06:18:56,724 [140662139433088] monomorph DEBUG checkpoints.py:122 - Saved 4 checkpoints for experiment: zlt-v1[0m
+[37m2026-10-02 06:18:56,724 [140662139433088] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: f6ee481a0e5a528a78888e2a53742be5 to experiment: zlt-v1[0m
+[37m2026-10-02 06:18:56,724 [140662139433088] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 06:18:56,725 [140662139433088] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 06:18:56,725 [140662139433088] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 06:18:56,725 [140662139433088] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 06:19:02,496 [140661309339328] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 06:19:02,502 [140662139433088] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 06:19:02,503 [140662139433088] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 06:19:02,503 [140662139433088] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 06:19:02,503 [140662139433088] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 06:19:02,503 [140662139433088] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 06:19:02,503 [140662139433088] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/zlt/output/llm_responses/zlt-2610020617-zlt-/com/central/decision_logs/com.central.service.ISearchService.md[0m
+[37m2026-10-02 06:19:02,504 [140662139433088] monomorph DEBUG monomorph.py:287 - Decision workflow returned DTO-based decision for class com.central.service.ISearchService[0m
+[37m2026-10-02 06:19:02,504 [140662139433088] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class com.central.service.IAggregationService in microservice search-center[0m
+[37m2026-10-02 06:19:02,504 [140662139433088] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 06:19:02,504 [140662139433088] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 06:19:02,504 [140662139433088] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 06:19:02,504 [140662139433088] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 06:19:02,504 [140662139433088] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 06:19:02,504 [140662139433088] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 06:19:02,505 [140662139433088] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 06:19:05,741 [140662139433088] monomorph DEBUG checkpoints.py:122 - Saved 5 checkpoints for experiment: zlt-v1[0m
+[37m2026-10-02 06:19:05,741 [140662139433088] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 31ce94198e6d3eb4ef862e85e1141cd5 to experiment: zlt-v1[0m
+[37m2026-10-02 06:19:05,741 [140662139433088] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 06:19:05,741 [140662139433088] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 06:19:05,743 [140661300946624] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class IAggregationService[0m
+[37m2026-10-02 06:19:05,744 [140661300946624] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class IAggregationService[0m
+[37m2026-10-02 06:19:05,745 [140662139433088] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 06:19:09,875 [140662139433088] monomorph DEBUG checkpoints.py:122 - Saved 6 checkpoints for experiment: zlt-v1[0m
+[37m2026-10-02 06:19:09,875 [140662139433088] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 42fe31f0646d9cb5c0aa024821c7944a to experiment: zlt-v1[0m
+[37m2026-10-02 06:19:09,875 [140662139433088] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 06:19:09,876 [140662139433088] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 06:19:09,877 [140661300946624] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class LogAggregationController[0m
+[37m2026-10-02 06:19:09,878 [140661300946624] monomorph DEBUG tools.py:92 - [tool]: 'get_method_source_code' invoked for class LogAggregationController and method requestStatAgg[0m
+[37m2026-10-02 06:19:09,880 [140662139433088] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 06:19:20,317 [140662139433088] monomorph DEBUG checkpoints.py:122 - Saved 7 checkpoints for experiment: zlt-v1[0m
+[37m2026-10-02 06:19:20,317 [140662139433088] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: aefb5c319ad3dc57b66921c8611c66b6 to experiment: zlt-v1[0m
+[37m2026-10-02 06:19:20,318 [140662139433088] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 06:19:20,318 [140662139433088] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 3 tools[0m
+[37m2026-10-02 06:19:20,319 [140661300946624] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class AggregationServiceImpl[0m
+[37m2026-10-02 06:19:20,320 [140661300946624] monomorph DEBUG tools.py:92 - [tool]: 'get_method_source_code' invoked for class AggregationServiceImpl and method requestStatAgg[0m
+[37m2026-10-02 06:19:20,326 [140661309339328] monomorph DEBUG tools.py:92 - [tool]: 'get_method_source_code' invoked for class AggregationServiceImpl and method getDefaultStatData[0m
+[37m2026-10-02 06:19:20,334 [140662139433088] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 06:19:22,065 [140662139433088] monomorph DEBUG checkpoints.py:122 - Saved 8 checkpoints for experiment: zlt-v1[0m
+[37m2026-10-02 06:19:22,066 [140662139433088] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: b4c12abe9a9ce2ba03a9cfc74831525d to experiment: zlt-v1[0m
+[37m2026-10-02 06:19:22,066 [140662139433088] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 06:19:22,066 [140662139433088] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 1 tools[0m
+[37m2026-10-02 06:19:22,068 [140661300946624] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class AggItemVo[0m
+[37m2026-10-02 06:19:22,069 [140662139433088] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 06:19:43,376 [140662139433088] monomorph DEBUG checkpoints.py:122 - Saved 9 checkpoints for experiment: zlt-v1[0m
+[37m2026-10-02 06:19:43,376 [140662139433088] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 3860da175651bac5e779cca913031f64 to experiment: zlt-v1[0m
+[37m2026-10-02 06:19:43,376 [140662139433088] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 06:19:43,377 [140662139433088] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 06:19:43,377 [140662139433088] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 06:19:43,377 [140662139433088] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 06:19:51,766 [140661300946624] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 06:19:51,771 [140662139433088] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 06:19:51,771 [140662139433088] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 06:19:51,771 [140662139433088] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 06:19:51,772 [140662139433088] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 06:19:51,772 [140662139433088] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 06:19:51,772 [140662139433088] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/zlt/output/llm_responses/zlt-2610020617-zlt-/com/central/decision_logs/com.central.service.IAggregationService.md[0m
+[37m2026-10-02 06:19:51,772 [140662139433088] monomorph DEBUG monomorph.py:287 - Decision workflow returned DTO-based decision for class com.central.service.IAggregationService[0m
+[37m2026-10-02 06:19:51,772 [140662139433088] monomorph DEBUG monomorph.py:268 - Class com.central.model.dto.LogicDelDto is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 06:19:51,772 [140662139433088] monomorph DEBUG monomorph.py:268 - Class com.central.model.dto.SearchDto is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 06:19:51,772 [140662139433088] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class com.central.service.ISysUserService in microservice user-center[0m
+[37m2026-10-02 06:19:51,772 [140662139433088] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 06:19:51,799 [140662139433088] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 06:19:51,800 [140662139433088] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 06:19:51,800 [140662139433088] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 06:19:51,800 [140662139433088] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 06:19:51,800 [140662139433088] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 06:19:51,801 [140662139433088] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 06:19:55,113 [140662139433088] monomorph DEBUG checkpoints.py:122 - Saved 10 checkpoints for experiment: zlt-v1[0m
+[37m2026-10-02 06:19:55,113 [140662139433088] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 4c2ea6ad96f70c135b0782546f64fa39 to experiment: zlt-v1[0m
+[37m2026-10-02 06:19:55,114 [140662139433088] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 06:19:55,114 [140662139433088] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 06:19:55,116 [140661300946624] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SysUser[0m
+[37m2026-10-02 06:19:55,117 [140661300946624] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class ISysUserService[0m
+[37m2026-10-02 06:19:55,118 [140662139433088] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 06:19:58,863 [140662139433088] monomorph DEBUG checkpoints.py:122 - Saved 11 checkpoints for experiment: zlt-v1[0m
+[37m2026-10-02 06:19:58,863 [140662139433088] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 4682f9b7010f91ee17ba429d647e2469 to experiment: zlt-v1[0m
+[37m2026-10-02 06:19:58,864 [140662139433088] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 06:19:58,864 [140662139433088] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 5 tools[0m
+[37m2026-10-02 06:19:58,866 [140661300946624] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SysUserController[0m
+[37m2026-10-02 06:19:58,867 [140661300946624] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class OAuthController[0m
+[37m2026-10-02 06:19:58,868 [140661309339328] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class CreatorDataScopeSqlHandler[0m
+[37m2026-10-02 06:19:58,868 [140661309339328] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SuperEntity[0m
+[37m2026-10-02 06:19:58,869 [140661300946624] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class TokenAuthenticationFilter[0m
+[37m2026-10-02 06:19:58,870 [140662139433088] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 06:20:23,592 [140662139433088] monomorph DEBUG checkpoints.py:122 - Saved 12 checkpoints for experiment: zlt-v1[0m
+[37m2026-10-02 06:20:23,592 [140662139433088] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: c78480005da7830c39dcdaead528bc8d to experiment: zlt-v1[0m
+[37m2026-10-02 06:20:23,593 [140662139433088] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 06:20:23,594 [140662139433088] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 06:20:23,594 [140662139433088] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 06:20:23,594 [140662139433088] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 06:20:27,320 [140661309339328] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 06:20:27,326 [140662139433088] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 06:20:27,327 [140662139433088] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 06:20:27,327 [140662139433088] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 06:20:27,327 [140662139433088] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 06:20:27,327 [140662139433088] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 06:20:27,328 [140662139433088] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/zlt/output/llm_responses/zlt-2610020617-zlt-/com/central/decision_logs/com.central.service.ISysUserService.md[0m
+[37m2026-10-02 06:20:27,328 [140662139433088] monomorph DEBUG monomorph.py:291 - Decision workflow returned ID-based decision for class com.central.service.ISysUserService[0m
+[37m2026-10-02 06:20:27,328 [140662139433088] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class com.central.entity.SuperEntity in microservice user-center[0m
+[37m2026-10-02 06:20:27,328 [140662139433088] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 06:20:27,328 [140662139433088] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 06:20:27,329 [140662139433088] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 06:20:27,329 [140662139433088] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 06:20:27,329 [140662139433088] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 06:20:27,329 [140662139433088] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 06:20:27,330 [140662139433088] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 06:20:30,295 [140662139433088] monomorph DEBUG checkpoints.py:122 - Saved 13 checkpoints for experiment: zlt-v1[0m
+[37m2026-10-02 06:20:30,295 [140662139433088] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: e04f1fd7007fd498900edfe6b9e07d04 to experiment: zlt-v1[0m
+[37m2026-10-02 06:20:30,295 [140662139433088] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 06:20:30,296 [140662139433088] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 06:20:30,297 [140661309339328] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class SuperEntity[0m
+[37m2026-10-02 06:20:30,298 [140661300946624] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SuperEntity[0m
+[37m2026-10-02 06:20:30,299 [140662139433088] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 06:20:34,680 [140662139433088] monomorph DEBUG checkpoints.py:122 - Saved 14 checkpoints for experiment: zlt-v1[0m
+[37m2026-10-02 06:20:34,680 [140662139433088] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 8347c8a6ff2ccbfcb9ce96102e2564b0 to experiment: zlt-v1[0m
+[37m2026-10-02 06:20:34,680 [140662139433088] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 06:20:34,681 [140662139433088] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 4 tools[0m
+[37m2026-10-02 06:20:34,683 [140661300946624] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SysUser[0m
+[37m2026-10-02 06:20:34,685 [140661300946624] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SysRole[0m
+[37m2026-10-02 06:20:34,685 [140661300946624] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class SysMenu[0m
+[37m2026-10-02 06:20:34,686 [140661300946624] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class Client[0m
+[37m2026-10-02 06:20:34,688 [140662139433088] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 06:21:01,802 [140662139433088] monomorph DEBUG checkpoints.py:122 - Saved 15 checkpoints for experiment: zlt-v1[0m
+[37m2026-10-02 06:21:01,802 [140662139433088] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 04802c92cc02515edbb3fcd8727a8344 to experiment: zlt-v1[0m
+[37m2026-10-02 06:21:01,802 [140662139433088] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 06:21:01,803 [140662139433088] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 3 tools[0m
+[37m2026-10-02 06:21:01,805 [140661300946624] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class Model[0m
+[33m2026-10-02 06:21:01,805 [140661300946624] monomorph WARNING tools.py:52 - [default]: Class None not found in the application model.[0m
+[37m2026-10-02 06:21:01,807 [140661309339328] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class SysRole[0m
+[37m2026-10-02 06:21:01,808 [140661300946624] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class SysUser[0m
+[37m2026-10-02 06:21:01,809 [140662139433088] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 06:21:04,838 [140662139433088] monomorph DEBUG checkpoints.py:122 - Saved 16 checkpoints for experiment: zlt-v1[0m
+[37m2026-10-02 06:21:04,838 [140662139433088] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: e6d66672fc7860dce52d5cc5be38703b to experiment: zlt-v1[0m
+[37m2026-10-02 06:21:04,838 [140662139433088] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 06:21:04,839 [140662139433088] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 06:21:04,840 [140661309339328] monomorph DEBUG tools.py:92 - [tool]: 'get_method_source_code' invoked for class TokenAuthenticationFilter and method doFilter(javax.servl[0m
+[37m2026-10-02 06:21:04,854 [140661300946624] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class TokenAuthenticationFilter[0m
+[33m2026-10-02 06:21:04,857 [140661309339328] monomorph WARNING tools.py:98 - [default]: Method None not found in the application model.[0m
+[37m2026-10-02 06:21:04,861 [140662139433088] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 06:21:48,844 [140662139433088] monomorph DEBUG checkpoints.py:122 - Saved 17 checkpoints for experiment: zlt-v1[0m
+[37m2026-10-02 06:21:48,845 [140662139433088] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 3c812b0613720d904672b5b656390695 to experiment: zlt-v1[0m
+[37m2026-10-02 06:21:48,845 [140662139433088] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 06:21:48,846 [140662139433088] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 06:21:48,846 [140662139433088] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 06:21:48,846 [140662139433088] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 06:22:01,437 [140661309339328] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 06:22:01,441 [140662139433088] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 06:22:01,442 [140662139433088] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 06:22:01,442 [140662139433088] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 06:22:01,442 [140662139433088] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 06:22:01,442 [140662139433088] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 06:22:01,443 [140662139433088] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/zlt/output/llm_responses/zlt-2610020617-zlt-/com/central/decision_logs/com.central.entity.SuperEntity.md[0m
+[37m2026-10-02 06:22:01,449 [140662139433088] monomorph DEBUG monomorph.py:287 - Decision workflow returned DTO-based decision for class com.central.entity.SuperEntity[0m
+[37m2026-10-02 06:22:01,449 [140662139433088] monomorph DEBUG monomorph.py:302 - Decision workflow completed[0m
+[37m2026-10-02 06:22:01,449 [140662139433088] monomorph DEBUG monomorph.py:303 - ID-based classes: 1[0m
+[37m2026-10-02 06:22:01,449 [140662139433088] monomorph DEBUG monomorph.py:304 - DTO-based classes: 3[0m
+[37m2026-10-02 06:22:01,449 [140662139433088] monomorph DEBUG monomorph.py:305 - DTO-only classes: 2[0m
+[37m2026-10-02 06:22:01,449 [140662139433088] monomorph DEBUG monomorph.py:306 - Failures: 0[0m
+[37m2026-10-02 06:22:01,450 [140662139433088] monomorph DEBUG monomorph.py:175 - Preparing the helper and template manager[0m
+[37m2026-10-02 06:22:01,450 [140662139433088] monomorph DEBUG monomorph.py:177 - Searching for nested classes[0m
+[37m2026-10-02 06:22:01,450 [140662139433088] monomorph DEBUG proxies.py:177 - Found a reference to com.central.model.PageResult in com.central.service.ISearchService as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 06:22:01,451 [140662139433088] monomorph DEBUG proxies.py:177 - Found a reference to com.central.entity.SysRole in com.central.service.ISysUserService as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 06:22:01,451 [140662139433088] monomorph DEBUG proxies.py:177 - Found a reference to com.central.entity.SysUser in com.central.service.ISysUserService as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 06:22:01,451 [140662139433088] monomorph DEBUG proxies.py:109 - Found 3 classes that were part of the API communication.[0m
+[37m2026-10-02 06:22:01,451 [140662139433088] monomorph DEBUG proxies.py:116 - Iteration 0 - Handling 3 new API classes.[0m
+[37m2026-10-02 06:22:01,451 [140662139433088] monomorph DEBUG proxies.py:118 - Treating class com.central.entity.SysRole as DTO-Only.[0m
+[37m2026-10-02 06:22:01,451 [140662139433088] monomorph DEBUG proxies.py:177 - Found a reference to com.central.enums.DataScope in com.central.entity.SysRole as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 06:22:01,451 [140662139433088] monomorph DEBUG proxies.py:118 - Treating class com.central.model.PageResult as DTO-Only.[0m
+[37m2026-10-02 06:22:01,451 [140662139433088] monomorph DEBUG proxies.py:118 - Treating class com.central.entity.SysUser as DTO-Only.[0m
+[37m2026-10-02 06:22:01,451 [140662139433088] monomorph DEBUG proxies.py:116 - Iteration 1 - Handling 1 new API classes.[0m
+[37m2026-10-02 06:22:01,451 [140662139433088] monomorph DEBUG proxies.py:118 - Treating class com.central.enums.DataScope as DTO-Only.[0m
+[37m2026-10-02 06:22:01,451 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.controller.SlowQueryLogController to invoking classes of com.central.service.ISearchService in log-center[0m
+[37m2026-10-02 06:22:01,452 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.controller.SysLogController to invoking classes of com.central.service.ISearchService in log-center[0m
+[37m2026-10-02 06:22:01,452 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.controller.SysUserController to invoking classes of com.central.service.ISearchService in user-center[0m
+[37m2026-10-02 06:22:01,452 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.controller.AuditLogController to invoking classes of com.central.service.ISearchService in log-center[0m
+[37m2026-10-02 06:22:01,452 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.controller.LogAggregationController to invoking classes of com.central.service.IAggregationService in log-center[0m
+[37m2026-10-02 06:22:01,452 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.controller.SysUserController to invoking classes of com.central.model.dto.LogicDelDto in user-center[0m
+[37m2026-10-02 06:22:01,452 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.controller.SlowQueryLogController to invoking classes of com.central.model.dto.SearchDto in log-center[0m
+[37m2026-10-02 06:22:01,452 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.controller.SysLogController to invoking classes of com.central.model.dto.SearchDto in log-center[0m
+[37m2026-10-02 06:22:01,452 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.controller.SysUserController to invoking classes of com.central.model.dto.SearchDto in user-center[0m
+[37m2026-10-02 06:22:01,452 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.controller.AuditLogController to invoking classes of com.central.model.dto.SearchDto in log-center[0m
+[37m2026-10-02 06:22:01,452 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.security.TokenAuthenticationFilter to invoking classes of com.central.service.ISysUserService in zlt-uaa[0m
+[37m2026-10-02 06:22:01,452 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.security.TokenAuthenticationFilter to invoking classes of com.central.service.ISysUserService in file-center[0m
+[37m2026-10-02 06:22:01,452 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.datascope.CreatorDataScopeSqlHandler to invoking classes of com.central.service.ISysUserService in zlt-uaa[0m
+[37m2026-10-02 06:22:01,452 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.datascope.CreatorDataScopeSqlHandler to invoking classes of com.central.service.ISysUserService in file-center[0m
+[37m2026-10-02 06:22:01,452 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.controller.OAuthController to invoking classes of com.central.service.ISysUserService in search-center[0m
+[37m2026-10-02 06:22:01,452 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.controller.OAuthController to invoking classes of com.central.service.ISysUserService in log-center[0m
+[37m2026-10-02 06:22:01,452 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.security.TokenAuthenticationFilter to invoking classes of com.central.service.ISysUserService in log-center[0m
+[37m2026-10-02 06:22:01,452 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.datascope.CreatorDataScopeSqlHandler to invoking classes of com.central.service.ISysUserService in search-center[0m
+[37m2026-10-02 06:22:01,452 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.security.TokenAuthenticationFilter to invoking classes of com.central.service.ISysUserService in search-center[0m
+[37m2026-10-02 06:22:01,452 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.datascope.CreatorDataScopeSqlHandler to invoking classes of com.central.service.ISysUserService in log-center[0m
+[37m2026-10-02 06:22:01,453 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.controller.OAuthController to invoking classes of com.central.service.ISysUserService in file-center[0m
+[37m2026-10-02 06:22:01,453 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.controller.OAuthController to invoking classes of com.central.service.ISysUserService in zlt-uaa[0m
+[37m2026-10-02 06:22:01,453 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.entity.SysUser to invoking classes of com.central.entity.SuperEntity in search-center[0m
+[37m2026-10-02 06:22:01,453 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.entity.SysMenu to invoking classes of com.central.entity.SuperEntity in file-center[0m
+[37m2026-10-02 06:22:01,453 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.entity.SysUser to invoking classes of com.central.entity.SuperEntity in log-center[0m
+[37m2026-10-02 06:22:01,453 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.entity.SysRole to invoking classes of com.central.entity.SuperEntity in file-center[0m
+[37m2026-10-02 06:22:01,453 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.entity.SysMenu to invoking classes of com.central.entity.SuperEntity in search-center[0m
+[37m2026-10-02 06:22:01,453 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.entity.SysMenu to invoking classes of com.central.entity.SuperEntity in log-center[0m
+[37m2026-10-02 06:22:01,453 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.entity.SysRole to invoking classes of com.central.entity.SuperEntity in log-center[0m
+[37m2026-10-02 06:22:01,453 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.entity.SysRole to invoking classes of com.central.entity.SuperEntity in search-center[0m
+[37m2026-10-02 06:22:01,453 [140662139433088] monomorph DEBUG monomorph.py:511 - Added com.central.entity.SysUser to invoking classes of com.central.entity.SuperEntity in file-center[0m
+Traceback (most recent call last):
+  File "/home/user/monomorph/cli.py", line 131, in <module>
+    cli()
+    ~~~^^
+  File "/home/user/monomorph/cli.py", line 97, in cli
+    run_monomorph(
+    ~~~~~~~~~~~~~^
+        app=args.app,
+        ^^^^^^^^^^^^^
+    ...<27 lines>...
+        use_multithreading=args.use_multithreading
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/user/monomorph/main.py", line 278, in run_monomorph
+    mono_refact.refactor()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/user/monomorph/monomorph/monomorph.py", line 182, in refactor
+    id_classes_per_ms, dto_classes_per_ms = self.sort_by_ms_and_approach(planned_api_classes)
+                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/monomorph/monomorph/monomorph.py", line 355, in sort_by_ms_and_approach
+    ms_name = self._assign_microservice(planned_api_class)
+  File "/home/user/monomorph/monomorph/monomorph.py", line 329, in _assign_microservice
+    raise ValueError(f"Could not find a matching microservice for class {api_class.name}")
+ValueError: Could not find a matching microservice for class com.central.entity.SysRole
