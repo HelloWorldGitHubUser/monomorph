@@ -1,0 +1,551 @@
+/home/user/monomorph/.venv/lib/python3.13/site-packages/fuzzywuzzy/fuzz.py:11: UserWarning: Using slow pure-python SequenceMatcher. Install python-Levenshtein to remove this warning
+  warnings.warn('Using slow pure-python SequenceMatcher. Install python-Levenshtein to remove this warning')
+[37m2026-10-02 10:54:34,595 [139952136732800] monomorph DEBUG main.py:239 - Using LLM cache[0m
+[37m2026-10-02 10:54:34,621 [139952136732800] monomorph DEBUG main.py:246 - Setting up checkpointing mechanism[0m
+[32m2026-10-02 10:54:34,621 [139952136732800] monomorph INFO main.py:254 - Initializing MonoMorph with app ecommerce and package com.hoangtien2k3.ecommerce[0m
+[37m2026-10-02 10:54:34,622 [139952136732800] monomorph DEBUG checkpoints.py:104 - No existing checkpoints found for experiment: ecommerce-v1[0m
+[32m2026-10-02 10:54:34,622 [139952136732800] monomorph INFO main.py:277 - Starting refactoring process[0m
+[32m2026-10-02 10:54:34,623 [139952136732800] monomorph INFO monomorph.py:145 - Starting the refactoring process for ecommerce (run_id: ecommerce-v1)[0m
+[37m2026-10-02 10:54:34,635 [139952136732800] monomorph DEBUG monomorph.py:152 - Loading the analysis model[0m
+[37m2026-10-02 10:54:41,930 [139952136732800] monomorph DEBUG monomorph.py:155 - Pre-processing the decomposition[0m
+[37m2026-10-02 10:54:41,931 [139952136732800] monomorph DEBUG preprocessing.py:52 - Excluding 0 test classes from duplication[0m
+[37m2026-10-02 10:54:41,932 [139952136732800] monomorph DEBUG preprocessing.py:57 - Excluding 5 generic or invalid classes from duplication[0m
+[37m2026-10-02 10:54:41,932 [139952136732800] monomorph DEBUG preprocessing.py:60 - Duplicating 28 classes[0m
+[37m2026-10-02 10:54:41,933 [139952136732800] monomorph DEBUG monomorph.py:160 - Detecting dependencies and inter-service communication[0m
+[37m2026-10-02 10:54:49,642 [139952136732800] monomorph DEBUG dependencies.py:82 - Class T not found in inter-service method interactions[0m
+[37m2026-10-02 10:54:49,642 [139952136732800] monomorph DEBUG dependencies.py:82 - Class com.hoangtien2k3.ecommerce.exception.AccessDeniedException not found in inter-service method interactions[0m
+[37m2026-10-02 10:54:49,642 [139952136732800] monomorph DEBUG dependencies.py:82 - Class com.hoangtien2k3.ecommerce.exception.BadRequestException not found in inter-service method interactions[0m
+[37m2026-10-02 10:54:49,642 [139952136732800] monomorph DEBUG dependencies.py:82 - Class com.hoangtien2k3.ecommerce.exception.DuplicatedException not found in inter-service method interactions[0m
+[37m2026-10-02 10:54:49,642 [139952136732800] monomorph DEBUG dependencies.py:82 - Class M not found in inter-service method interactions[0m
+[37m2026-10-02 10:54:49,642 [139952136732800] monomorph DEBUG dependencies.py:82 - Class V not found in inter-service method interactions[0m
+[37m2026-10-02 10:54:49,643 [139952136732800] monomorph DEBUG dependencies.py:82 - Class R not found in inter-service method interactions[0m
+[37m2026-10-02 10:54:49,643 [139952136732800] monomorph DEBUG dependencies.py:82 - Class com.hoangtien2k3.ecommerce.model.user.User not found in inter-service method interactions[0m
+[37m2026-10-02 10:54:49,643 [139952136732800] monomorph DEBUG dependencies.py:82 - Class com.hoangtien2k3.ecommerce.dto.ProductDto not found in inter-service method interactions[0m
+[37m2026-10-02 10:54:49,643 [139952136732800] monomorph DEBUG dependencies.py:82 - Class com.hoangtien2k3.ecommerce.security.jwt.JwtEntryPoint not found in inter-service method interactions[0m
+[37m2026-10-02 10:54:49,643 [139952136732800] monomorph DEBUG dependencies.py:82 - Class com.hoangtien2k3.ecommerce.security.userprinciple.UserDetailService not found in inter-service method interactions[0m
+[37m2026-10-02 10:54:49,643 [139952136732800] monomorph DEBUG dependencies.py:82 - Class com.hoangtien2k3.ecommerce.event.ProductDataChangeEvent$Operation not found in inter-service method interactions[0m
+[37m2026-10-02 10:54:49,643 [139952136732800] monomorph DEBUG dependencies.py:82 - Class com.hoangtien2k3.ecommerce.dto.order.OrderDto not found in inter-service method interactions[0m
+[37m2026-10-02 10:54:49,643 [139952136732800] monomorph DEBUG dependencies.py:82 - Class com.hoangtien2k3.ecommerce.event.PaymentSuccessEvent not found in inter-service method interactions[0m
+[37m2026-10-02 10:54:49,643 [139952136732800] monomorph DEBUG dependencies.py:82 - Class com.hoangtien2k3.ecommerce.event.UserProfileEvent not found in inter-service method interactions[0m
+[37m2026-10-02 10:54:49,643 [139952136732800] monomorph DEBUG dependencies.py:82 - Class com.hoangtien2k3.ecommerce.model.payment.PaymentStatus not found in inter-service method interactions[0m
+[37m2026-10-02 10:54:49,643 [139952136732800] monomorph DEBUG dependencies.py:82 - Class com.hoangtien2k3.ecommerce.dto.CategoryDto not found in inter-service method interactions[0m
+[37m2026-10-02 10:54:49,643 [139952136732800] monomorph DEBUG dependencies.py:82 - Class com.hoangtien2k3.ecommerce.service.CategoryService not found in inter-service method interactions[0m
+[37m2026-10-02 10:54:49,643 [139952136732800] monomorph DEBUG dependencies.py:82 - Class com.hoangtien2k3.ecommerce.event.ProductDataChangeEvent not found in inter-service method interactions[0m
+[37m2026-10-02 10:54:49,643 [139952136732800] monomorph DEBUG dependencies.py:82 - Class com.hoangtien2k3.ecommerce.model.product.Product not found in inter-service method interactions[0m
+[37m2026-10-02 10:54:49,643 [139952136732800] monomorph DEBUG dependencies.py:82 - Class com.hoangtien2k3.ecommerce.repository.product.ProductRepository not found in inter-service method interactions[0m
+[37m2026-10-02 10:54:49,643 [139952136732800] monomorph DEBUG monomorph.py:172 - Starting the ID or DTO decision process[0m
+[37m2026-10-02 10:54:49,644 [139952136732800] monomorph DEBUG monomorph.py:249 - Initializing the decision workflow[0m
+[37m2026-10-02 10:54:49,644 [139952136732800] monomorph DEBUG monomorph.py:250 - Deciding the approach for 22 classes[0m
+[37m2026-10-02 10:54:50,518 [139952136732800] monomorph DEBUG workflow.py:39 - [workflow]: Using mm_deepseek/deepseek-v4-pro::high as a decision model[0m
+[37m2026-10-02 10:54:50,794 [139952136732800] monomorph DEBUG workflow.py:41 - [workflow]: Using mm_deepseek/deepseek-v4-pro::high as a parsing model[0m
+[37m2026-10-02 10:54:50,918 [139952136732800] monomorph DEBUG monomorph.py:259 - Processing microservice rating-service with 2 API classes[0m
+[37m2026-10-02 10:54:50,918 [139952136732800] monomorph DEBUG monomorph.py:261 - API Class: com.hoangtien2k3.ecommerce.exception.ResourceExistedException[0m
+[37m2026-10-02 10:54:50,918 [139952136732800] monomorph DEBUG monomorph.py:261 - API Class: com.hoangtien2k3.ecommerce.exception.AccessDeniedException[0m
+[37m2026-10-02 10:54:50,918 [139952136732800] monomorph DEBUG monomorph.py:259 - Processing microservice promotion-service with 4 API classes[0m
+[37m2026-10-02 10:54:50,918 [139952136732800] monomorph DEBUG monomorph.py:261 - API Class: com.hoangtien2k3.ecommerce.exception.NotFoundException[0m
+[37m2026-10-02 10:54:50,918 [139952136732800] monomorph DEBUG monomorph.py:261 - API Class: com.hoangtien2k3.ecommerce.utils.MessagesUtils[0m
+[37m2026-10-02 10:54:50,918 [139952136732800] monomorph DEBUG monomorph.py:261 - API Class: com.hoangtien2k3.ecommerce.exception.BadRequestException[0m
+[37m2026-10-02 10:54:50,918 [139952136732800] monomorph DEBUG monomorph.py:261 - API Class: com.hoangtien2k3.ecommerce.exception.DuplicatedException[0m
+[37m2026-10-02 10:54:50,918 [139952136732800] monomorph DEBUG monomorph.py:259 - Processing microservice user-service with 5 API classes[0m
+[37m2026-10-02 10:54:50,918 [139952136732800] monomorph DEBUG monomorph.py:261 - API Class: com.hoangtien2k3.ecommerce.service.UserService[0m
+[37m2026-10-02 10:54:50,918 [139952136732800] monomorph DEBUG monomorph.py:261 - API Class: com.hoangtien2k3.ecommerce.model.user.User[0m
+[37m2026-10-02 10:54:50,918 [139952136732800] monomorph DEBUG monomorph.py:261 - API Class: com.hoangtien2k3.ecommerce.security.jwt.JwtEntryPoint[0m
+[37m2026-10-02 10:54:50,918 [139952136732800] monomorph DEBUG monomorph.py:261 - API Class: com.hoangtien2k3.ecommerce.security.userprinciple.UserDetailService[0m
+[37m2026-10-02 10:54:50,918 [139952136732800] monomorph DEBUG monomorph.py:261 - API Class: com.hoangtien2k3.ecommerce.event.UserProfileEvent[0m
+[37m2026-10-02 10:54:50,918 [139952136732800] monomorph DEBUG monomorph.py:259 - Processing microservice product-service with 7 API classes[0m
+[37m2026-10-02 10:54:50,918 [139952136732800] monomorph DEBUG monomorph.py:261 - API Class: com.hoangtien2k3.ecommerce.service.ProductService[0m
+[37m2026-10-02 10:54:50,919 [139952136732800] monomorph DEBUG monomorph.py:261 - API Class: com.hoangtien2k3.ecommerce.dto.ProductDto[0m
+[37m2026-10-02 10:54:50,919 [139952136732800] monomorph DEBUG monomorph.py:261 - API Class: com.hoangtien2k3.ecommerce.dto.CategoryDto[0m
+[37m2026-10-02 10:54:50,919 [139952136732800] monomorph DEBUG monomorph.py:261 - API Class: com.hoangtien2k3.ecommerce.service.CategoryService[0m
+[37m2026-10-02 10:54:50,919 [139952136732800] monomorph DEBUG monomorph.py:261 - API Class: com.hoangtien2k3.ecommerce.event.ProductDataChangeEvent[0m
+[37m2026-10-02 10:54:50,919 [139952136732800] monomorph DEBUG monomorph.py:261 - API Class: com.hoangtien2k3.ecommerce.model.product.Product[0m
+[37m2026-10-02 10:54:50,919 [139952136732800] monomorph DEBUG monomorph.py:261 - API Class: com.hoangtien2k3.ecommerce.repository.product.ProductRepository[0m
+[37m2026-10-02 10:54:50,919 [139952136732800] monomorph DEBUG monomorph.py:259 - Processing microservice order-service with 2 API classes[0m
+[37m2026-10-02 10:54:50,919 [139952136732800] monomorph DEBUG monomorph.py:261 - API Class: com.hoangtien2k3.ecommerce.service.OrderService[0m
+[37m2026-10-02 10:54:50,919 [139952136732800] monomorph DEBUG monomorph.py:261 - API Class: com.hoangtien2k3.ecommerce.dto.order.OrderDto[0m
+[37m2026-10-02 10:54:50,919 [139952136732800] monomorph DEBUG monomorph.py:259 - Processing microservice payment-service with 2 API classes[0m
+[37m2026-10-02 10:54:50,919 [139952136732800] monomorph DEBUG monomorph.py:261 - API Class: com.hoangtien2k3.ecommerce.event.PaymentSuccessEvent[0m
+[37m2026-10-02 10:54:50,919 [139952136732800] monomorph DEBUG monomorph.py:261 - API Class: com.hoangtien2k3.ecommerce.model.payment.PaymentStatus[0m
+[37m2026-10-02 10:54:50,919 [139952136732800] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class com.hoangtien2k3.ecommerce.exception.ResourceExistedException in microservice rating-service[0m
+[37m2026-10-02 10:54:50,919 [139952136732800] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:54:50,988 [139952136732800] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:54:50,989 [139952136732800] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:54:50,989 [139952136732800] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:54:50,989 [139952136732800] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:54:50,989 [139952136732800] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:54:50,991 [139952136732800] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:54:55,497 [139952136732800] monomorph DEBUG checkpoints.py:122 - Saved 1 checkpoints for experiment: ecommerce-v1[0m
+[37m2026-10-02 10:54:55,497 [139952136732800] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 58def01a812a05d479f5d0410634c291 to experiment: ecommerce-v1[0m
+[37m2026-10-02 10:54:55,498 [139952136732800] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:54:55,498 [139952136732800] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:54:55,500 [139951263971008] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class ResourceExistedException[0m
+[37m2026-10-02 10:54:55,501 [139951263971008] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class MessagesUtils[0m
+[37m2026-10-02 10:54:55,502 [139952136732800] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:54:58,179 [139952136732800] monomorph DEBUG checkpoints.py:122 - Saved 2 checkpoints for experiment: ecommerce-v1[0m
+[37m2026-10-02 10:54:58,179 [139952136732800] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: ef92645954651a5646f63840b2783264 to experiment: ecommerce-v1[0m
+[37m2026-10-02 10:54:58,179 [139952136732800] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:54:58,180 [139952136732800] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 1 tools[0m
+[37m2026-10-02 10:54:58,183 [139951263971008] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class CommonApiExceptionHandler[0m
+[37m2026-10-02 10:54:58,184 [139952136732800] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:55:08,037 [139952136732800] monomorph DEBUG checkpoints.py:122 - Saved 3 checkpoints for experiment: ecommerce-v1[0m
+[37m2026-10-02 10:55:08,037 [139952136732800] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: dc0bf82a00b8e311a75f276393a65ecf to experiment: ecommerce-v1[0m
+[37m2026-10-02 10:55:08,037 [139952136732800] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:55:08,038 [139952136732800] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 1 tools[0m
+[37m2026-10-02 10:55:08,040 [139951263971008] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class ErrorVm[0m
+[33m2026-10-02 10:55:08,040 [139951263971008] monomorph WARNING tools.py:52 - [default]: Class None not found in the application model.[0m
+[37m2026-10-02 10:55:08,041 [139952136732800] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:55:29,519 [139952136732800] monomorph DEBUG checkpoints.py:122 - Saved 4 checkpoints for experiment: ecommerce-v1[0m
+[37m2026-10-02 10:55:29,519 [139952136732800] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 8b8aba02d891e1691038443c9db31ffb to experiment: ecommerce-v1[0m
+[37m2026-10-02 10:55:29,519 [139952136732800] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:55:29,520 [139952136732800] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:55:29,520 [139952136732800] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:55:29,520 [139952136732800] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:55:34,618 [139951263971008] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:55:34,624 [139952136732800] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:55:34,625 [139952136732800] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:55:34,625 [139952136732800] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:55:34,625 [139952136732800] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:55:34,625 [139952136732800] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:55:34,626 [139952136732800] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/ecommerce/output/llm_responses/ecommerce-2610021054-ecom/com/hoangtien2k3/ecommerce/decision_logs/com.hoangtien2k3.ecommerce.exception.ResourceExistedException.md[0m
+[37m2026-10-02 10:55:34,626 [139952136732800] monomorph DEBUG monomorph.py:287 - Decision workflow returned DTO-based decision for class com.hoangtien2k3.ecommerce.exception.ResourceExistedException[0m
+[37m2026-10-02 10:55:34,626 [139952136732800] monomorph DEBUG monomorph.py:268 - Class com.hoangtien2k3.ecommerce.exception.AccessDeniedException is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:55:34,626 [139952136732800] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class com.hoangtien2k3.ecommerce.exception.NotFoundException in microservice promotion-service[0m
+[37m2026-10-02 10:55:34,627 [139952136732800] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:55:34,698 [139952136732800] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:55:34,698 [139952136732800] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:55:34,698 [139952136732800] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:55:34,698 [139952136732800] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:55:34,698 [139952136732800] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:55:34,699 [139952136732800] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:55:38,081 [139952136732800] monomorph DEBUG checkpoints.py:122 - Saved 5 checkpoints for experiment: ecommerce-v1[0m
+[37m2026-10-02 10:55:38,081 [139952136732800] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: a52e55012337df223492cce5bb0104f3 to experiment: ecommerce-v1[0m
+[37m2026-10-02 10:55:38,081 [139952136732800] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:55:38,082 [139952136732800] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:55:38,084 [139951263971008] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class NotFoundException[0m
+[37m2026-10-02 10:55:38,086 [139951263971008] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class MessagesUtils[0m
+[37m2026-10-02 10:55:38,095 [139952136732800] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:55:40,322 [139952136732800] monomorph DEBUG checkpoints.py:122 - Saved 6 checkpoints for experiment: ecommerce-v1[0m
+[37m2026-10-02 10:55:40,322 [139952136732800] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 459acbfac5bf5d4818e709d659592986 to experiment: ecommerce-v1[0m
+[37m2026-10-02 10:55:40,322 [139952136732800] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:55:40,322 [139952136732800] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 1 tools[0m
+[37m2026-10-02 10:55:40,324 [139951263971008] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class CommonApiExceptionHandler[0m
+[37m2026-10-02 10:55:40,325 [139952136732800] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:55:52,108 [139952136732800] monomorph DEBUG checkpoints.py:122 - Saved 7 checkpoints for experiment: ecommerce-v1[0m
+[37m2026-10-02 10:55:52,108 [139952136732800] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 02b18aa1fcbacce7cb74b1ac64ecc982 to experiment: ecommerce-v1[0m
+[37m2026-10-02 10:55:52,109 [139952136732800] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:55:52,109 [139952136732800] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 1 tools[0m
+[37m2026-10-02 10:55:52,113 [139951263971008] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class ErrorVm[0m
+[33m2026-10-02 10:55:52,113 [139951263971008] monomorph WARNING tools.py:52 - [default]: Class None not found in the application model.[0m
+[37m2026-10-02 10:55:52,114 [139952136732800] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:56:08,416 [139952136732800] monomorph DEBUG checkpoints.py:122 - Saved 8 checkpoints for experiment: ecommerce-v1[0m
+[37m2026-10-02 10:56:08,417 [139952136732800] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 6bcba93623a5d816a3a91cac52ce0bc3 to experiment: ecommerce-v1[0m
+[37m2026-10-02 10:56:08,417 [139952136732800] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:56:08,417 [139952136732800] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:56:08,418 [139952136732800] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:56:08,418 [139952136732800] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:56:20,688 [139951263971008] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:56:20,692 [139952136732800] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:56:20,692 [139952136732800] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:56:20,693 [139952136732800] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:56:20,693 [139952136732800] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:56:20,693 [139952136732800] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:56:20,693 [139952136732800] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/ecommerce/output/llm_responses/ecommerce-2610021054-ecom/com/hoangtien2k3/ecommerce/decision_logs/com.hoangtien2k3.ecommerce.exception.NotFoundException.md[0m
+[37m2026-10-02 10:56:20,693 [139952136732800] monomorph DEBUG monomorph.py:287 - Decision workflow returned DTO-based decision for class com.hoangtien2k3.ecommerce.exception.NotFoundException[0m
+[37m2026-10-02 10:56:20,693 [139952136732800] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class com.hoangtien2k3.ecommerce.utils.MessagesUtils in microservice promotion-service[0m
+[37m2026-10-02 10:56:20,693 [139952136732800] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:56:20,694 [139952136732800] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:56:20,694 [139952136732800] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:56:20,694 [139952136732800] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:56:20,694 [139952136732800] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:56:20,694 [139952136732800] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:56:20,695 [139952136732800] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:56:24,283 [139952136732800] monomorph DEBUG checkpoints.py:122 - Saved 9 checkpoints for experiment: ecommerce-v1[0m
+[37m2026-10-02 10:56:24,284 [139952136732800] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 6a19fc5335ab5d6e53f5c46cf8f008c6 to experiment: ecommerce-v1[0m
+[37m2026-10-02 10:56:24,284 [139952136732800] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:56:24,284 [139952136732800] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 1 tools[0m
+[37m2026-10-02 10:56:24,286 [139951263971008] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class MessagesUtils[0m
+[37m2026-10-02 10:56:24,287 [139952136732800] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:56:31,167 [139952136732800] monomorph DEBUG checkpoints.py:122 - Saved 10 checkpoints for experiment: ecommerce-v1[0m
+[37m2026-10-02 10:56:31,167 [139952136732800] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 915955b5dd954c67d0e18ff8ba4e217f to experiment: ecommerce-v1[0m
+[37m2026-10-02 10:56:31,168 [139952136732800] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:56:31,168 [139952136732800] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 4 tools[0m
+[37m2026-10-02 10:56:31,170 [139951263971008] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class NotFoundException[0m
+[37m2026-10-02 10:56:31,171 [139951263971008] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class ResourceExistedException[0m
+[37m2026-10-02 10:56:31,172 [139951263971008] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class BadRequestException[0m
+[37m2026-10-02 10:56:31,172 [139951263971008] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class InternalServerErrorException[0m
+[37m2026-10-02 10:56:31,174 [139952136732800] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:56:52,356 [139952136732800] monomorph DEBUG checkpoints.py:122 - Saved 11 checkpoints for experiment: ecommerce-v1[0m
+[37m2026-10-02 10:56:52,356 [139952136732800] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: e74ab91d6097fbb9ecd17e105a34bfbb to experiment: ecommerce-v1[0m
+[37m2026-10-02 10:56:52,357 [139952136732800] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:56:52,357 [139952136732800] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:56:52,358 [139952136732800] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:56:52,358 [139952136732800] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:57:00,294 [139951255578304] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:57:00,299 [139952136732800] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:57:00,299 [139952136732800] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:57:00,300 [139952136732800] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:57:00,300 [139952136732800] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:57:00,300 [139952136732800] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:57:00,300 [139952136732800] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/ecommerce/output/llm_responses/ecommerce-2610021054-ecom/com/hoangtien2k3/ecommerce/decision_logs/com.hoangtien2k3.ecommerce.utils.MessagesUtils.md[0m
+[37m2026-10-02 10:57:00,300 [139952136732800] monomorph DEBUG monomorph.py:287 - Decision workflow returned DTO-based decision for class com.hoangtien2k3.ecommerce.utils.MessagesUtils[0m
+[37m2026-10-02 10:57:00,300 [139952136732800] monomorph DEBUG monomorph.py:268 - Class com.hoangtien2k3.ecommerce.exception.BadRequestException is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:57:00,300 [139952136732800] monomorph DEBUG monomorph.py:268 - Class com.hoangtien2k3.ecommerce.exception.DuplicatedException is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:57:00,301 [139952136732800] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class com.hoangtien2k3.ecommerce.service.UserService in microservice user-service[0m
+[37m2026-10-02 10:57:00,301 [139952136732800] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:57:00,372 [139952136732800] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:57:00,372 [139952136732800] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:57:00,372 [139952136732800] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:57:00,372 [139952136732800] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:57:00,373 [139952136732800] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:57:00,374 [139952136732800] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:57:06,914 [139952136732800] monomorph DEBUG checkpoints.py:122 - Saved 12 checkpoints for experiment: ecommerce-v1[0m
+[37m2026-10-02 10:57:06,914 [139952136732800] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 808cfa49486962e86f6de31f07ccbc9d to experiment: ecommerce-v1[0m
+[37m2026-10-02 10:57:06,915 [139952136732800] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:57:06,915 [139952136732800] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 3 tools[0m
+[37m2026-10-02 10:57:06,917 [139951255578304] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class UserService[0m
+[37m2026-10-02 10:57:06,918 [139951263971008] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class UserDto[0m
+[37m2026-10-02 10:57:06,919 [139951255578304] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class User[0m
+[37m2026-10-02 10:57:06,921 [139952136732800] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:57:12,394 [139952136732800] monomorph DEBUG checkpoints.py:122 - Saved 13 checkpoints for experiment: ecommerce-v1[0m
+[37m2026-10-02 10:57:12,394 [139952136732800] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 5c63acebdabb6cbd64067dadc363bf4d to experiment: ecommerce-v1[0m
+[37m2026-10-02 10:57:12,395 [139952136732800] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:57:12,395 [139952136732800] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 3 tools[0m
+[37m2026-10-02 10:57:12,396 [139951255578304] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class FavouriteServiceImpl[0m
+[37m2026-10-02 10:57:12,397 [139951255578304] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class PaymentServiceImpl[0m
+[37m2026-10-02 10:57:12,398 [139951255578304] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class CartServiceImpl[0m
+[37m2026-10-02 10:57:12,399 [139952136732800] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:57:35,347 [139952136732800] monomorph DEBUG checkpoints.py:122 - Saved 14 checkpoints for experiment: ecommerce-v1[0m
+[37m2026-10-02 10:57:35,347 [139952136732800] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: d4f47558523818d6dfbf3058d82d4ee5 to experiment: ecommerce-v1[0m
+[37m2026-10-02 10:57:35,347 [139952136732800] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:57:35,348 [139952136732800] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:57:35,348 [139952136732800] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:57:35,349 [139952136732800] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:57:39,676 [139951263971008] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:57:39,682 [139952136732800] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:57:39,682 [139952136732800] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:57:39,682 [139952136732800] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:57:39,682 [139952136732800] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:57:39,682 [139952136732800] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:57:39,683 [139952136732800] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/ecommerce/output/llm_responses/ecommerce-2610021054-ecom/com/hoangtien2k3/ecommerce/decision_logs/com.hoangtien2k3.ecommerce.service.UserService.md[0m
+[37m2026-10-02 10:57:39,683 [139952136732800] monomorph DEBUG monomorph.py:287 - Decision workflow returned DTO-based decision for class com.hoangtien2k3.ecommerce.service.UserService[0m
+[37m2026-10-02 10:57:39,683 [139952136732800] monomorph DEBUG monomorph.py:268 - Class com.hoangtien2k3.ecommerce.model.user.User is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:57:39,683 [139952136732800] monomorph DEBUG monomorph.py:268 - Class com.hoangtien2k3.ecommerce.security.jwt.JwtEntryPoint is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:57:39,683 [139952136732800] monomorph DEBUG monomorph.py:268 - Class com.hoangtien2k3.ecommerce.security.userprinciple.UserDetailService is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:57:39,683 [139952136732800] monomorph DEBUG monomorph.py:268 - Class com.hoangtien2k3.ecommerce.event.UserProfileEvent is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:57:39,683 [139952136732800] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class com.hoangtien2k3.ecommerce.service.ProductService in microservice product-service[0m
+[37m2026-10-02 10:57:39,683 [139952136732800] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:57:39,759 [139952136732800] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:57:39,760 [139952136732800] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:57:39,760 [139952136732800] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:57:39,760 [139952136732800] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:57:39,760 [139952136732800] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:57:39,761 [139952136732800] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:57:43,129 [139952136732800] monomorph DEBUG checkpoints.py:122 - Saved 15 checkpoints for experiment: ecommerce-v1[0m
+[37m2026-10-02 10:57:43,129 [139952136732800] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 308ed5b2efeea885e2a5270d9242e08a to experiment: ecommerce-v1[0m
+[37m2026-10-02 10:57:43,130 [139952136732800] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:57:43,130 [139952136732800] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:57:43,132 [139951263971008] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class ProductService[0m
+[37m2026-10-02 10:57:43,132 [139951263971008] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class ProductDto[0m
+[37m2026-10-02 10:57:43,133 [139952136732800] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:57:48,350 [139952136732800] monomorph DEBUG checkpoints.py:122 - Saved 16 checkpoints for experiment: ecommerce-v1[0m
+[37m2026-10-02 10:57:48,350 [139952136732800] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: d922a9942cb06bb8781290a2f0d3af43 to experiment: ecommerce-v1[0m
+[37m2026-10-02 10:57:48,350 [139952136732800] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:57:48,351 [139952136732800] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 4 tools[0m
+[37m2026-10-02 10:57:48,353 [139951263971008] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class OrderServiceImpl[0m
+[37m2026-10-02 10:57:48,354 [139951263971008] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class FavouriteServiceImpl[0m
+[37m2026-10-02 10:57:48,354 [139951263971008] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class OrderItemServiceImpl[0m
+[37m2026-10-02 10:57:48,358 [139951263971008] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class PromotionService[0m
+[37m2026-10-02 10:57:48,359 [139952136732800] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:58:03,521 [139952136732800] monomorph DEBUG checkpoints.py:122 - Saved 17 checkpoints for experiment: ecommerce-v1[0m
+[37m2026-10-02 10:58:03,521 [139952136732800] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: c27837ef4a173f51109b90756b379641 to experiment: ecommerce-v1[0m
+[37m2026-10-02 10:58:03,521 [139952136732800] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:58:03,522 [139952136732800] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 1 tools[0m
+[37m2026-10-02 10:58:03,524 [139951263971008] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class ProductController[0m
+[37m2026-10-02 10:58:03,525 [139952136732800] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:58:19,120 [139952136732800] monomorph DEBUG checkpoints.py:122 - Saved 18 checkpoints for experiment: ecommerce-v1[0m
+[37m2026-10-02 10:58:19,120 [139952136732800] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: aca8434a4ec8e0e28cf63595284368c7 to experiment: ecommerce-v1[0m
+[37m2026-10-02 10:58:19,120 [139952136732800] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:58:19,121 [139952136732800] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:58:19,122 [139952136732800] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:58:19,122 [139952136732800] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:58:25,949 [139951263971008] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:58:25,956 [139952136732800] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:58:25,956 [139952136732800] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:58:25,956 [139952136732800] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:58:25,956 [139952136732800] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:58:25,957 [139952136732800] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:58:25,957 [139952136732800] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/ecommerce/output/llm_responses/ecommerce-2610021054-ecom/com/hoangtien2k3/ecommerce/decision_logs/com.hoangtien2k3.ecommerce.service.ProductService.md[0m
+[37m2026-10-02 10:58:25,957 [139952136732800] monomorph DEBUG monomorph.py:287 - Decision workflow returned DTO-based decision for class com.hoangtien2k3.ecommerce.service.ProductService[0m
+[37m2026-10-02 10:58:25,957 [139952136732800] monomorph DEBUG monomorph.py:268 - Class com.hoangtien2k3.ecommerce.dto.ProductDto is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:58:25,957 [139952136732800] monomorph DEBUG monomorph.py:268 - Class com.hoangtien2k3.ecommerce.dto.CategoryDto is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:58:25,957 [139952136732800] monomorph DEBUG monomorph.py:268 - Class com.hoangtien2k3.ecommerce.service.CategoryService is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:58:25,957 [139952136732800] monomorph DEBUG monomorph.py:268 - Class com.hoangtien2k3.ecommerce.event.ProductDataChangeEvent is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:58:25,957 [139952136732800] monomorph DEBUG monomorph.py:268 - Class com.hoangtien2k3.ecommerce.model.product.Product is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:58:25,959 [139952136732800] monomorph DEBUG monomorph.py:268 - Class com.hoangtien2k3.ecommerce.repository.product.ProductRepository is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:58:25,959 [139952136732800] monomorph DEBUG monomorph.py:277 - Invoking the decision workflow for class com.hoangtien2k3.ecommerce.service.OrderService in microservice order-service[0m
+[37m2026-10-02 10:58:25,959 [139952136732800] monomorph DEBUG workflow.py:160 - [workflow]: Preprocessing workflow inputs[0m
+[32m2026-10-02 10:58:26,037 [139952136732800] monomorph INFO workflow.py:162 - [workflow]: Starting Graph Execution[0m
+[37m2026-10-02 10:58:26,038 [139952136732800] monomorph DEBUG workflow.py:85 - [workflow]: Preparing System and first user prompts[0m
+[37m2026-10-02 10:58:26,038 [139952136732800] monomorph DEBUG workflow.py:88 - [system]: System Message[0m
+[37m2026-10-02 10:58:26,038 [139952136732800] monomorph DEBUG workflow.py:93 - [user]: User Message[0m
+[37m2026-10-02 10:58:26,038 [139952136732800] monomorph DEBUG workflow.py:99 - [workflow]: Invoking ID and DTO Decision Graph[0m
+[37m2026-10-02 10:58:26,039 [139952136732800] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:58:31,097 [139952136732800] monomorph DEBUG checkpoints.py:122 - Saved 19 checkpoints for experiment: ecommerce-v1[0m
+[37m2026-10-02 10:58:31,097 [139952136732800] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 10ca60abf19231aafc1c0babf605d26e to experiment: ecommerce-v1[0m
+[37m2026-10-02 10:58:31,097 [139952136732800] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:58:31,099 [139952136732800] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:58:31,102 [139951263971008] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class OrderService[0m
+[37m2026-10-02 10:58:31,104 [139951263971008] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class OrderDto[0m
+[37m2026-10-02 10:58:31,106 [139952136732800] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:58:35,260 [139952136732800] monomorph DEBUG checkpoints.py:122 - Saved 20 checkpoints for experiment: ecommerce-v1[0m
+[37m2026-10-02 10:58:35,261 [139952136732800] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 82f1c3c613133a8fbd44ad30b0b2076d to experiment: ecommerce-v1[0m
+[37m2026-10-02 10:58:35,261 [139952136732800] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:58:35,261 [139952136732800] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 3 tools[0m
+[37m2026-10-02 10:58:35,263 [139951263971008] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class PaymentServiceImpl[0m
+[37m2026-10-02 10:58:35,265 [139951263971008] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class OrderItemServiceImpl[0m
+[37m2026-10-02 10:58:35,266 [139951263971008] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class OrderController[0m
+[37m2026-10-02 10:58:35,267 [139952136732800] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:58:55,716 [139952136732800] monomorph DEBUG checkpoints.py:122 - Saved 21 checkpoints for experiment: ecommerce-v1[0m
+[37m2026-10-02 10:58:55,716 [139952136732800] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: a8c9339d53ef8ad37461635d10584edf to experiment: ecommerce-v1[0m
+[37m2026-10-02 10:58:55,717 [139952136732800] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:58:55,717 [139952136732800] monomorph DEBUG nodes.py:112 - [node]: Decision made: invoking 2 tools[0m
+[37m2026-10-02 10:58:55,719 [139951263971008] monomorph DEBUG tools.py:42 - [tool]: 'get_source_code' invoked for class OrderServiceImpl[0m
+[37m2026-10-02 10:58:55,721 [139951263971008] monomorph DEBUG tools.py:78 - [tool]: 'find_class_usages' invoked for class OrderDto[0m
+[37m2026-10-02 10:58:55,723 [139952136732800] monomorph DEBUG nodes.py:61 - [node]: Calling decision model[0m
+[37m2026-10-02 10:59:19,844 [139952136732800] monomorph DEBUG checkpoints.py:122 - Saved 22 checkpoints for experiment: ecommerce-v1[0m
+[37m2026-10-02 10:59:19,844 [139952136732800] monomorph DEBUG checkpoints.py:296 - Saved checkpoint: 54546889d92bd425c368f2def58e9400 to experiment: ecommerce-v1[0m
+[37m2026-10-02 10:59:19,845 [139952136732800] monomorph DEBUG nodes.py:69 - [node]: decision model responded[0m
+[37m2026-10-02 10:59:19,846 [139952136732800] monomorph DEBUG nodes.py:116 - [node]: Decision made: Proceeding to final parsing[0m
+[37m2026-10-02 10:59:19,847 [139952136732800] monomorph DEBUG nodes.py:151 - [node]: Attempting parsing (1/3) with parsing model[0m
+[37m2026-10-02 10:59:19,847 [139952136732800] monomorph DEBUG nodes.py:164 - [node]: Using last AI message for parsing[0m
+[33m2026-10-02 10:59:29,110 [139951263971008] monomorph WARNING checkpoints.py:263 - Cannot save checkpoint - no checkpoint_id generated[0m
+[37m2026-10-02 10:59:29,119 [139952136732800] monomorph DEBUG nodes.py:128 - [node]: Parsing successful, Ending workflow[0m
+[37m2026-10-02 10:59:29,119 [139952136732800] monomorph DEBUG workflow.py:198 - [workflow]: Postprocessing Final State[0m
+[37m2026-10-02 10:59:29,120 [139952136732800] monomorph DEBUG workflow.py:211 - [workflow]: Final Refactoring Decision (Parsed Successfully)[0m
+[37m2026-10-02 10:59:29,120 [139952136732800] monomorph DEBUG workflow.py:182 - [workflow]: Creating Conversation Log[0m
+[32m2026-10-02 10:59:29,120 [139952136732800] monomorph INFO workflow.py:173 - [workflow]: Graph Execution Completed[0m
+[37m2026-10-02 10:59:29,120 [139952136732800] monomorph DEBUG monomorph.py:316 - Saving decision log in /home/user/monomorph/runs/v1/ecommerce/output/llm_responses/ecommerce-2610021054-ecom/com/hoangtien2k3/ecommerce/decision_logs/com.hoangtien2k3.ecommerce.service.OrderService.md[0m
+[37m2026-10-02 10:59:29,121 [139952136732800] monomorph DEBUG monomorph.py:291 - Decision workflow returned ID-based decision for class com.hoangtien2k3.ecommerce.service.OrderService[0m
+[37m2026-10-02 10:59:29,121 [139952136732800] monomorph DEBUG monomorph.py:268 - Class com.hoangtien2k3.ecommerce.dto.order.OrderDto is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:59:29,121 [139952136732800] monomorph DEBUG monomorph.py:268 - Class com.hoangtien2k3.ecommerce.event.PaymentSuccessEvent is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:59:29,121 [139952136732800] monomorph DEBUG monomorph.py:268 - Class com.hoangtien2k3.ecommerce.model.payment.PaymentStatus is a DTO-only class. Skipping decision workflow.[0m
+[37m2026-10-02 10:59:29,121 [139952136732800] monomorph DEBUG monomorph.py:302 - Decision workflow completed[0m
+[37m2026-10-02 10:59:29,121 [139952136732800] monomorph DEBUG monomorph.py:303 - ID-based classes: 1[0m
+[37m2026-10-02 10:59:29,121 [139952136732800] monomorph DEBUG monomorph.py:304 - DTO-based classes: 5[0m
+[37m2026-10-02 10:59:29,121 [139952136732800] monomorph DEBUG monomorph.py:305 - DTO-only classes: 16[0m
+[37m2026-10-02 10:59:29,121 [139952136732800] monomorph DEBUG monomorph.py:306 - Failures: 0[0m
+[37m2026-10-02 10:59:29,121 [139952136732800] monomorph DEBUG monomorph.py:175 - Preparing the helper and template manager[0m
+[37m2026-10-02 10:59:29,122 [139952136732800] monomorph DEBUG monomorph.py:177 - Searching for nested classes[0m
+[37m2026-10-02 10:59:29,122 [139952136732800] monomorph DEBUG proxies.py:177 - Found a reference to com.hoangtien2k3.ecommerce.repository.user.UserRepository in com.hoangtien2k3.ecommerce.security.userprinciple.UserDetailService as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 10:59:29,123 [139952136732800] monomorph DEBUG proxies.py:177 - Found a reference to com.hoangtien2k3.ecommerce.dto.EmailDetails in com.hoangtien2k3.ecommerce.event.UserProfileEvent as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 10:59:29,123 [139952136732800] monomorph DEBUG proxies.py:177 - Found a reference to com.hoangtien2k3.ecommerce.event.ProductDataChangeEvent$Operation in com.hoangtien2k3.ecommerce.event.ProductDataChangeEvent as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 10:59:29,123 [139952136732800] monomorph DEBUG proxies.py:177 - Found a reference to com.hoangtien2k3.ecommerce.model.product.Category in com.hoangtien2k3.ecommerce.model.product.Product as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 10:59:29,123 [139952136732800] monomorph DEBUG proxies.py:177 - Found a reference to com.hoangtien2k3.ecommerce.dto.response.ProductResponse in com.hoangtien2k3.ecommerce.dto.order.OrderDto as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 10:59:29,123 [139952136732800] monomorph DEBUG proxies.py:177 - Found a reference to com.hoangtien2k3.ecommerce.dto.order.CartDto in com.hoangtien2k3.ecommerce.dto.order.OrderDto as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 10:59:29,123 [139952136732800] monomorph DEBUG proxies.py:177 - Found a reference to com.hoangtien2k3.ecommerce.dto.PaymentEventDto in com.hoangtien2k3.ecommerce.event.PaymentSuccessEvent as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 10:59:29,123 [139952136732800] monomorph DEBUG proxies.py:109 - Found 7 classes that were part of the API communication.[0m
+[37m2026-10-02 10:59:29,123 [139952136732800] monomorph DEBUG proxies.py:116 - Iteration 0 - Handling 7 new API classes.[0m
+[37m2026-10-02 10:59:29,123 [139952136732800] monomorph DEBUG proxies.py:118 - Treating class com.hoangtien2k3.ecommerce.event.ProductDataChangeEvent$Operation as DTO-Only.[0m
+[37m2026-10-02 10:59:29,123 [139952136732800] monomorph DEBUG proxies.py:118 - Treating class com.hoangtien2k3.ecommerce.dto.EmailDetails as DTO-Only.[0m
+[37m2026-10-02 10:59:29,123 [139952136732800] monomorph DEBUG proxies.py:118 - Treating class com.hoangtien2k3.ecommerce.repository.user.UserRepository as DTO-Only.[0m
+[37m2026-10-02 10:59:29,123 [139952136732800] monomorph DEBUG proxies.py:118 - Treating class com.hoangtien2k3.ecommerce.dto.response.ProductResponse as DTO-Only.[0m
+[37m2026-10-02 10:59:29,124 [139952136732800] monomorph DEBUG proxies.py:177 - Found a reference to com.hoangtien2k3.ecommerce.dto.response.CategoryResponse in com.hoangtien2k3.ecommerce.dto.response.ProductResponse as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 10:59:29,124 [139952136732800] monomorph DEBUG proxies.py:118 - Treating class com.hoangtien2k3.ecommerce.model.product.Category as DTO-Only.[0m
+[37m2026-10-02 10:59:29,124 [139952136732800] monomorph DEBUG proxies.py:118 - Treating class com.hoangtien2k3.ecommerce.dto.order.CartDto as DTO-Only.[0m
+[37m2026-10-02 10:59:29,124 [139952136732800] monomorph DEBUG proxies.py:177 - Found a reference to com.hoangtien2k3.ecommerce.dto.response.UserResponse in com.hoangtien2k3.ecommerce.dto.order.CartDto as input/output/field. Adding it to planned DTOs.[0m
+[37m2026-10-02 10:59:29,124 [139952136732800] monomorph DEBUG proxies.py:118 - Treating class com.hoangtien2k3.ecommerce.dto.PaymentEventDto as DTO-Only.[0m
+[37m2026-10-02 10:59:29,124 [139952136732800] monomorph DEBUG proxies.py:116 - Iteration 1 - Handling 2 new API classes.[0m
+[37m2026-10-02 10:59:29,124 [139952136732800] monomorph DEBUG proxies.py:118 - Treating class com.hoangtien2k3.ecommerce.dto.response.CategoryResponse as DTO-Only.[0m
+[37m2026-10-02 10:59:29,124 [139952136732800] monomorph DEBUG proxies.py:118 - Treating class com.hoangtien2k3.ecommerce.dto.response.UserResponse as DTO-Only.[0m
+[37m2026-10-02 10:59:29,124 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.ResourceExistedException in user-service[0m
+[37m2026-10-02 10:59:29,124 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.ResourceExistedException in product-service[0m
+[37m2026-10-02 10:59:29,124 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.ResourceExistedException in shipping-service[0m
+[37m2026-10-02 10:59:29,124 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.ResourceExistedException in media-service[0m
+[37m2026-10-02 10:59:29,124 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.ResourceExistedException in search-service[0m
+[37m2026-10-02 10:59:29,124 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.ResourceExistedException in favourite-service[0m
+[37m2026-10-02 10:59:29,124 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.ResourceExistedException in order-service[0m
+[37m2026-10-02 10:59:29,124 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.ResourceExistedException in tax-service[0m
+[37m2026-10-02 10:59:29,125 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.ResourceExistedException in notification-service[0m
+[37m2026-10-02 10:59:29,125 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.ResourceExistedException in inventory-service[0m
+[37m2026-10-02 10:59:29,125 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.ResourceExistedException in promotion-service[0m
+[37m2026-10-02 10:59:29,125 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.ResourceExistedException in payment-service[0m
+[37m2026-10-02 10:59:29,125 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.AccessDeniedException in user-service[0m
+[37m2026-10-02 10:59:29,125 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.AccessDeniedException in product-service[0m
+[37m2026-10-02 10:59:29,125 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.AccessDeniedException in shipping-service[0m
+[37m2026-10-02 10:59:29,125 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.AccessDeniedException in media-service[0m
+[37m2026-10-02 10:59:29,125 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.AccessDeniedException in search-service[0m
+[37m2026-10-02 10:59:29,125 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.AccessDeniedException in favourite-service[0m
+[37m2026-10-02 10:59:29,125 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.AccessDeniedException in order-service[0m
+[37m2026-10-02 10:59:29,125 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.AccessDeniedException in tax-service[0m
+[37m2026-10-02 10:59:29,125 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.AccessDeniedException in notification-service[0m
+[37m2026-10-02 10:59:29,125 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.AccessDeniedException in inventory-service[0m
+[37m2026-10-02 10:59:29,125 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.AccessDeniedException in promotion-service[0m
+[37m2026-10-02 10:59:29,125 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.AccessDeniedException in payment-service[0m
+[37m2026-10-02 10:59:29,125 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.NotFoundException in user-service[0m
+[37m2026-10-02 10:59:29,125 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.NotFoundException in product-service[0m
+[37m2026-10-02 10:59:29,128 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.NotFoundException in shipping-service[0m
+[37m2026-10-02 10:59:29,129 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.NotFoundException in media-service[0m
+[37m2026-10-02 10:59:29,129 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.NotFoundException in search-service[0m
+[37m2026-10-02 10:59:29,129 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.NotFoundException in favourite-service[0m
+[37m2026-10-02 10:59:29,129 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.NotFoundException in order-service[0m
+[37m2026-10-02 10:59:29,129 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.NotFoundException in notification-service[0m
+[37m2026-10-02 10:59:29,129 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.NotFoundException in inventory-service[0m
+[37m2026-10-02 10:59:29,129 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.NotFoundException in payment-service[0m
+[37m2026-10-02 10:59:29,129 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.InternalServerErrorException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in inventory-service[0m
+[37m2026-10-02 10:59:29,129 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.WrongEmailFormatException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in product-service[0m
+[37m2026-10-02 10:59:29,129 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.SignInRequiredException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in media-service[0m
+[37m2026-10-02 10:59:29,129 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.WrongEmailFormatException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in search-service[0m
+[37m2026-10-02 10:59:29,129 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.ForbiddenException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in user-service[0m
+[37m2026-10-02 10:59:29,129 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.SignInRequiredException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in favourite-service[0m
+[37m2026-10-02 10:59:29,129 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.Forbidden to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in inventory-service[0m
+[37m2026-10-02 10:59:29,130 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.WrongEmailFormatException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in notification-service[0m
+[37m2026-10-02 10:59:29,130 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.SignInRequiredException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in user-service[0m
+[37m2026-10-02 10:59:29,130 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.InternalServerErrorException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in product-service[0m
+[37m2026-10-02 10:59:29,130 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.StockExistingException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in shipping-service[0m
+[37m2026-10-02 10:59:29,130 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.ForbiddenException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in order-service[0m
+[37m2026-10-02 10:59:29,130 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.Forbidden to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in product-service[0m
+[37m2026-10-02 10:59:29,130 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.Forbidden to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in search-service[0m
+[37m2026-10-02 10:59:29,130 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.InternalServerErrorException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in search-service[0m
+[37m2026-10-02 10:59:29,130 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.InternalServerErrorException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in notification-service[0m
+[37m2026-10-02 10:59:29,130 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.SignInRequiredException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in order-service[0m
+[37m2026-10-02 10:59:29,130 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.WrongEmailFormatException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in shipping-service[0m
+[37m2026-10-02 10:59:29,130 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.ForbiddenException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in inventory-service[0m
+[37m2026-10-02 10:59:29,130 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.Forbidden to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in notification-service[0m
+[37m2026-10-02 10:59:29,130 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.StockExistingException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in payment-service[0m
+[37m2026-10-02 10:59:29,130 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.SignInRequiredException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in inventory-service[0m
+[37m2026-10-02 10:59:29,130 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.ForbiddenException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in product-service[0m
+[37m2026-10-02 10:59:29,130 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.StockExistingException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in media-service[0m
+[37m2026-10-02 10:59:29,130 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.ForbiddenException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in search-service[0m
+[37m2026-10-02 10:59:29,130 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.WrongEmailFormatException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in payment-service[0m
+[37m2026-10-02 10:59:29,130 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.SignInRequiredException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in product-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.StockExistingException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in favourite-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.Forbidden to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in shipping-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.InternalServerErrorException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in shipping-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.ForbiddenException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in notification-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.SignInRequiredException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in search-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.WrongEmailFormatException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in media-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.StockExistingException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in user-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.SignInRequiredException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in notification-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.WrongEmailFormatException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in favourite-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.InternalServerErrorException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in payment-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.Forbidden to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in payment-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.StockExistingException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in order-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.InternalServerErrorException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in media-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.ForbiddenException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in shipping-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.WrongEmailFormatException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in user-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.InternalServerErrorException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in favourite-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.Forbidden to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in media-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.StockExistingException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in inventory-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.SignInRequiredException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in shipping-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.Forbidden to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in favourite-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.WrongEmailFormatException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in order-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.StockExistingException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in product-service[0m
+[37m2026-10-02 10:59:29,131 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.InternalServerErrorException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in user-service[0m
+[37m2026-10-02 10:59:29,132 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.Forbidden to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in order-service[0m
+[37m2026-10-02 10:59:29,132 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.ForbiddenException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in payment-service[0m
+[37m2026-10-02 10:59:29,132 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.WrongEmailFormatException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in inventory-service[0m
+[37m2026-10-02 10:59:29,132 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.StockExistingException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in search-service[0m
+[37m2026-10-02 10:59:29,132 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.Forbidden to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in user-service[0m
+[37m2026-10-02 10:59:29,132 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.StockExistingException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in notification-service[0m
+[37m2026-10-02 10:59:29,132 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.SignInRequiredException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in payment-service[0m
+[37m2026-10-02 10:59:29,132 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.ForbiddenException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in media-service[0m
+[37m2026-10-02 10:59:29,132 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.InternalServerErrorException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in order-service[0m
+[37m2026-10-02 10:59:29,132 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.ForbiddenException to invoking classes of com.hoangtien2k3.ecommerce.utils.MessagesUtils in favourite-service[0m
+[37m2026-10-02 10:59:29,132 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.BadRequestException in user-service[0m
+[37m2026-10-02 10:59:29,132 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.BadRequestException in product-service[0m
+[37m2026-10-02 10:59:29,132 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.BadRequestException in shipping-service[0m
+[37m2026-10-02 10:59:29,132 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.BadRequestException in media-service[0m
+[37m2026-10-02 10:59:29,132 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.BadRequestException in search-service[0m
+[37m2026-10-02 10:59:29,132 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.BadRequestException in favourite-service[0m
+[37m2026-10-02 10:59:29,132 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.BadRequestException in order-service[0m
+[37m2026-10-02 10:59:29,132 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.BadRequestException in rating-service[0m
+[37m2026-10-02 10:59:29,132 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.BadRequestException in notification-service[0m
+[37m2026-10-02 10:59:29,132 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.BadRequestException in tax-service[0m
+[37m2026-10-02 10:59:29,132 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.BadRequestException in inventory-service[0m
+[37m2026-10-02 10:59:29,133 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.BadRequestException in payment-service[0m
+[37m2026-10-02 10:59:29,133 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.DuplicatedException in user-service[0m
+[37m2026-10-02 10:59:29,133 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.DuplicatedException in product-service[0m
+[37m2026-10-02 10:59:29,133 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.DuplicatedException in shipping-service[0m
+[37m2026-10-02 10:59:29,133 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.DuplicatedException in media-service[0m
+[37m2026-10-02 10:59:29,133 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.DuplicatedException in search-service[0m
+[37m2026-10-02 10:59:29,133 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.DuplicatedException in favourite-service[0m
+[37m2026-10-02 10:59:29,133 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.DuplicatedException in order-service[0m
+[37m2026-10-02 10:59:29,133 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.DuplicatedException in rating-service[0m
+[37m2026-10-02 10:59:29,133 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.DuplicatedException in notification-service[0m
+[37m2026-10-02 10:59:29,133 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.DuplicatedException in inventory-service[0m
+[37m2026-10-02 10:59:29,133 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.exception.CommonApiExceptionHandler to invoking classes of com.hoangtien2k3.ecommerce.exception.DuplicatedException in payment-service[0m
+[37m2026-10-02 10:59:29,133 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.service.impl.CartServiceImpl to invoking classes of com.hoangtien2k3.ecommerce.service.UserService in order-service[0m
+[37m2026-10-02 10:59:29,133 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.service.impl.FavouriteServiceImpl to invoking classes of com.hoangtien2k3.ecommerce.service.UserService in favourite-service[0m
+[37m2026-10-02 10:59:29,133 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.service.impl.PaymentServiceImpl to invoking classes of com.hoangtien2k3.ecommerce.service.UserService in payment-service[0m
+[37m2026-10-02 10:59:29,133 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.service.impl.CartServiceImpl to invoking classes of com.hoangtien2k3.ecommerce.model.user.User in order-service[0m
+[37m2026-10-02 10:59:29,133 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.service.impl.FavouriteServiceImpl to invoking classes of com.hoangtien2k3.ecommerce.model.user.User in favourite-service[0m
+[37m2026-10-02 10:59:29,133 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.service.impl.PaymentServiceImpl to invoking classes of com.hoangtien2k3.ecommerce.model.user.User in payment-service[0m
+[37m2026-10-02 10:59:29,134 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.jwt.JwtEntryPoint in search-service[0m
+[37m2026-10-02 10:59:29,134 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.jwt.JwtEntryPoint in favourite-service[0m
+[37m2026-10-02 10:59:29,134 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.jwt.JwtEntryPoint in order-service[0m
+[37m2026-10-02 10:59:29,134 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.jwt.JwtEntryPoint in shipping-service[0m
+[37m2026-10-02 10:59:29,134 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.jwt.JwtEntryPoint in notification-service[0m
+[37m2026-10-02 10:59:29,134 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.jwt.JwtEntryPoint in rating-service[0m
+[37m2026-10-02 10:59:29,134 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.jwt.JwtEntryPoint in inventory-service[0m
+[37m2026-10-02 10:59:29,134 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.jwt.JwtEntryPoint in tax-service[0m
+[37m2026-10-02 10:59:29,134 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.jwt.JwtEntryPoint in promotion-service[0m
+[37m2026-10-02 10:59:29,134 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.jwt.JwtEntryPoint in payment-service[0m
+[37m2026-10-02 10:59:29,134 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.jwt.JwtEntryPoint in product-service[0m
+[37m2026-10-02 10:59:29,134 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.jwt.JwtEntryPoint in media-service[0m
+[37m2026-10-02 10:59:29,134 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.userprinciple.UserDetailService in search-service[0m
+[37m2026-10-02 10:59:29,134 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.userprinciple.UserDetailService in favourite-service[0m
+[37m2026-10-02 10:59:29,134 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.userprinciple.UserDetailService in order-service[0m
+[37m2026-10-02 10:59:29,134 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.userprinciple.UserDetailService in shipping-service[0m
+[37m2026-10-02 10:59:29,135 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.userprinciple.UserDetailService in notification-service[0m
+[37m2026-10-02 10:59:29,135 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.userprinciple.UserDetailService in rating-service[0m
+[37m2026-10-02 10:59:29,135 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.userprinciple.UserDetailService in inventory-service[0m
+[37m2026-10-02 10:59:29,135 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.userprinciple.UserDetailService in tax-service[0m
+[37m2026-10-02 10:59:29,135 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.userprinciple.UserDetailService in promotion-service[0m
+[37m2026-10-02 10:59:29,135 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.userprinciple.UserDetailService in payment-service[0m
+[37m2026-10-02 10:59:29,135 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.userprinciple.UserDetailService in product-service[0m
+[37m2026-10-02 10:59:29,135 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.config.SecurityConfig to invoking classes of com.hoangtien2k3.ecommerce.security.userprinciple.UserDetailService in media-service[0m
+[37m2026-10-02 10:59:29,135 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.listener.NotificationEventListener to invoking classes of com.hoangtien2k3.ecommerce.event.UserProfileEvent in notification-service[0m
+[37m2026-10-02 10:59:29,135 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.service.PromotionService to invoking classes of com.hoangtien2k3.ecommerce.service.ProductService in promotion-service[0m
+[37m2026-10-02 10:59:29,135 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.service.impl.FavouriteServiceImpl to invoking classes of com.hoangtien2k3.ecommerce.service.ProductService in favourite-service[0m
+[37m2026-10-02 10:59:29,135 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.service.impl.OrderServiceImpl to invoking classes of com.hoangtien2k3.ecommerce.service.ProductService in order-service[0m
+[37m2026-10-02 10:59:29,135 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.service.impl.OrderItemServiceImpl to invoking classes of com.hoangtien2k3.ecommerce.service.ProductService in shipping-service[0m
+[37m2026-10-02 10:59:29,135 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.service.PromotionService to invoking classes of com.hoangtien2k3.ecommerce.dto.ProductDto in promotion-service[0m
+[37m2026-10-02 10:59:29,135 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.service.impl.FavouriteServiceImpl to invoking classes of com.hoangtien2k3.ecommerce.dto.ProductDto in favourite-service[0m
+[37m2026-10-02 10:59:29,135 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.service.impl.OrderServiceImpl to invoking classes of com.hoangtien2k3.ecommerce.dto.ProductDto in order-service[0m
+[37m2026-10-02 10:59:29,135 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.service.impl.OrderItemServiceImpl to invoking classes of com.hoangtien2k3.ecommerce.dto.ProductDto in shipping-service[0m
+[37m2026-10-02 10:59:29,136 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.service.PromotionService to invoking classes of com.hoangtien2k3.ecommerce.dto.CategoryDto in promotion-service[0m
+[37m2026-10-02 10:59:29,136 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.service.PromotionService to invoking classes of com.hoangtien2k3.ecommerce.service.CategoryService in promotion-service[0m
+[37m2026-10-02 10:59:29,136 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.listener.ProductSyncEventListener to invoking classes of com.hoangtien2k3.ecommerce.event.ProductDataChangeEvent in search-service[0m
+[37m2026-10-02 10:59:29,136 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.service.ProductSearchService to invoking classes of com.hoangtien2k3.ecommerce.model.product.Product in search-service[0m
+[37m2026-10-02 10:59:29,136 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.service.ProductSearchService to invoking classes of com.hoangtien2k3.ecommerce.repository.product.ProductRepository in search-service[0m
+[37m2026-10-02 10:59:29,136 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.service.impl.OrderItemServiceImpl to invoking classes of com.hoangtien2k3.ecommerce.service.OrderService in shipping-service[0m
+[37m2026-10-02 10:59:29,136 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.service.impl.PaymentServiceImpl to invoking classes of com.hoangtien2k3.ecommerce.service.OrderService in payment-service[0m
+[37m2026-10-02 10:59:29,136 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.service.impl.OrderItemServiceImpl to invoking classes of com.hoangtien2k3.ecommerce.dto.order.OrderDto in shipping-service[0m
+[37m2026-10-02 10:59:29,136 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.service.impl.PaymentServiceImpl to invoking classes of com.hoangtien2k3.ecommerce.dto.order.OrderDto in payment-service[0m
+[37m2026-10-02 10:59:29,136 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.listener.NotificationEventListener to invoking classes of com.hoangtien2k3.ecommerce.event.PaymentSuccessEvent in notification-service[0m
+[37m2026-10-02 10:59:29,136 [139952136732800] monomorph DEBUG monomorph.py:511 - Added com.hoangtien2k3.ecommerce.dto.PaymentEventDto to invoking classes of com.hoangtien2k3.ecommerce.model.payment.PaymentStatus in notification-service[0m
+Traceback (most recent call last):
+  File "/home/user/monomorph/cli.py", line 131, in <module>
+    cli()
+    ~~~^^
+  File "/home/user/monomorph/cli.py", line 97, in cli
+    run_monomorph(
+    ~~~~~~~~~~~~~^
+        app=args.app,
+        ^^^^^^^^^^^^^
+    ...<27 lines>...
+        use_multithreading=args.use_multithreading
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/user/monomorph/main.py", line 278, in run_monomorph
+    mono_refact.refactor()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/user/monomorph/monomorph/monomorph.py", line 182, in refactor
+    id_classes_per_ms, dto_classes_per_ms = self.sort_by_ms_and_approach(planned_api_classes)
+                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/monomorph/monomorph/monomorph.py", line 355, in sort_by_ms_and_approach
+    ms_name = self._assign_microservice(planned_api_class)
+  File "/home/user/monomorph/monomorph/monomorph.py", line 329, in _assign_microservice
+    raise ValueError(f"Could not find a matching microservice for class {api_class.name}")
+ValueError: Could not find a matching microservice for class com.hoangtien2k3.ecommerce.event.ProductDataChangeEvent$Operation
