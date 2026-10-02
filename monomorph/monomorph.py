@@ -329,9 +329,14 @@ class MonoMorph:
                 raise ValueError(f"Could not find a matching microservice for class {api_class.name}")
         return ms_name
 
-    def _assign_client_microservice(self, api_class: PlannedAPIClass, api_classes: dict[str, PlannedAPIClass]) -> set[str]:
+    def _assign_client_microservice(self, api_class: PlannedAPIClass, api_classes: dict[str, PlannedAPIClass],
+                                    _visiting: Optional[set[str]] = None) -> set[str]:
         if api_class.client_microservices is not None:
             return api_class.client_microservices
+        # API classes that invoke each other (e.g. a bidirectional JPA association) would recurse forever: a class
+        # whose clients are still being computed contributes nothing when it is reached again
+        _visiting = set() if _visiting is None else _visiting
+        _visiting.add(api_class.name)
         invoking_classes = self._get_invoking_classes(api_class, api_classes, include_same=True)
         clients = set(invoking_classes.keys())
         for ms_name, classes in invoking_classes.items():
@@ -339,10 +344,10 @@ class MonoMorph:
                 if c == api_class.name:
                     # Should be avoided in _get_invoking_classes but just in case
                     continue
-                if c in api_classes:
+                if c in api_classes and c not in _visiting:
                     c_clients = api_classes[c].client_microservices
                     if c_clients is None:
-                        c_clients = self._assign_client_microservice(api_classes[c], api_classes)
+                        c_clients = self._assign_client_microservice(api_classes[c], api_classes, _visiting)
                     clients.update(c_clients)
         api_class.client_microservices = {ms for ms in clients if ms != api_class.microservice}
         return clients
