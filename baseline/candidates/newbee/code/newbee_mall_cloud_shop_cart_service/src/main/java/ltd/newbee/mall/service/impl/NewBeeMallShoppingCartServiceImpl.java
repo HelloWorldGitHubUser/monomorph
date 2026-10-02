@@ -7,17 +7,19 @@
  * 版权所有，侵权必究！
  */
 package ltd.newbee.mall.service.impl;
-
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import ltd.newbee.mall.api.mall.param.SaveCartItemParam;
 import ltd.newbee.mall.api.mall.param.UpdateCartItemParam;
+import ltd.newbee.mall.api.mall.vo.NewBeeMallShoppingCartItemVO;
 import ltd.newbee.mall.common.Constants;
 import ltd.newbee.mall.common.NewBeeMallException;
 import ltd.newbee.mall.common.ServiceResultEnum;
-import ltd.newbee.mall.api.mall.vo.NewBeeMallShoppingCartItemVO;
-import ltd.newbee.mall.dao.NewBeeMallGoodsMapper;
 import ltd.newbee.mall.dao.NewBeeMallShoppingCartItemMapper;
-import ltd.newbee.mall.entity.NewBeeMallGoods;
 import ltd.newbee.mall.entity.NewBeeMallShoppingCartItem;
+import ltd.newbee.mall.monomorph.dto.generated.client.NewBeeMallGoods;
+import ltd.newbee.mall.monomorph.id.generated.client.NewBeeMallGoodsMapper;
 import ltd.newbee.mall.service.NewBeeMallShoppingCartService;
 import ltd.newbee.mall.util.BeanUtil;
 import ltd.newbee.mall.util.PageQueryUtil;
@@ -25,14 +27,8 @@ import ltd.newbee.mall.util.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-
-import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
 @Service
 public class NewBeeMallShoppingCartServiceImpl implements NewBeeMallShoppingCartService {
-
     @Autowired
     private NewBeeMallShoppingCartItemMapper newBeeMallShoppingCartItemMapper;
 
@@ -43,31 +39,31 @@ public class NewBeeMallShoppingCartServiceImpl implements NewBeeMallShoppingCart
     public String saveNewBeeMallCartItem(SaveCartItemParam saveCartItemParam, Long userId) {
         NewBeeMallShoppingCartItem temp = newBeeMallShoppingCartItemMapper.selectByUserIdAndGoodsId(userId, saveCartItemParam.getGoodsId());
         if (temp != null) {
-            //已存在则修改该记录
+            // 已存在则修改该记录
             NewBeeMallException.fail(ServiceResultEnum.SHOPPING_CART_ITEM_EXIST_ERROR.getResult());
         }
         NewBeeMallGoods newBeeMallGoods = newBeeMallGoodsMapper.selectByPrimaryKey(saveCartItemParam.getGoodsId());
-        //商品为空
+        // 商品为空
         if (newBeeMallGoods == null) {
             return ServiceResultEnum.GOODS_NOT_EXIST.getResult();
         }
         int totalItem = newBeeMallShoppingCartItemMapper.selectCountByUserId(userId);
-        //超出单个商品的最大数量
+        // 超出单个商品的最大数量
         if (saveCartItemParam.getGoodsCount() < 1) {
             return ServiceResultEnum.SHOPPING_CART_ITEM_NUMBER_ERROR.getResult();
         }
-        //超出单个商品的最大数量
+        // 超出单个商品的最大数量
         if (saveCartItemParam.getGoodsCount() > Constants.SHOPPING_CART_ITEM_LIMIT_NUMBER) {
             return ServiceResultEnum.SHOPPING_CART_ITEM_LIMIT_NUMBER_ERROR.getResult();
         }
-        //超出最大数量
+        // 超出最大数量
         if (totalItem > Constants.SHOPPING_CART_ITEM_TOTAL_NUMBER) {
             return ServiceResultEnum.SHOPPING_CART_ITEM_TOTAL_NUMBER_ERROR.getResult();
         }
         NewBeeMallShoppingCartItem newBeeMallShoppingCartItem = new NewBeeMallShoppingCartItem();
         BeanUtil.copyProperties(saveCartItemParam, newBeeMallShoppingCartItem);
         newBeeMallShoppingCartItem.setUserId(userId);
-        //保存记录
+        // 保存记录
         if (newBeeMallShoppingCartItemMapper.insertSelective(newBeeMallShoppingCartItem) > 0) {
             return ServiceResultEnum.SUCCESS.getResult();
         }
@@ -83,21 +79,21 @@ public class NewBeeMallShoppingCartServiceImpl implements NewBeeMallShoppingCart
         if (!newBeeMallShoppingCartItemUpdate.getUserId().equals(userId)) {
             NewBeeMallException.fail(ServiceResultEnum.REQUEST_FORBIDEN_ERROR.getResult());
         }
-        //超出单个商品的最大数量
+        // 超出单个商品的最大数量
         if (updateCartItemParam.getGoodsCount() > Constants.SHOPPING_CART_ITEM_LIMIT_NUMBER) {
             return ServiceResultEnum.SHOPPING_CART_ITEM_LIMIT_NUMBER_ERROR.getResult();
         }
-        //当前登录账号的userId与待修改的cartItem中userId不同，返回错误
+        // 当前登录账号的userId与待修改的cartItem中userId不同，返回错误
         if (!newBeeMallShoppingCartItemUpdate.getUserId().equals(userId)) {
             return ServiceResultEnum.NO_PERMISSION_ERROR.getResult();
         }
-        //数值相同，则不执行数据操作
+        // 数值相同，则不执行数据操作
         if (updateCartItemParam.getGoodsCount().equals(newBeeMallShoppingCartItemUpdate.getGoodsCount())) {
             return ServiceResultEnum.SUCCESS.getResult();
         }
         newBeeMallShoppingCartItemUpdate.setGoodsCount(updateCartItemParam.getGoodsCount());
         newBeeMallShoppingCartItemUpdate.setUpdateTime(new Date());
-        //修改记录
+        // 修改记录
         if (newBeeMallShoppingCartItemMapper.updateByPrimaryKeySelective(newBeeMallShoppingCartItemUpdate) > 0) {
             return ServiceResultEnum.SUCCESS.getResult();
         }
@@ -119,7 +115,7 @@ public class NewBeeMallShoppingCartServiceImpl implements NewBeeMallShoppingCart
         if (newBeeMallShoppingCartItem == null) {
             return false;
         }
-        //userId不同不能删除
+        // userId不同不能删除
         if (!userId.equals(newBeeMallShoppingCartItem.getUserId())) {
             return false;
         }
@@ -154,14 +150,13 @@ public class NewBeeMallShoppingCartServiceImpl implements NewBeeMallShoppingCart
      *
      * @param newBeeMallShoppingCartItemVOS
      * @param newBeeMallShoppingCartItems
-     * @return
-     */
+     * @return  */
     private List<NewBeeMallShoppingCartItemVO> getNewBeeMallShoppingCartItemVOS(List<NewBeeMallShoppingCartItemVO> newBeeMallShoppingCartItemVOS, List<NewBeeMallShoppingCartItem> newBeeMallShoppingCartItems) {
         if (!CollectionUtils.isEmpty(newBeeMallShoppingCartItems)) {
-            //查询商品信息并做数据转换
+            // 查询商品信息并做数据转换
             List<Long> newBeeMallGoodsIds = newBeeMallShoppingCartItems.stream().map(NewBeeMallShoppingCartItem::getGoodsId).collect(Collectors.toList());
             List<NewBeeMallGoods> newBeeMallGoods = newBeeMallGoodsMapper.selectByPrimaryKeys(newBeeMallGoodsIds);
-            Map<Long, NewBeeMallGoods> newBeeMallGoodsMap = new HashMap<>();
+            Map<Long, NewBeeMallGoods> newBeeMallGoodsMap = new HashMap<NewBeeMallGoods>();
             if (!CollectionUtils.isEmpty(newBeeMallGoods)) {
                 newBeeMallGoodsMap = newBeeMallGoods.stream().collect(Collectors.toMap(NewBeeMallGoods::getGoodsId, Function.identity(), (entity1, entity2) -> entity1));
             }

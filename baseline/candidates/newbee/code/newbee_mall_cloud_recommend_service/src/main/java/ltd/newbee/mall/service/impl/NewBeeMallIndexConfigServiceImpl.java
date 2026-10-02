@@ -7,13 +7,16 @@
  * 版权所有，侵权必究！
  */
 package ltd.newbee.mall.service.impl;
-
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 import ltd.newbee.mall.api.mall.vo.NewBeeMallIndexConfigGoodsVO;
 import ltd.newbee.mall.common.ServiceResultEnum;
 import ltd.newbee.mall.dao.IndexConfigMapper;
-import ltd.newbee.mall.dao.NewBeeMallGoodsMapper;
 import ltd.newbee.mall.entity.IndexConfig;
-import ltd.newbee.mall.entity.NewBeeMallGoods;
+import ltd.newbee.mall.monomorph.dto.generated.client.NewBeeMallGoods;
+import ltd.newbee.mall.monomorph.id.generated.client.NewBeeMallGoodsMapper;
 import ltd.newbee.mall.service.NewBeeMallIndexConfigService;
 import ltd.newbee.mall.util.BeanUtil;
 import ltd.newbee.mall.util.PageQueryUtil;
@@ -21,15 +24,8 @@ import ltd.newbee.mall.util.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Service
 public class NewBeeMallIndexConfigServiceImpl implements NewBeeMallIndexConfigService {
-
     @Autowired
     private IndexConfigMapper indexConfigMapper;
 
@@ -68,8 +64,8 @@ public class NewBeeMallIndexConfigServiceImpl implements NewBeeMallIndexConfigSe
             return ServiceResultEnum.DATA_NOT_EXIST.getResult();
         }
         IndexConfig temp2 = indexConfigMapper.selectByTypeAndGoodsId(indexConfig.getConfigType(), indexConfig.getGoodsId());
-        if (temp2 != null && !temp2.getConfigId().equals(indexConfig.getConfigId())) {
-            //goodsId相同且不同id 不能继续修改
+        if ((temp2 != null) && (!temp2.getConfigId().equals(indexConfig.getConfigId()))) {
+            // goodsId相同且不同id 不能继续修改
             return ServiceResultEnum.SAME_INDEX_CONFIG_EXIST.getResult();
         }
         indexConfig.setUpdateTime(new Date());
@@ -89,7 +85,7 @@ public class NewBeeMallIndexConfigServiceImpl implements NewBeeMallIndexConfigSe
         List<NewBeeMallIndexConfigGoodsVO> newBeeMallIndexConfigGoodsVOS = new ArrayList<>(number);
         List<IndexConfig> indexConfigs = indexConfigMapper.findIndexConfigsByTypeAndNum(configType, number);
         if (!CollectionUtils.isEmpty(indexConfigs)) {
-            //取出所有的goodsId
+            // 取出所有的goodsId
             List<Long> goodsIds = indexConfigs.stream().map(IndexConfig::getGoodsId).collect(Collectors.toList());
             List<NewBeeMallGoods> newBeeMallGoods = goodsMapper.selectByPrimaryKeys(goodsIds);
             newBeeMallIndexConfigGoodsVOS = BeanUtil.copyList(newBeeMallGoods, NewBeeMallIndexConfigGoodsVO.class);
@@ -115,7 +111,7 @@ public class NewBeeMallIndexConfigServiceImpl implements NewBeeMallIndexConfigSe
         if (ids.length < 1) {
             return false;
         }
-        //删除数据
+        // 删除数据
         return indexConfigMapper.deleteBatch(ids) > 0;
     }
 }

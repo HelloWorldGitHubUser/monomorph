@@ -39,6 +39,10 @@ public abstract class AbstractRefactoredClient implements AutoCloseable {
     private CleanupState cleanupState; // Holds LeaseRpcClient, clientId, renewalFuture
     private PhantomReference<AbstractRefactoredClient> phantomReference; // Handle to the registered cleanup action
 
+    /** No-arg constructor for subclasses that perform their own initialization via {@link #initialize(Object...)}. */
+    protected AbstractRefactoredClient() {
+    }
+
     protected void initialize(Object... args) {
         RefactoredObjectID obtainedObjectId = null;
         try {
@@ -339,3 +343,4 @@ public abstract class AbstractRefactoredClient implements AutoCloseable {
         public InitializationException(String message, Throwable cause) { super(message, cause); }
     }
 }
+

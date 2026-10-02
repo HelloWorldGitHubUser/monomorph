@@ -7,28 +7,26 @@
  * 版权所有，侵权必究！
  */
 package ltd.newbee.mall.config;
-
+import java.util.List;
 import ltd.newbee.mall.common.Constants;
-import ltd.newbee.mall.config.handler.TokenToAdminUserMethodArgumentResolver;
 import ltd.newbee.mall.config.handler.TokenToMallUserMethodArgumentResolver;
+import ltd.newbee.mall.monomorph.dto.generated.client.TokenToAdminUserMethodArgumentResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-
-import java.util.List;
-
 @Configuration
 public class NeeBeeMallWebMvcConfigurer extends WebMvcConfigurationSupport {
-
     @Autowired
     private TokenToMallUserMethodArgumentResolver tokenToMallUserMethodArgumentResolver;
+
     @Autowired
     private TokenToAdminUserMethodArgumentResolver tokenToAdminUserMethodArgumentResolver;
 
     /**
+     *
      * @param argumentResolvers
      * @tip @TokenToMallUser @TokenToAdminUser 注解处理方法
      */
@@ -40,11 +38,7 @@ public class NeeBeeMallWebMvcConfigurer extends WebMvcConfigurationSupport {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/upload/**").addResourceLocations("file:" + Constants.FILE_UPLOAD_DIC);
         registry.addResourceHandler("/goods-img/**").addResourceLocations("file:" + Constants.FILE_UPLOAD_DIC);
-
-        registry.
-                addResourceHandler("/swagger-ui/**")
-                .addResourceLocations("classpath:/META-INF/resources/webjars/springfox-swagger-ui/")
-                .resourceChain(false);
+        registry.addResourceHandler("/swagger-ui/**").addResourceLocations("classpath:/META-INF/resources/webjars/springfox-swagger-ui/").resourceChain(false);
     }
 
     /**
@@ -54,8 +48,6 @@ public class NeeBeeMallWebMvcConfigurer extends WebMvcConfigurationSupport {
      */
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**").allowedOriginPatterns("*")
-                .allowedMethods("GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS")
-                .allowCredentials(true).maxAge(3600);
+        registry.addMapping("/**").allowedOriginPatterns("*").allowedMethods("GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS").allowCredentials(true).maxAge(3600);
     }
 }

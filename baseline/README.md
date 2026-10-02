@@ -18,8 +18,8 @@
 | `scripts/run_monomorph.py` | 正式运行 MonoMorph，输出到 `runs/<tag>/<app>/` |
 | `scripts/run_all_and_push.sh` | 按规模从小到大逐个运行，每跑完一个就把结果复制到 `candidates/<app>/` 并提交推送 |
 | `scripts/run_parallel_and_push.sh` | 并行版：每启动一次就是一个 worker，用 `runs/<tag>/locks/<app>` 认领应用，git 操作用 flock 串行 |
-| `candidates-jsonmode/newbee/` | newbee 的 json_mode 对照实验结果（结构同 `candidates/<app>/`），不替代 v1 |
 | `candidates/<app>/` | 交付物：`code/`（候选微服务，去掉 `.git` 和 `target/`）、`monomorph.log`、`run_result.json`；崩溃或超时的应用只有日志和结果 |
+| `candidates/newbee/` | **与其他应用的配置不同**：parser 用 `DEEPSEEK_STRUCTURED_OUTPUT_METHOD=json_mode`（用户决定以它取代默认配置的结果）。`function-calling-attempt/` 里是默认配置（function calling）那次的日志和返回码：parser 连续 3 次解析失败，`Server file generation failed`，没有进入编译；其代码仍在 git 历史里（提交 `00403d1` 之前的 newbee 提交） |
 | `scripts/build_sandbox_images.sh` | 仅 Claude Code 云环境需要：构建信任出口代理 CA 的 Maven 镜像 |
 
 `work/` 和 `runs/` 不进 git。

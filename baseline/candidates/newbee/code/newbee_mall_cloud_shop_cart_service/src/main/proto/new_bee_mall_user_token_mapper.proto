@@ -19,14 +19,14 @@ message CreateObjectRequest {
 }
 
 message ConstructorArgs {
-    // Intentionally empty: NewBeeMallUserTokenMapper is an interface and has no constructor arguments.
+    // No constructor arguments for the mapper interface.
 }
 
 message SelectByTokenRequest {
-    ltd.newbee.mall.monomorph.id.shared.RefactoredObjectID refactoredObjectID = 1;
+    ltd.newbee.mall.monomorph.id.shared.RefactoredObjectID refactoredObjectId = 1;
     string token = 2;
 }
 
 message SelectByTokenResponse {
-    ltd.newbee.mall.monomorph.dto.generated.proto.mallusertoken.MallUserTokenDTO result = 1;
+    ltd.newbee.mall.monomorph.dto.generated.proto.mallusertoken.MallUserTokenDTO mallUserToken = 1;
 }

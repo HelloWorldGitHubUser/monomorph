@@ -9,24 +9,25 @@ import "shared.proto";
 import "admin_user_token.proto";
 
 service NewBeeAdminUserTokenMapperService {
-    rpc createObject(CreateObjectRequest) returns (ltd.newbee.mall.monomorph.id.shared.RefactoredObjectID);
-    rpc selectByToken(SelectByTokenRequest) returns (SelectByTokenResponse);
+  rpc createObject(CreateObjectRequest) returns (ltd.newbee.mall.monomorph.id.shared.RefactoredObjectID);
+  rpc selectByToken(SelectByTokenRequest) returns (SelectByTokenResponse);
 }
 
 message CreateObjectRequest {
-    string clientID = 1;
-    ConstructorArgs constructorArgs = 2;
+  string clientID = 1;
+  ConstructorArgs constructorArgs = 2;
 }
 
+// The target class is an interface and has no constructor parameters.
+// Therefore ConstructorArgs is intentionally empty.
 message ConstructorArgs {
-    // No constructor arguments: NewBeeAdminUserTokenMapper is an interface.
 }
 
 message SelectByTokenRequest {
-    ltd.newbee.mall.monomorph.id.shared.RefactoredObjectID object_id = 1;
-    string token = 2;
+  .ltd.newbee.mall.monomorph.id.shared.RefactoredObjectID ref_id = 1;
+  string token = 2;
 }
 
 message SelectByTokenResponse {
-    ltd.newbee.mall.monomorph.dto.generated.proto.adminusertoken.AdminUserTokenDTO result = 1;
+  .ltd.newbee.mall.monomorph.dto.generated.proto.adminusertoken.AdminUserTokenDTO admin_user_token = 1;
 }

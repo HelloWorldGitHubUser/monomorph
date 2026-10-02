@@ -3,9 +3,8 @@ package ltd.newbee.mall.monomorph.id.generated.client;
 import ltd.newbee.mall.monomorph.id.shared.client.AbstractRefactoredClient;
 import ltd.newbee.mall.monomorph.id.generated.helpers.ServiceRegistry;
 import ltd.newbee.mall.monomorph.id.shared.RefactoredObjectID;
-import ltd.newbee.mall.monomorph.id.generated.proto.newbeeadminusertokenmapper.*;
 import ltd.newbee.mall.monomorph.dto.generated.client.AdminUserToken;
-import ltd.newbee.mall.monomorph.dto.generated.proto.adminusertoken.AdminUserTokenDTO;
+import ltd.newbee.mall.monomorph.id.generated.proto.newbeeadminusertokenmapper.*;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
@@ -18,7 +17,7 @@ public class NewBeeAdminUserTokenMapper extends AbstractRefactoredClient {
     private ManagedChannel businessChannel;
     private NewBeeAdminUserTokenMapperServiceGrpc.NewBeeAdminUserTokenMapperServiceBlockingStub businessStub;
 
-    /** Public no-argument constructor (original interface has no constructor args). */
+    /** Public constructor matching the original (no constructor args). */
     public NewBeeAdminUserTokenMapper() {
         initialize();
     }
@@ -40,14 +39,11 @@ public class NewBeeAdminUserTokenMapper extends AbstractRefactoredClient {
     @Override
     protected RefactoredObjectID performRemoteCreateAndGetId(String clientId, Object... args) throws Exception {
         performRpcSetup();
-
         CreateObjectRequest createRequest = CreateObjectRequest.newBuilder()
                 .setClientID(clientId)
                 .setConstructorArgs(ConstructorArgs.newBuilder().build())
                 .build();
-
-        RefactoredObjectID createResponseProto = this.businessStub.createObject(createRequest);
-        return createResponseProto;
+        return this.businessStub.createObject(createRequest);
     }
 
     @Override
@@ -64,28 +60,32 @@ public class NewBeeAdminUserTokenMapper extends AbstractRefactoredClient {
         }
     }
 
-    /** Factory method for creating proxy from an EXISTING ID. */
     public static NewBeeAdminUserTokenMapper fromID(RefactoredObjectID existingId) {
         return new NewBeeAdminUserTokenMapper(existingId);
     }
 
-    /**
-     * Implements the {@code selectByToken} RPC defined in the proto service.
-     * Converts the returned {@link AdminUserTokenDTO} to the client-side proxy
-     * {@link AdminUserToken}.
-     */
+    // --- Implementation of the service methods defined in the proto ---
+
     public AdminUserToken selectByToken(String token) {
-        try {
-            performRpcSetup();
-            SelectByTokenRequest request = SelectByTokenRequest.newBuilder()
-                    .setObjectId(this.objectId)
-                    .setToken(token)
-                    .build();
-            SelectByTokenResponse response = this.businessStub.selectByToken(request);
-            AdminUserTokenDTO dto = response.getResult();
-            return AdminUserToken.fromDTO(dto);
-        } catch (Exception e) {
-            throw new RuntimeException("Error calling selectByToken", e);
+        ensureRpcSetup();
+        SelectByTokenRequest request = SelectByTokenRequest.newBuilder()
+                .setRefId(this.objectId)
+                .setToken(token)
+                .build();
+        SelectByTokenResponse response = businessStub.selectByToken(request);
+        return AdminUserToken.fromDTO(response.getAdminUserToken());
+    }
+
+    // --- Private helper ---
+
+    private void ensureRpcSetup() {
+        if (businessStub == null) {
+            try {
+                performRpcSetup();
+            } catch (Exception e) {
+                throw new IllegalStateException("Unable to initialize gRPC channel", e);
+            }
         }
     }
 }
+

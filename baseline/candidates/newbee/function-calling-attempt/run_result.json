@@ -1,8 +1,8 @@
 {
   "app": "newbee",
-  "returncode": "timeout",
-  "wall_time_seconds": 10800,
-  "run_dir": "/home/user/monomorph/runs/v1-jsonmode/newbee",
+  "returncode": 1,
+  "wall_time_seconds": 1114,
+  "run_dir": "/home/user/monomorph/runs/v1/newbee",
   "command": [
     "/home/user/monomorph/.venv/bin/python3",
     "/home/user/monomorph/cli.py",
@@ -19,7 +19,7 @@
     "--build-tool",
     "maven",
     "--original-dockerfile-path",
-    "/home/user/monomorph/runs/v1-jsonmode/newbee/Dockerfile",
+    "/home/user/monomorph/runs/v1/newbee/Dockerfile",
     "--refact-approach",
     "Hybrid",
     "--refact-model",
@@ -33,13 +33,13 @@
     "--fallback-model",
     "mm_deepseek/deepseek-v4-pro::high",
     "--analysis-data-path",
-    "/home/user/monomorph/runs/v1-jsonmode/analysis",
+    "/home/user/monomorph/runs/v1/analysis",
     "--out-path",
-    "/home/user/monomorph/runs/v1-jsonmode/newbee/output",
+    "/home/user/monomorph/runs/v1/newbee/output",
     "--llm-cache-path",
-    "/home/user/monomorph/runs/v1-jsonmode/newbee/llm_cache.db",
+    "/home/user/monomorph/runs/v1/newbee/llm_cache.db",
     "--run-id",
-    "newbee-v1-jsonmode",
+    "newbee-v1",
     "--use-multithreading"
   ]
 }

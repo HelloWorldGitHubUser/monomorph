@@ -77,7 +77,7 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
 - **2 个超时（3 小时）**：passjava（2/7）、goodskill（2/6），都是一个服务陷在编译纠错里出不来（撞图递归上限的轮次不计数）
 - **4 个规划阶段崩溃**：petclinic（循环引用递归）、zlt、gulimall（`shared` 里的类无归属服务）、ecommerce（内部类无归属服务）
 - **1 个代码生成崩溃**：lakeside（客户端服务为 `None`）
-- **1 个解析失败**：newbee（模型偶发输出非法 JSON；json_mode 对照能通过这一步，但同样超时，2/5 个服务通过）
+- **newbee 用 json_mode 配置，作为最终结果（用户决定；其余 9 个应用用默认的 function calling）**：超时，2/5 个服务通过。默认配置那次在服务端代码解析阶段失败（模型偶发输出非法 JSON），日志留作记录
 - 以上崩溃/超时都是 MonoMorph 方法或模型输出的问题，按决定不修；本次修过的只有让工具跑起来的问题（见 README 修改表）
 
 ### v1 结果（每个应用跑完更新）
@@ -93,7 +93,7 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
 | **youlai** | **0** | 5428s（含启动失败后的重试） | **有** | 6 个服务全部编译通过（含测试）：mall-oms、mall-pms、mall-sms、mall-ums、youlai-auth、youlai-system，各 1～2 轮纠错，最长一个约 30 分钟。第 1、2 次运行因导入解析服务启动超时作废 |
 | passjava | timeout | 10800s | 部分 | 7 个服务里 passjava-member、passjava-question 编译通过（各 1 轮）；**passjava-search 卡了约 2 小时 45 分**，纠错 20 轮都没通过，其中 20 次触发图递归上限 100 步（撞上限的轮次不计数，所以永远到不了 20 轮上限），3 小时到点被终止。后面 4 个服务一个都没轮到。3 小时是容器第二次重启后从 13:10 重新计时的（之前的纠错调用走缓存回放） |
 | goodskill | timeout | 10800s | 部分 | 6 个服务里 goodskill-ai、goodskill-order 编译通过（各 1 轮）；**goodskill-seckill 卡了约 2 小时 15 分**，纠错 15 轮没通过，19 次触发图递归上限，3 小时到点被终止；后面 3 个服务没轮到。3 小时从 13:19 重新计时 |
-| newbee（json_mode 对照，不替代上一行 v1） | timeout | 10800s（从 13:20 重新计时） | 部分 | `DEEPSEEK_STRUCTURED_OUTPUT_METHOD=json_mode`，其余与 v1 相同。parser 零次解析失败，通过了 v1 失败的 `NewBeeMallGoodsMapper` 服务端代码；5 个服务里 user-service、goods-service 编译通过（各 1 轮，goods 花了约 80 分钟），recommend-service 纠错 10 轮没通过（24 次触发图递归上限），超时终止；order、shop-cart 没轮到。结果在 `baseline/candidates-jsonmode/newbee/` |
+| **newbee（json_mode，作为 newbee 的最终结果，用户决定取代上一行）** | timeout | 10800s（从 13:20 重新计时） | 部分 | `DEEPSEEK_STRUCTURED_OUTPUT_METHOD=json_mode`，其余与 v1 相同。parser 零次解析失败，通过了 v1 失败的 `NewBeeMallGoodsMapper` 服务端代码；5 个服务里 user-service、goods-service 编译通过（各 1 轮，goods 花了约 80 分钟），recommend-service 纠错 10 轮没通过（24 次触发图递归上限），超时终止；order、shop-cart 没轮到。结果在 `baseline/candidates/newbee/`；默认配置那次的日志在其 `function-calling-attempt/` |
 | lakeside | 1 | 约 36min + 582s | 部分 | 决策和 ID 类、大部分 DTO 类代码生成成功；DTO 客户端生成时 `client_ms=None` 崩溃（规划阶段顺序缺陷，方法缺陷不修，dry run 已能预测）。第一段因修 `skip_standard_run` 被停，第二段从缓存回放后继续 |
 | newbee | 1 | 1114s | 部分 | ID 类 `NewBeeMallGoodsMapper` 的服务端代码生成后，parser 解析 3 次失败 → `Server file generation failed`。原因：DeepSeek 把思考内容混进工具参数，JSON 不合法（全部 537 次工具调用中仅此 1 次）；第 3 次重试与第 2 次 prompt 相同，命中缓存。偶发模型错误 + MonoMorph 重试设计，按实记录 |
 | booking（v1 第 2 次，作废） | 1 | 28s | 部分 | 本地导入解析服务 15s 健康检查超时（3 路并行刚启动、机器忙时偶发；单独重跑正常），重跑 |

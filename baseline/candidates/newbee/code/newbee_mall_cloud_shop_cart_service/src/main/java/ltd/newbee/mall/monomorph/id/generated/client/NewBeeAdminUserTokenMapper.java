@@ -4,12 +4,19 @@ import ltd.newbee.mall.monomorph.id.shared.client.AbstractRefactoredClient;
 import ltd.newbee.mall.monomorph.id.generated.helpers.ServiceRegistry;
 import ltd.newbee.mall.monomorph.id.shared.RefactoredObjectID;
 import ltd.newbee.mall.monomorph.id.generated.proto.newbeeadminusertokenmapper.*;
-import ltd.newbee.mall.monomorph.dto.generated.client.AdminUserToken;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import ltd.newbee.mall.monomorph.dto.generated.client.AdminUserToken;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * gRPC client for the NewBeeAdminUserTokenMapper service.
+ *
+ * This class maintains the original service method API while delegating
+ * calls to a remote microservice. Only the method exposed by the
+ * generated proto service is implemented.
+ */
 public class NewBeeAdminUserTokenMapper extends AbstractRefactoredClient {
 
     private static final String TARGET_SERVICE_ID = "newbee_mall_cloud_user_service";
@@ -18,14 +25,15 @@ public class NewBeeAdminUserTokenMapper extends AbstractRefactoredClient {
     private NewBeeAdminUserTokenMapperServiceGrpc.NewBeeAdminUserTokenMapperServiceBlockingStub businessStub;
 
     /**
-     * Public no-arg constructor because the original interface has no constructor arguments.
+     * Public no-arg constructor. The original class was an interface
+     * with no constructor parameters, so no arguments are required.
      */
     public NewBeeAdminUserTokenMapper() {
         initialize();
     }
 
     /**
-     * Private constructor used by the fromID factory.
+     * Private constructor used by the fromID factory method.
      */
     private NewBeeAdminUserTokenMapper(RefactoredObjectID existingId) {
         super(existingId);
@@ -33,79 +41,71 @@ public class NewBeeAdminUserTokenMapper extends AbstractRefactoredClient {
 
     @Override
     protected void performRpcSetup() throws Exception {
+        // Lazy initialization to avoid recreating the channel on every call.
+        if (businessChannel != null && !businessChannel.isShutdown()) {
+            return;
+        }
         ServiceRegistry.ServiceEndpoint endpoint = ServiceRegistry.getEndpoint(TARGET_SERVICE_ID);
-        this.businessChannel = ManagedChannelBuilder.forAddress(endpoint.getHost(), endpoint.getPort())
+        businessChannel = ManagedChannelBuilder.forAddress(endpoint.getHost(), endpoint.getPort())
                 .usePlaintext()
                 .build();
-        this.businessStub = NewBeeAdminUserTokenMapperServiceGrpc.newBlockingStub(businessChannel);
+        businessStub = NewBeeAdminUserTokenMapperServiceGrpc.newBlockingStub(businessChannel);
     }
 
     @Override
     protected RefactoredObjectID performRemoteCreateAndGetId(String clientId, Object... args) throws Exception {
-        ensureRpcSetup();
+        performRpcSetup();
 
-        ConstructorArgs constructorArgs = ConstructorArgs.newBuilder().build();
+        // The target class has no constructor arguments, so ConstructorArgs is empty.
         CreateObjectRequest createRequest = CreateObjectRequest.newBuilder()
-                .setClientId(clientId)
-                .setConstructorArgs(constructorArgs)
+                .setClientID(clientId)
+                .setConstructorArgs(ConstructorArgs.newBuilder().build())
                 .build();
 
-        return this.businessStub.createObject(createRequest);
+        return businessStub.createObject(createRequest);
     }
 
     @Override
     protected void performSubclassRpcCleanup() {
-        if (this.businessChannel != null && !this.businessChannel.isShutdown()) {
+        if (businessChannel != null && !businessChannel.isShutdown()) {
             try {
-                this.businessChannel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
-                if (!this.businessChannel.isTerminated()) {
-                    this.businessChannel.shutdownNow();
+                businessChannel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
+                if (!businessChannel.isTerminated()) {
+                    businessChannel.shutdownNow();
                 }
             } catch (InterruptedException e) {
+                // Preserve interrupt status
                 Thread.currentThread().interrupt();
-                this.businessChannel.shutdownNow();
             }
         }
     }
 
     /**
-     * Factory method for creating a proxy from an EXISTING ID.
+     * Factory method for creating a client proxy from an existing RefactoredObjectID.
      */
     public static NewBeeAdminUserTokenMapper fromID(RefactoredObjectID existingId) {
         return new NewBeeAdminUserTokenMapper(existingId);
     }
 
     /**
-     * gRPC implementation of selectByToken from the generated proto service.
-     * Maps AdminUserTokenDTO to the generated client proxy.
+     * Exposed service method: selectByToken.
+     *
+     * @param token the token to search for
+     * @return the corresponding AdminUserToken proxy object, or null if not found
      */
     public AdminUserToken selectByToken(String token) {
-        ensureRpcSetup();
+        try {
+            performRpcSetup();
 
-        SelectByTokenRequest request = SelectByTokenRequest.newBuilder()
-                .setObjectId(this.objectId)
-                .setToken(token)
-                .build();
+            SelectByTokenRequest request = SelectByTokenRequest.newBuilder()
+                    .setRefId(objectId)
+                    .setToken(token)
+                    .build();
 
-        SelectByTokenResponse response = this.businessStub.selectByToken(request);
-
-        if (!response.hasResult()) {
-            return null;
-        }
-
-        return AdminUserToken.fromDTO(response.getResult());
-    }
-
-    /**
-     * Lazy initialization of the gRPC channel and stub if they are not already available.
-     */
-    private void ensureRpcSetup() {
-        if (businessStub == null || businessChannel == null || businessChannel.isShutdown()) {
-            try {
-                performRpcSetup();
-            } catch (Exception e) {
-                throw new RuntimeException("Failed to initialize gRPC channel for NewBeeAdminUserTokenMapper", e);
-            }
+            SelectByTokenResponse response = businessStub.selectByToken(request);
+            return AdminUserToken.fromDTO(response.getAdminUserToken());
+        } catch (Exception e) {
+            throw new RuntimeException("selectByToken RPC failed", e);
         }
     }
 }

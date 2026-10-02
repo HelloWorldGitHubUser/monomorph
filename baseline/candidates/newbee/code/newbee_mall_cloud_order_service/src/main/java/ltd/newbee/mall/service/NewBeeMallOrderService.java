@@ -7,25 +7,21 @@
  * 版权所有，侵权必究！
  */
 package ltd.newbee.mall.service;
-
+import java.util.List;
 import ltd.newbee.mall.api.mall.vo.NewBeeMallOrderDetailVO;
 import ltd.newbee.mall.api.mall.vo.NewBeeMallOrderItemVO;
 import ltd.newbee.mall.api.mall.vo.NewBeeMallShoppingCartItemVO;
-import ltd.newbee.mall.entity.MallUser;
 import ltd.newbee.mall.entity.MallUserAddress;
 import ltd.newbee.mall.entity.NewBeeMallOrder;
+import ltd.newbee.mall.monomorph.dto.generated.client.MallUser;
 import ltd.newbee.mall.util.PageQueryUtil;
 import ltd.newbee.mall.util.PageResult;
-
-import java.util.List;
-
 public interface NewBeeMallOrderService {
     /**
      * 获取订单详情
      *
      * @param orderId
-     * @return
-     */
+     * @return  */
     NewBeeMallOrderDetailVO getOrderDetailByOrderId(Long orderId);
 
     /**
@@ -33,16 +29,14 @@ public interface NewBeeMallOrderService {
      *
      * @param orderNo
      * @param userId
-     * @return
-     */
+     * @return  */
     NewBeeMallOrderDetailVO getOrderDetailByOrderNo(String orderNo, Long userId);
 
     /**
      * 我的订单列表
      *
      * @param pageUtil
-     * @return
-     */
+     * @return  */
     PageResult getMyOrders(PageQueryUtil pageUtil);
 
     /**
@@ -50,8 +44,7 @@ public interface NewBeeMallOrderService {
      *
      * @param orderNo
      * @param userId
-     * @return
-     */
+     * @return  */
     String cancelOrder(String orderNo, Long userId);
 
     /**
@@ -59,8 +52,7 @@ public interface NewBeeMallOrderService {
      *
      * @param orderNo
      * @param userId
-     * @return
-     */
+     * @return  */
     String finishOrder(String orderNo, Long userId);
 
     String paySuccess(String orderNo, int payType);
@@ -71,40 +63,35 @@ public interface NewBeeMallOrderService {
      * 后台分页
      *
      * @param pageUtil
-     * @return
-     */
+     * @return  */
     PageResult getNewBeeMallOrdersPage(PageQueryUtil pageUtil);
 
     /**
      * 订单信息修改
      *
      * @param newBeeMallOrder
-     * @return
-     */
+     * @return  */
     String updateOrderInfo(NewBeeMallOrder newBeeMallOrder);
 
     /**
      * 配货
      *
      * @param ids
-     * @return
-     */
+     * @return  */
     String checkDone(Long[] ids);
 
     /**
      * 出库
      *
      * @param ids
-     * @return
-     */
+     * @return  */
     String checkOut(Long[] ids);
 
     /**
      * 关闭订单
      *
      * @param ids
-     * @return
-     */
+     * @return  */
     String closeOrder(Long[] ids);
 
     List<NewBeeMallOrderItemVO> getOrderItems(Long orderId);

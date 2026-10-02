@@ -3,8 +3,15 @@ package ltd.newbee.mall.monomorph.id.generated.client;
 import ltd.newbee.mall.monomorph.id.shared.client.AbstractRefactoredClient;
 import ltd.newbee.mall.monomorph.id.generated.helpers.ServiceRegistry;
 import ltd.newbee.mall.monomorph.id.shared.RefactoredObjectID;
+
+// gRPC imports
+import ltd.newbee.mall.monomorph.id.generated.proto.newbeemallusertokenmapper.CreateObjectRequest;
+import ltd.newbee.mall.monomorph.id.generated.proto.newbeemallusertokenmapper.ConstructorArgs;
+import ltd.newbee.mall.monomorph.id.generated.proto.newbeemallusertokenmapper.NewBeeMallUserTokenMapperServiceGrpc;
+import ltd.newbee.mall.monomorph.id.generated.proto.newbeemallusertokenmapper.SelectByTokenRequest;
+import ltd.newbee.mall.monomorph.id.generated.proto.newbeemallusertokenmapper.SelectByTokenResponse;
+import ltd.newbee.mall.monomorph.dto.generated.proto.mallusertoken.MallUserTokenDTO;
 import ltd.newbee.mall.monomorph.dto.generated.client.MallUserToken;
-import ltd.newbee.mall.monomorph.id.generated.proto.newbeemallusertokenmapper.*;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
@@ -18,7 +25,7 @@ public class NewBeeMallUserTokenMapper extends AbstractRefactoredClient {
     private ManagedChannel businessChannel;
     private NewBeeMallUserTokenMapperServiceGrpc.NewBeeMallUserTokenMapperServiceBlockingStub businessStub;
 
-    /** Public no-arg constructor: original mapper interface had no constructor arguments. */
+    /** Constructor. */
     public NewBeeMallUserTokenMapper() {
         initialize();
     }
@@ -30,24 +37,35 @@ public class NewBeeMallUserTokenMapper extends AbstractRefactoredClient {
 
     @Override
     protected void performRpcSetup() throws Exception {
+        if (businessStub != null) {
+            return; // already set up
+        }
         ServiceRegistry.ServiceEndpoint endpoint = ServiceRegistry.getEndpoint(TARGET_SERVICE_ID);
-        this.businessChannel = ManagedChannelBuilder
-                .forAddress(endpoint.getHost(), endpoint.getPort())
-                .usePlaintext()
-                .build();
+        this.businessChannel = ManagedChannelBuilder.forAddress(endpoint.getHost(), endpoint.getPort()).usePlaintext().build();
         this.businessStub = NewBeeMallUserTokenMapperServiceGrpc.newBlockingStub(businessChannel);
+    }
+
+    private void ensureRpcSetup() throws Exception {
+        if (businessStub == null) {
+            performRpcSetup();
+        }
     }
 
     @Override
     protected RefactoredObjectID performRemoteCreateAndGetId(String clientId, Object... args) throws Exception {
-        performRpcSetup();
+        ensureRpcSetup();
+
+        // Build constructor args from the provided arguments if necessary.
+        // For this mapper, the default constructor has no arguments, so we pass an empty ConstructorArgs.
+        ConstructorArgs constructorArgs = ConstructorArgs.newBuilder().build();
 
         CreateObjectRequest createRequest = CreateObjectRequest.newBuilder()
                 .setClientID(clientId)
-                .setConstructorArgs(ConstructorArgs.newBuilder().build())
+                .setConstructorArgs(constructorArgs)
                 .build();
 
-        return this.businessStub.createObject(createRequest);
+        RefactoredObjectID createResponseProto = this.businessStub.createObject(createRequest);
+        return createResponseProto;
     }
 
     @Override
@@ -59,35 +77,35 @@ public class NewBeeMallUserTokenMapper extends AbstractRefactoredClient {
                     this.businessChannel.shutdownNow();
                 }
             } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
+                // ignore
+            } finally {
+                this.businessChannel = null;
+                this.businessStub = null;
             }
         }
     }
 
+    /** Factory method for creating proxy from an EXISTING ID. */
     public static NewBeeMallUserTokenMapper fromID(RefactoredObjectID existingId) {
         return new NewBeeMallUserTokenMapper(existingId);
     }
 
-    /** Implements the exposed RPC method selectByToken. */
+    // --- Start of the implementation of the rest of the Service Methods ---
+
     public MallUserToken selectByToken(String token) {
         try {
-            if (this.businessStub == null) {
-                performRpcSetup();
-            }
-
+            ensureRpcSetup();
             SelectByTokenRequest request = SelectByTokenRequest.newBuilder()
-                    .setRefactoredObjectID(this.objectId)
+                    .setRefactoredObjectId(this.objectId)
                     .setToken(token)
                     .build();
-
-            SelectByTokenResponse response = this.businessStub.selectByToken(request);
-
-            if (response.hasResult()) {
-                return MallUserToken.fromDTO(response.getResult());
-            }
-            return null;
+            SelectByTokenResponse response = businessStub.selectByToken(request);
+            MallUserTokenDTO dto = response.getMallUserToken();
+            return MallUserToken.fromDTO(dto);
         } catch (Exception e) {
-            throw new RuntimeException("Failed to invoke selectByToken", e);
+            throw new RuntimeException("Failed to call selectByToken", e);
         }
     }
+
+    // --- End of the implementation of the rest of the Service Methods ---
 }

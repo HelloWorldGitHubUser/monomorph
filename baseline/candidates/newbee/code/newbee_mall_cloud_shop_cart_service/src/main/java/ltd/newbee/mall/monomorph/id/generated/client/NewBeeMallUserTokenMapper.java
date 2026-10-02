@@ -5,7 +5,6 @@ import ltd.newbee.mall.monomorph.id.generated.helpers.ServiceRegistry;
 import ltd.newbee.mall.monomorph.id.shared.RefactoredObjectID;
 import ltd.newbee.mall.monomorph.id.generated.proto.newbeemallusertokenmapper.*;
 import ltd.newbee.mall.monomorph.dto.generated.client.MallUserToken;
-import ltd.newbee.mall.monomorph.dto.generated.proto.mallusertoken.MallUserTokenDTO;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
@@ -15,66 +14,56 @@ public class NewBeeMallUserTokenMapper extends AbstractRefactoredClient {
 
     private static final String TARGET_SERVICE_ID = "newbee_mall_cloud_user_service";
 
-    private final Object rpcSetupLock = new Object();
+    private ManagedChannel businessChannel;
+    private NewBeeMallUserTokenMapperServiceGrpc.NewBeeMallUserTokenMapperServiceBlockingStub businessStub;
 
-    private volatile ManagedChannel businessChannel;
-    private volatile NewBeeMallUserTokenMapperServiceGrpc.NewBeeMallUserTokenMapperServiceBlockingStub businessStub;
-
+    /** Public no-arg constructor for normal client creation. */
     public NewBeeMallUserTokenMapper() {
         initialize();
     }
 
+    /** Private constructor used by the fromID factory. */
     private NewBeeMallUserTokenMapper(RefactoredObjectID existingId) {
         super(existingId);
     }
 
     @Override
     protected void performRpcSetup() throws Exception {
-        if (isRpcReady()) {
-            return;
-        }
-        synchronized (rpcSetupLock) {
-            if (isRpcReady()) {
-                return;
-            }
-            ServiceRegistry.ServiceEndpoint endpoint = ServiceRegistry.getEndpoint(TARGET_SERVICE_ID);
-            ManagedChannel channel = ManagedChannelBuilder.forAddress(endpoint.getHost(), endpoint.getPort())
-                    .usePlaintext()
-                    .build();
-            this.businessChannel = channel;
-            this.businessStub = NewBeeMallUserTokenMapperServiceGrpc.newBlockingStub(channel);
-        }
+        ServiceRegistry.ServiceEndpoint endpoint = ServiceRegistry.getEndpoint(TARGET_SERVICE_ID);
+        this.businessChannel = ManagedChannelBuilder
+                .forAddress(endpoint.getHost(), endpoint.getPort())
+                .usePlaintext()
+                .build();
+        this.businessStub = NewBeeMallUserTokenMapperServiceGrpc.newBlockingStub(businessChannel);
     }
 
     @Override
     protected RefactoredObjectID performRemoteCreateAndGetId(String clientId, Object... args) throws Exception {
-        performRpcSetup();
+        ensureBusinessStub();
+
         CreateObjectRequest createRequest = CreateObjectRequest.newBuilder()
                 .setClientID(clientId)
                 .setConstructorArgs(ConstructorArgs.newBuilder().build())
                 .build();
+
         return this.businessStub.createObject(createRequest);
     }
 
     @Override
     protected void performSubclassRpcCleanup() {
-        ManagedChannel channelToClose;
-        synchronized (rpcSetupLock) {
-            channelToClose = this.businessChannel;
+        if (this.businessChannel != null) {
+            if (!this.businessChannel.isShutdown()) {
+                try {
+                    this.businessChannel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
+                    if (!this.businessChannel.isTerminated()) {
+                        this.businessChannel.shutdownNow();
+                    }
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
             this.businessChannel = null;
             this.businessStub = null;
-        }
-        if (channelToClose == null) {
-            return;
-        }
-        channelToClose.shutdown();
-        try {
-            if (!channelToClose.awaitTermination(5, TimeUnit.SECONDS)) {
-                channelToClose.shutdownNow();
-            }
-        } catch (InterruptedException e) {
-            channelToClose.shutdownNow();
-            Thread.currentThread().interrupt();
         }
     }
 
@@ -82,28 +71,33 @@ public class NewBeeMallUserTokenMapper extends AbstractRefactoredClient {
         return new NewBeeMallUserTokenMapper(existingId);
     }
 
+    /**
+     * Exposed service method matching the original selectByToken signature,
+     * converted to use the available proxy DTO.
+     */
     public MallUserToken selectByToken(String token) {
-        ensureRpcSetup();
+        ensureBusinessStub();
+
         SelectByTokenRequest request = SelectByTokenRequest.newBuilder()
-                .setRefactoredObjectID(this.objectId)
+                .setRefactoredObjectId(this.objectId)
                 .setToken(token)
                 .build();
+
         SelectByTokenResponse response = this.businessStub.selectByToken(request);
-        return MallUserToken.fromDTO(response.getResult());
+
+        if (response == null || !response.hasMallUserToken()) {
+            return null;
+        }
+
+        return MallUserToken.fromDTO(response.getMallUserToken());
     }
 
-    private boolean isRpcReady() {
-        return this.businessStub != null
-                && this.businessChannel != null
-                && !this.businessChannel.isShutdown();
-    }
-
-    private void ensureRpcSetup() {
-        if (!isRpcReady()) {
+    private void ensureBusinessStub() {
+        if (this.businessStub == null) {
             try {
                 performRpcSetup();
             } catch (Exception e) {
-                throw new RuntimeException("Failed to set up gRPC channel", e);
+                throw new RuntimeException("Failed to initialize gRPC stub for " + TARGET_SERVICE_ID, e);
             }
         }
     }

@@ -7,15 +7,16 @@
  * 版权所有，侵权必究！
  */
 package ltd.newbee.mall.config.handler;
-
+import java.io.IOException;
 import ltd.newbee.mall.common.Constants;
 import ltd.newbee.mall.common.NewBeeMallException;
 import ltd.newbee.mall.common.ServiceResultEnum;
 import ltd.newbee.mall.config.annotation.TokenToMallUser;
-import ltd.newbee.mall.dao.MallUserMapper;
-import ltd.newbee.mall.dao.NewBeeMallUserTokenMapper;
-import ltd.newbee.mall.entity.MallUser;
 import ltd.newbee.mall.entity.MallUserToken;
+import ltd.newbee.mall.monomorph.dto.generated.client.MallUser;
+import ltd.newbee.mall.monomorph.dto.generated.client.MallUserMapper;
+import ltd.newbee.mall.monomorph.id.generated.client.NewBeeMallUserTokenMapper;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
@@ -23,15 +24,11 @@ import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
-
-import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
-
 @Component
 public class TokenToMallUserMethodArgumentResolver implements HandlerMethodArgumentResolver {
-
     @Autowired
     private MallUserMapper mallUserMapper;
+
     @Autowired
     private NewBeeMallUserTokenMapper newBeeMallUserTokenMapper;
 
@@ -49,9 +46,9 @@ public class TokenToMallUserMethodArgumentResolver implements HandlerMethodArgum
         if (parameter.getParameterAnnotation(TokenToMallUser.class) instanceof TokenToMallUser) {
             MallUser mallUser = null;
             String token = webRequest.getHeader("token");
-            if (null != token && !"".equals(token) && token.length() == Constants.TOKEN_LENGTH) {
+            if (((null != token) && (!"".equals(token))) && (token.length() == Constants.TOKEN_LENGTH)) {
                 MallUserToken mallUserToken = newBeeMallUserTokenMapper.selectByToken(token);
-                if (mallUserToken == null || mallUserToken.getExpireTime().getTime() <= System.currentTimeMillis()) {
+                if ((mallUserToken == null) || (mallUserToken.getExpireTime().getTime() <= System.currentTimeMillis())) {
                     NewBeeMallException.fail(ServiceResultEnum.TOKEN_EXPIRE_ERROR.getResult());
                 }
                 mallUser = mallUserMapper.selectByPrimaryKey(mallUserToken.getUserId());
@@ -69,22 +66,19 @@ public class TokenToMallUserMethodArgumentResolver implements HandlerMethodArgum
         return null;
     }
 
-    public static byte[] getRequestPostBytes(HttpServletRequest request)
-            throws IOException {
+    public static byte[] getRequestPostBytes(HttpServletRequest request) throws IOException {
         int contentLength = request.getContentLength();
         if (contentLength < 0) {
             return null;
         }
         byte buffer[] = new byte[contentLength];
-        for (int i = 0; i < contentLength; ) {
-            int readlen = request.getInputStream().read(buffer, i,
-                    contentLength - i);
-            if (readlen == -1) {
+        for (int i = 0; i < contentLength;) {
+            int readlen = request.getInputStream().read(buffer, i, contentLength - i);
+            if (readlen == (-1)) {
                 break;
             }
             i += readlen;
         }
         return buffer;
     }
-
 }
