@@ -1,0 +1,293 @@
+package com.hoangtien2k3.ecommerce.service.impl;
+
+import com.hoangtien2k3.ecommerce.exception.wrapper.*;
+import com.hoangtien2k3.ecommerce.dto.EmailDetails;
+import com.hoangtien2k3.ecommerce.dto.request.*;
+import com.hoangtien2k3.ecommerce.dto.response.InformationMessage;
+import com.hoangtien2k3.ecommerce.dto.response.JwtResponseMessage;
+import com.hoangtien2k3.ecommerce.event.UserProfileEvent;
+import com.hoangtien2k3.ecommerce.model.user.RoleName;
+import com.hoangtien2k3.ecommerce.model.user.User;
+import com.hoangtien2k3.ecommerce.repository.user.UserRepository;
+import com.hoangtien2k3.ecommerce.security.jwt.JwtProvider;
+import com.hoangtien2k3.ecommerce.security.userprinciple.UserDetailService;
+import com.hoangtien2k3.ecommerce.security.userprinciple.UserPrinciple;
+import com.hoangtien2k3.ecommerce.service.RoleService;
+import com.hoangtien2k3.ecommerce.service.UserService;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.domain.*;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import jakarta.transaction.Transactional;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+import java.util.stream.Collectors;
+
+@Service
+public class UserServiceImpl implements UserService {
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final JwtProvider jwtProvider;
+    private final UserDetailService userDetailsService;
+    private final ModelMapper modelMapper;
+    private final RoleService roleService;
+    private final ApplicationEventPublisher eventPublisher;
+
+    @Autowired
+    public UserServiceImpl(UserRepository userRepository,
+            PasswordEncoder passwordEncoder,
+            JwtProvider jwtProvider,
+            UserDetailService userDetailsService,
+            ModelMapper modelMapper,
+            RoleService roleService,
+            ApplicationEventPublisher eventPublisher) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.jwtProvider = jwtProvider;
+        this.userDetailsService = userDetailsService;
+        this.modelMapper = modelMapper;
+        this.roleService = roleService;
+        this.eventPublisher = eventPublisher;
+    }
+
+    @Override
+    public User register(SignUp signUp) {
+        if (existsByUsername(signUp.getUsername())) {
+            throw new EmailOrUsernameNotFoundException(
+                    "The username " + signUp.getUsername() + " is existed, please try again.");
+        }
+        if (existsByEmail(signUp.getEmail())) {
+            throw new EmailOrUsernameNotFoundException(
+                    "The email " + signUp.getEmail() + " is existed, please try again.");
+        }
+        if (existsByPhoneNumber(signUp.getPhone())) {
+            throw new PhoneNumberNotFoundException(
+                    "The phone number " + signUp.getPhone() + " is existed, please try again.");
+        }
+
+        User user = modelMapper.map(signUp, User.class);
+        user.setPassword(passwordEncoder.encode(signUp.getPassword()));
+        user.setRoles(signUp.getRoles()
+                .stream()
+                .map(role -> roleService.findByName(mapToRoleName(role))
+                        .orElseThrow(() -> new RuntimeException("Role not found in the database.")))
+                .collect(Collectors.toSet()));
+
+        return userRepository.save(user);
+    }
+
+    private RoleName mapToRoleName(String roleName) {
+        return switch (roleName) {
+            case "ADMIN", "admin", "Admin" -> RoleName.ADMIN;
+            case "PM", "pm", "Pm" -> RoleName.PM;
+            case "USER", "user", "User" -> RoleName.USER;
+            default -> null;
+        };
+    }
+
+    @Override
+    public JwtResponseMessage login(Login signInForm) {
+        String usernameOrEmail = signInForm.getUsername();
+        boolean isEmail = usernameOrEmail.contains("@gmail.com");
+
+        UserDetails userDetails;
+        if (isEmail) {
+            userDetails = userDetailsService.loadUserByEmail(usernameOrEmail);
+        } else {
+            userDetails = userDetailsService.loadUserByUsername(usernameOrEmail);
+        }
+
+        if (userDetails == null) {
+            throw new UserNotFoundException("User not found");
+        }
+
+        if (!passwordEncoder.matches(signInForm.getPassword(), userDetails.getPassword())) {
+            throw new PasswordNotFoundException("Incorrect password");
+        }
+
+        Authentication authentication = new UsernamePasswordAuthenticationToken(
+                userDetails,
+                signInForm.getPassword(),
+                userDetails.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        String accessToken = jwtProvider.createToken(authentication);
+        String refreshToken = jwtProvider.createRefreshToken(authentication);
+
+        UserPrinciple userPrinciple = (UserPrinciple) userDetails;
+
+        return JwtResponseMessage.builder()
+                .accessToken(accessToken)
+                .refreshToken(refreshToken)
+                .information(InformationMessage.builder()
+                        .id(userPrinciple.id())
+                        .fullname(userPrinciple.fullname())
+                        .username(userPrinciple.username())
+                        .email(userPrinciple.email())
+                        .phone(userPrinciple.phone())
+                        .gender(userPrinciple.gender())
+                        .avatar(userPrinciple.avatar())
+                        .roles(userPrinciple.roles())
+                        .build())
+                .build();
+    }
+
+    @Override
+    public void logout() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        SecurityContextHolder.getContext().setAuthentication(null);
+
+        String currentToken = getCurrentToken();
+
+        if (authentication != null && authentication.isAuthenticated() && currentToken != null && !currentToken.isBlank()) {
+            String updatedToken = jwtProvider.reduceTokenExpiration(currentToken);
+        }
+
+        SecurityContextHolder.clearContext();
+    }
+
+    private String getCurrentToken() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null && authentication.isAuthenticated()) {
+            Object credentials = authentication.getCredentials();
+
+            if (credentials instanceof String) {
+                return (String) credentials;
+            }
+        }
+
+        return null;
+    }
+
+    @Transactional
+    @Override
+    public User update(Long id, SignUp updateDTO) {
+        User existingUser = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("User not found userId: " + id + " for update"));
+
+        modelMapper.map(updateDTO, existingUser);
+        existingUser.setPassword(passwordEncoder.encode(updateDTO.getPassword()));
+
+        return userRepository.save(existingUser);
+    }
+
+    @Transactional
+    @Override
+    public String changePassword(ChangePasswordRequest request) {
+        String username = getCurrentUsername();
+
+        User existingUser = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UserNotFoundException("User not found with username " + username));
+
+        if (passwordEncoder.matches(request.getOldPassword(), existingUser.getPassword())) {
+            if (validateNewPassword(request.getNewPassword(), request.getConfirmPassword())) {
+                existingUser.setPassword(passwordEncoder.encode(request.getNewPassword()));
+                userRepository.save(existingUser);
+
+                EmailDetails emailDetails = emailDetailsConfig(username);
+
+                eventPublisher.publishEvent(new UserProfileEvent(this, emailDetails));
+
+                return "Password changed successfully";
+            }
+
+            return "Password changed failed.";
+        } else {
+            throw new PasswordNotFoundException("Incorrect password");
+        }
+    }
+
+    private EmailDetails emailDetailsConfig(String username) {
+        return EmailDetails.builder()
+                .recipient("hoangtien2k3dev@gmail.com")
+                .msgBody(textSendEmailChangePasswordSuccessfully(username))
+                .subject("Password Change Successful: "
+                        + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                .attachment("Please be careful, don't let this information leak")
+                .build();
+    }
+
+    public String textSendEmailChangePasswordSuccessfully(String username) {
+        return "Hey " + username + "!\n\n" +
+                "This is a confirmation that your password has been successfully changed.\n" +
+                " If you did not initiate this change, please contact our support team immediately.\n" +
+                "If you have any questions or concerns, feel free to reach out to us.\n\n" +
+                "Best regards:\n\n" +
+                "Contact: hoangtien2k3qx1@gmail.com\n" +
+                "Fanpage: https://hoangtien2k3qx1.github.io/";
+    }
+
+    private String getCurrentUsername() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !authentication.isAuthenticated() || authentication.getName() == null) {
+            throw new UserNotAuthenticatedException("User not authenticated.");
+        }
+        return authentication.getName();
+    }
+
+    private boolean validateNewPassword(String newPassword, String confirmPassword) {
+        return Objects.equals(newPassword, confirmPassword);
+    }
+
+    @Transactional
+    @Override
+    public String delete(Long id) {
+        userRepository.findById(id)
+                .ifPresentOrElse(
+                        user -> {
+                            try {
+                                userRepository.delete(user);
+                            } catch (DataAccessException e) {
+                                throw new RuntimeException("Error deleting user with userId: " + id, e);
+                            }
+                        },
+                        () -> {
+                            throw new UserNotFoundException("User not found for userId: " + id);
+                        });
+        return "User with id " + id + " deleted successfully.";
+    }
+
+    @Override
+    public User findById(Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("User not found with userId: " + userId));
+    }
+
+    @Override
+    public User findByUsername(String userName) {
+        return userRepository.findByUsername(userName)
+                .orElseThrow(() -> new UserNotFoundException("User not found with userName: " + userName));
+    }
+
+    @Override
+    public Page<UserDto> findAllUsers(int page, int size, String sortBy, String sortOrder) {
+        Sort sort = Sort.by(Sort.Direction.fromString(sortOrder), sortBy);
+        PageRequest pageRequest = PageRequest.of(page, size, sort);
+        Page<User> usersPage = userRepository.findAll(pageRequest);
+        return usersPage.map(user -> modelMapper.map(user, UserDto.class));
+    }
+
+    public boolean existsByUsername(String username) {
+        return userRepository.existsByUsername(username);
+    }
+
+    public boolean existsByEmail(String email) {
+        return userRepository.existsByEmail(email);
+    }
+
+    public boolean existsByPhoneNumber(String phone) {
+        return userRepository.existsByPhoneNumber(phone);
+    }
+
+}

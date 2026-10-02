@@ -1,0 +1,73 @@
+{
+  "customers-service": [
+    "org.springframework.samples.petclinic.web.OwnerResource",
+    "org.springframework.samples.petclinic.web.PetResource",
+    "org.springframework.samples.petclinic.web.PetValidator",
+    "org.springframework.samples.petclinic.model.Owner",
+    "org.springframework.samples.petclinic.model.Pet",
+    "org.springframework.samples.petclinic.model.PetType",
+    "org.springframework.samples.petclinic.repository.OwnerRepository",
+    "org.springframework.samples.petclinic.repository.PetRepository",
+    "",
+    "org.springframework.samples.petclinic.service.ClinicService",
+    "org.springframework.samples.petclinic.service.ClinicServiceImpl",
+    "org.springframework.samples.petclinic.model.BaseEntity",
+    "org.springframework.samples.petclinic.model.NamedEntity",
+    "org.springframework.samples.petclinic.model.Person",
+    "org.springframework.samples.petclinic.web.dto.OwnerDetails",
+    "org.springframework.samples.petclinic.web.dto.PetDetails",
+    "org.springframework.samples.petclinic.web.dto.PetTypeDetails",
+    "org.springframework.samples.petclinic.web.dto.VisitDetails",
+    "org.springframework.samples.petclinic.web.dto.DtoMapper"
+  ],
+  "visits-service": [
+    "org.springframework.samples.petclinic.web.VisitResource",
+    "org.springframework.samples.petclinic.model.Visit",
+    "org.springframework.samples.petclinic.repository.VisitRepository",
+    "",
+    "org.springframework.samples.petclinic.service.ClinicService",
+    "org.springframework.samples.petclinic.service.ClinicServiceImpl",
+    "org.springframework.samples.petclinic.model.BaseEntity",
+    "org.springframework.samples.petclinic.web.dto.VisitDetails",
+    "org.springframework.samples.petclinic.web.dto.Visits",
+    "org.springframework.samples.petclinic.web.dto.DtoMapper"
+  ],
+  "vets-service": [
+    "org.springframework.samples.petclinic.web.VetResource",
+    "org.springframework.samples.petclinic.model.Specialty",
+    "org.springframework.samples.petclinic.model.Vet",
+    "org.springframework.samples.petclinic.model.Vets",
+    "org.springframework.samples.petclinic.repository.VetRepository",
+    "org.springframework.samples.petclinic.web.dto.SpecialtyDetails",
+    "org.springframework.samples.petclinic.web.dto.VetDetails",
+    "",
+    "org.springframework.samples.petclinic.service.ClinicService",
+    "org.springframework.samples.petclinic.service.ClinicServiceImpl",
+    "org.springframework.samples.petclinic.model.BaseEntity",
+    "org.springframework.samples.petclinic.model.NamedEntity",
+    "org.springframework.samples.petclinic.model.Person",
+    "org.springframework.samples.petclinic.web.dto.DtoMapper"
+  ],
+  "api-gateway": [
+    "org.springframework.samples.petclinic.web.OwnerDetailsResource",
+    "",
+    "org.springframework.samples.petclinic.web.dto.OwnerDetails",
+    "org.springframework.samples.petclinic.web.dto.PetDetails",
+    "org.springframework.samples.petclinic.web.dto.PetTypeDetails",
+    "org.springframework.samples.petclinic.web.dto.VisitDetails",
+    "org.springframework.samples.petclinic.web.dto.Visits"
+  ],
+  "shared": [
+    "org.springframework.samples.petclinic.model.BaseEntity",
+    "org.springframework.samples.petclinic.model.NamedEntity",
+    "org.springframework.samples.petclinic.model.Person",
+    "org.springframework.samples.petclinic.service.ClinicService",
+    "org.springframework.samples.petclinic.service.ClinicServiceImpl",
+    "org.springframework.samples.petclinic.web.dto.OwnerDetails",
+    "org.springframework.samples.petclinic.web.dto.PetDetails",
+    "org.springframework.samples.petclinic.web.dto.PetTypeDetails",
+    "org.springframework.samples.petclinic.web.dto.VisitDetails",
+    "org.springframework.samples.petclinic.web.dto.Visits",
+    "org.springframework.samples.petclinic.web.dto.DtoMapper"
+  ]
+}

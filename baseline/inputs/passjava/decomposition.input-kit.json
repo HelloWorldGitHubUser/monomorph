@@ -1,0 +1,128 @@
+{
+  "passjava-channel": [
+    "com.passjava.controller.AccessTokenController",
+    "com.passjava.controller.ChannelController",
+    "com.passjava.dao.AccessTokenDao",
+    "com.passjava.dao.ChannelDao",
+    "com.passjava.entity.AccessTokenEntity",
+    "com.passjava.entity.ChannelEntity",
+    "com.passjava.service.AccessTokenService",
+    "com.passjava.service.ChannelService",
+    "com.passjava.service.impl.AccessTokenServiceImpl",
+    "com.passjava.service.impl.ChannelServiceImpl",
+
+    "com.passjava.utils.Constant",
+    "com.passjava.utils.PageUtils",
+    "com.passjava.utils.Query",
+    "com.passjava.utils.R",
+    "com.passjava.utils.RRException",
+    "com.passjava.xss.SQLFilter"
+  ],
+  "passjava-content": [
+    "com.passjava.controller.BannerController",
+    "com.passjava.controller.NewsController",
+    "com.passjava.dao.BannerDao",
+    "com.passjava.dao.NewsDao",
+    "com.passjava.entity.BannerEntity",
+    "com.passjava.entity.NewsEntity",
+    "com.passjava.service.BannerService",
+    "com.passjava.service.NewsService",
+    "com.passjava.service.impl.BannerServiceImpl",
+    "com.passjava.service.impl.NewsServiceImpl",
+
+    "com.passjava.utils.Constant",
+    "com.passjava.utils.PageUtils",
+    "com.passjava.utils.Query",
+    "com.passjava.utils.R",
+    "com.passjava.utils.RRException",
+    "com.passjava.xss.SQLFilter"
+  ],
+  "passjava-member": [
+    "com.passjava.controller.GrowthChangeHistoryController",
+    "com.passjava.controller.MemberController",
+    "com.passjava.dao.GrowthChangeHistoryDao",
+    "com.passjava.dao.MemberDao",
+    "com.passjava.entity.GrowthChangeHistoryEntity",
+    "com.passjava.entity.MemberEntity",
+    "com.passjava.service.GrowthChangeHistoryService",
+    "com.passjava.service.MemberService",
+    "com.passjava.service.impl.GrowthChangeHistoryServiceImpl",
+    "com.passjava.service.impl.MemberServiceImpl",
+
+    "com.passjava.utils.Constant",
+    "com.passjava.utils.PageUtils",
+    "com.passjava.utils.Query",
+    "com.passjava.utils.R",
+    "com.passjava.utils.RRException",
+    "com.passjava.xss.SQLFilter"
+  ],
+  "passjava-question": [
+    "com.passjava.config.MyBatisConfig",
+    "com.passjava.config.MyCacheConfig",
+    "com.passjava.controller.QuestionAppController",
+    "com.passjava.controller.QuestionController",
+    "com.passjava.controller.TypeController",
+    "com.passjava.dao.QuestionDao",
+    "com.passjava.dao.TypeDao",
+    "com.passjava.entity.QuestionEntity",
+    "com.passjava.entity.TypeEntity",
+    "com.passjava.exception.PassjavaExceptionControllerAdvice",
+    "com.passjava.service.IQuestionService",
+    "com.passjava.service.ITypeService",
+    "com.passjava.service.impl.QuestionServiceImpl",
+    "com.passjava.service.impl.TypeServiceImpl",
+
+    "com.passjava.dto.QuestionEsModel",
+    "com.passjava.exception.BizCodeEnum",
+    "com.passjava.utils.Constant",
+    "com.passjava.utils.PageUtils",
+    "com.passjava.utils.Query",
+    "com.passjava.utils.R",
+    "com.passjava.utils.RRException",
+    "com.passjava.xss.SQLFilter"
+  ],
+  "passjava-search": [
+    "com.passjava.config.PassJavaElasticsearchConfig",
+    "com.passjava.controller.SearchController",
+    "com.passjava.service.SearchService",
+    "com.passjava.service.impl.SearchServiceImpl",
+
+    "com.passjava.dto.QuestionEsModel",
+    "com.passjava.exception.BizCodeEnum",
+    "com.passjava.utils.R"
+  ],
+  "passjava-study": [
+    "com.passjava.controller.StudyTimeController",
+    "com.passjava.controller.ViewLogController",
+    "com.passjava.dao.StudyTimeDao",
+    "com.passjava.dao.ViewLogDao",
+    "com.passjava.entity.StudyTimeEntity",
+    "com.passjava.entity.ViewLogEntity",
+    "com.passjava.service.StudyTimeService",
+    "com.passjava.service.ViewLogService",
+    "com.passjava.service.impl.StudyTimeServiceImpl",
+    "com.passjava.service.impl.ViewLogServiceImpl",
+
+    "com.passjava.utils.Constant",
+    "com.passjava.utils.PageUtils",
+    "com.passjava.utils.Query",
+    "com.passjava.utils.R",
+    "com.passjava.utils.RRException",
+    "com.passjava.xss.SQLFilter"
+  ],
+  "passjava-thirdparty": [
+    "com.passjava.controller.OssController",
+
+    "com.passjava.utils.R"
+  ],
+  "shared": [
+    "com.passjava.dto.QuestionEsModel",
+    "com.passjava.exception.BizCodeEnum",
+    "com.passjava.utils.Constant",
+    "com.passjava.utils.PageUtils",
+    "com.passjava.utils.Query",
+    "com.passjava.utils.R",
+    "com.passjava.utils.RRException",
+    "com.passjava.xss.SQLFilter"
+  ]
+}

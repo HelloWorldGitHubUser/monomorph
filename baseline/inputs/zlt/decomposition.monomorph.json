@@ -1,0 +1,126 @@
+{
+  "name": "input-kit-zlt",
+  "language": "java",
+  "granularity": "class",
+  "partitions": [
+    {
+      "name": "user-center",
+      "classes": [
+        "com.central.controller.SysMenuController",
+        "com.central.controller.SysRoleController",
+        "com.central.controller.SysUserController",
+        "com.central.entity.SysRoleMenu",
+        "com.central.entity.SysRoleUser",
+        "com.central.enums.UserType",
+        "com.central.mapper.SysMenuMapper",
+        "com.central.mapper.SysRoleMapper",
+        "com.central.mapper.SysRoleMenuMapper",
+        "com.central.mapper.SysUserMapper",
+        "com.central.mapper.SysUserRoleMapper",
+        "com.central.model.SysUserExcel",
+        "com.central.service.ISysMenuService",
+        "com.central.service.ISysRoleMenuService",
+        "com.central.service.ISysRoleService",
+        "com.central.service.ISysRoleUserService",
+        "com.central.service.ISysUserService",
+        "com.central.service.impl.SysMenuServiceImpl",
+        "com.central.service.impl.SysRoleMenuServiceImpl",
+        "com.central.service.impl.SysRoleServiceImpl",
+        "com.central.service.impl.SysRoleUserServiceImpl",
+        "com.central.service.impl.SysUserServiceImpl",
+        "com.central.util.ExcelUtil",
+        "com.central.constant.CommonConstant",
+        "com.central.entity.SuperEntity",
+        "com.central.enums.CodeEnum",
+        "com.central.exception.BusinessException",
+        "com.central.exception.GlobalExceptionHandler",
+        "com.central.exception.IdempotencyException",
+        "com.central.model.PageResult",
+        "com.central.model.Result",
+        "com.central.service.ISuperService",
+        "com.central.service.impl.SuperServiceImpl"
+      ]
+    },
+    {
+      "name": "file-center",
+      "classes": [
+        "com.central.controller.FileController",
+        "com.central.entity.FileInfo",
+        "com.central.mapper.FileMapper",
+        "com.central.service.IFileService",
+        "com.central.service.impl.FileServiceImpl",
+        "com.central.enums.CodeEnum",
+        "com.central.exception.BusinessException",
+        "com.central.exception.GlobalExceptionHandler",
+        "com.central.exception.IdempotencyException",
+        "com.central.model.PageResult",
+        "com.central.model.Result",
+        "com.central.service.ISuperService",
+        "com.central.service.impl.SuperServiceImpl"
+      ]
+    },
+    {
+      "name": "log-center",
+      "classes": [
+        "com.central.controller.AuditLogController",
+        "com.central.controller.LogAggregationController",
+        "com.central.controller.SlowQueryLogController",
+        "com.central.controller.SysLogController",
+        "com.central.enums.CodeEnum",
+        "com.central.exception.BusinessException",
+        "com.central.exception.GlobalExceptionHandler",
+        "com.central.exception.IdempotencyException",
+        "com.central.model.PageResult",
+        "com.central.model.Result"
+      ]
+    },
+    {
+      "name": "zlt-uaa",
+      "classes": [
+        "com.central.controller.ClientController",
+        "com.central.controller.TokensController",
+        "com.central.controller.ValidateCodeController",
+        "com.central.entity.Client",
+        "com.central.mapper.ClientMapper",
+        "com.central.model.vo.TokenVo",
+        "com.central.service.IClientService",
+        "com.central.service.ITokensService",
+        "com.central.service.impl.ClientServiceImpl",
+        "com.central.service.impl.TokensServiceImpl",
+        "com.central.entity.SuperEntity",
+        "com.central.enums.CodeEnum",
+        "com.central.exception.BusinessException",
+        "com.central.exception.GlobalExceptionHandler",
+        "com.central.exception.IdempotencyException",
+        "com.central.model.PageResult",
+        "com.central.model.Result",
+        "com.central.service.ISuperService",
+        "com.central.service.impl.SuperServiceImpl"
+      ]
+    },
+    {
+      "name": "search-center",
+      "classes": [
+        "com.central.controller.IndexController",
+        "com.central.model.dto.IndexDto",
+        "com.central.model.dto.LogicDelDto",
+        "com.central.model.dto.SearchDto",
+        "com.central.model.vo.AggItemVo",
+        "com.central.service.IAggregationService",
+        "com.central.service.IIndexService",
+        "com.central.service.ISearchService",
+        "com.central.service.impl.AggregationServiceImpl",
+        "com.central.service.impl.IndexServiceImpl",
+        "com.central.service.impl.SearchServiceImpl",
+        "com.central.util.JsonUtil",
+        "com.central.constant.CommonConstant",
+        "com.central.enums.CodeEnum",
+        "com.central.exception.BusinessException",
+        "com.central.exception.GlobalExceptionHandler",
+        "com.central.exception.IdempotencyException",
+        "com.central.model.PageResult",
+        "com.central.model.Result"
+      ]
+    }
+  ]
+}

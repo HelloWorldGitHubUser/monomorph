@@ -1,0 +1,113 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ecommerce-monolith
+
+  # Two relational persistence units are configured explicitly below.
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration
+      - org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration
+
+  # MongoDB
+  data:
+    mongodb:
+      host: ${MONGO_HOST:localhost}
+      port: ${MONGO_PORT:27017}
+      database: ecommerce
+
+  # Mail
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME:hoangtien2k3qx1@gmail.com}
+    password: ${MAIL_PASSWORD:uvbskgpuchmgtlbp}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+# ==================== Relational Persistence ====================
+
+app:
+  datasource:
+    mysql:
+      jdbc-url: jdbc:mysql://localhost:3307/ecommerce?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8&serverTimezone=UTC
+      username: root
+      password: ${MYSQL_PASSWORD:12042003}
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    postgres:
+      jdbc-url: jdbc:postgresql://localhost:5432/ecommerce
+      username: ${POSTGRES_USER:admin}
+      password: ${POSTGRES_PASSWORD:admin}
+      driver-class-name: org.postgresql.Driver
+
+# ==================== Elasticsearch ====================
+elasticsearch:
+  url: ${ELASTICSEARCH_URL:localhost:9200}
+  username: ${ELASTICSEARCH_USERNAME:}
+  password: ${ELASTICSEARCH_PASSWORD:}
+
+# ==================== JWT ====================
+jwt:
+  secret: ${JWT_SECRET:L8KwmXTT/ByT7e9ZiO0s5cGedE7cSfS5YKpC0Qn/qO8=}
+  expiration: 86400
+  refreshExpiration: 172800
+
+# ==================== Management / Actuator ====================
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+  health:
+    mail:
+      enabled: false
+
+# ==================== Swagger / OpenAPI ====================
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  packagesToScan: com.hoangtien2k3.ecommerce
+
+# ==================== Media / File Storage ====================
+file:
+  directory: ./images
+
+hoangtien2k3:
+  publicUrl: http://localhost:8080
+
+# ==================== CORS ====================
+cors:
+  allowed-origins: "*"
+
+# ==================== Logging ====================
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: WARN
+    com:
+      hoangtien2k3:
+        ecommerce: INFO

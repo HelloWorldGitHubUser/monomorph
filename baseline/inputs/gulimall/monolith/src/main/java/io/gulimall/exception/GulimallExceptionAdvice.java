@@ -1,0 +1,38 @@
+package io.gulimall.exception;
+
+import io.gulimall.exception.BizCodeEnum;
+import io.gulimall.utils.R;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@Slf4j
+@RestControllerAdvice(basePackages = "io.gulimall")
+public class GulimallExceptionAdvice {
+
+    @ExceptionHandler(value = {MethodArgumentNotValidException.class})
+    public R handlerValidException(MethodArgumentNotValidException excetion) {
+        Map<String, String> map = new HashMap<>();
+        BindingResult result = excetion.getBindingResult();
+        result.getFieldErrors().forEach((item)->{
+            String message = item.getDefaultMessage();
+            String field = item.getField();
+            map.put(field, message);
+        });
+        log.error("数据校验出现问题:{},异常类型{}", excetion.getMessage(), excetion.getClass());
+        return R.error(BizCodeEnum.VAILD_EXCEPTION.getCode(), BizCodeEnum.VAILD_EXCEPTION.getMsg()).put("data", map);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public R handleGlobalException(Exception exception) {
+        log.error("系统未知异常", exception);
+        // 打印堆栈到标准输出以便调试
+        exception.printStackTrace();
+        return R.error(BizCodeEnum.UNKNOW_EXCEPTION.getCode(), BizCodeEnum.UNKNOW_EXCEPTION.getMsg());
+    }
+}

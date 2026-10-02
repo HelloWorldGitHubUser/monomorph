@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - includeAll:
+      path: db/changelog/tax/ddl/
+  - includeAll:
+      path: db/changelog/tax/data/

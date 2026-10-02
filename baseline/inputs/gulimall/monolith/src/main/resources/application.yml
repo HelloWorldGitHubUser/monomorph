@@ -1,0 +1,279 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    # 单数据源配置 - 所有表合并到一个数据库
+    url: jdbc:mysql://localhost:3306/gulimall?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      idle-timeout: 30000
+      pool-name: GulimallHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+  redis:
+    host: localhost
+    port: 6379
+  # 已移除分布式 Session，改用 Servlet 容器默认的本地 Session
+  thymeleaf:
+    cache: false
+    prefix: classpath:/
+  cache:
+    type: redis
+    redis:
+      time-to-live: 3600000
+  jackson:
+    time-zone: GMT+8
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+
+springdoc:
+  group-configs:
+    - group: AttrAttrgroupRelationController
+      paths-to-match: /product/attrattrgrouprelation/**
+    - group: AttrController
+      paths-to-match: /product/attr/**
+    - group: AttrGroupController
+      paths-to-match: /product/attrgroup/**
+    - group: AuthApiController
+      paths-to-match: /api/auth/**
+    - group: BrandController
+      paths-to-match: /product/brand/**
+    - group: CartController
+      paths-to-match:
+        - /cart.html
+        - /success.html
+        - /addCartItem
+        - /addCartItemSuccess
+        - /checkCart
+        - /countItem
+        - /deleteItem
+        - /getCheckedItems
+    - group: CategoryBrandRelationController
+      paths-to-match: /product/categorybrandrelation/**
+    - group: CategoryController
+      paths-to-match: /product/category/**
+    - group: CommentReplayController
+      paths-to-match: /product/commentreplay/**
+    - group: CouponController
+      paths-to-match: /coupon/coupon/**
+    - group: CouponHistoryController
+      paths-to-match: /coupon/couponhistory/**
+    - group: CouponSpuCategoryRelationController
+      paths-to-match: /coupon/couponspucategoryrelation/**
+    - group: CouponSpuRelationController
+      paths-to-match: /coupon/couponspurelation/**
+    - group: ElasticSaveController
+      paths-to-match: /product
+    - group: GrowthChangeHistoryController
+      paths-to-match: /member/growthchangehistory/**
+    - group: HomeAdvController
+      paths-to-match: /coupon/homeadv/**
+    - group: HomeSubjectController
+      paths-to-match: /coupon/homesubject/**
+    - group: HomeSubjectSpuController
+      paths-to-match: /coupon/homesubjectspu/**
+    - group: IndexController
+      paths-to-match:
+        - /
+        - /index.html
+        - /index/json/catalog.json
+    - group: IntegrationChangeHistoryController
+      paths-to-match: /member/integrationchangehistory/**
+    - group: ItemController
+      paths-to-match: /{skuId}.html
+    - group: LoginController
+      paths-to-match:
+        - /login.html
+        - /login
+        - /sms/sendCode
+        - /register
+    - group: MemberCollectSpuController
+      paths-to-match: /member/membercollectspu/**
+    - group: MemberCollectSubjectController
+      paths-to-match: /member/membercollectsubject/**
+    - group: MemberController
+      paths-to-match: /member/member/**
+    - group: MemberLevelController
+      paths-to-match: /member/memberlevel/**
+    - group: MemberLoginLogController
+      paths-to-match: /member/memberloginlog/**
+    - group: MemberPriceController
+      paths-to-match: /coupon/memberprice/**
+    - group: MemberReceiveAddressController
+      paths-to-match: /member/memberreceiveaddress/**
+    - group: MemberStatisticsInfoController
+      paths-to-match: /member/memberstatisticsinfo/**
+    - group: OauthController
+      paths-to-match: /oauth2.0/weibo/success
+    - group: OrderController
+      paths-to-match: /order/order/**
+    - group: OrderItemController
+      paths-to-match: /order/orderitem/**
+    - group: OrderOperateHistoryController
+      paths-to-match: /order/orderoperatehistory/**
+    - group: OrderReturnApplyController
+      paths-to-match: /order/orderreturnapply/**
+    - group: OrderReturnReasonController
+      paths-to-match: /order/orderreturnreason/**
+    - group: OrderSettingController
+      paths-to-match: /order/ordersetting/**
+    - group: OrderWebController
+      paths-to-match:
+        - /{page}/order.html
+        - /toTrade
+        - /submitOrder
+        - /memberOrder.html
+    - group: OssController
+      paths-to-match: /oss/policy
+    - group: PayWebController
+      paths-to-match:
+        - /aliPayOrder
+        - /mockPay
+        - /mockPayPage
+    - group: PaymentInfoController
+      paths-to-match: /order/paymentinfo/**
+    - group: ProductAttrValueController
+      paths-to-match: /product/productattrvalue/**
+    - group: PurchaseController
+      paths-to-match: /ware/purchase/**
+    - group: PurchaseDetailController
+      paths-to-match: /ware/purchasedetail/**
+    - group: RefundInfoController
+      paths-to-match: /order/refundinfo/**
+    - group: SearchController
+      paths-to-match: /search.html
+    - group: SeckillPromotionController
+      paths-to-match: /coupon/seckillpromotion/**
+    - group: SeckillController
+      paths-to-match:
+        - /getCurrentSeckillSkus
+        - /getSeckillSkuInfo/**
+        - /kill
+    - group: SeckillSessionController
+      paths-to-match: /coupon/seckillsession/**
+    - group: SeckillSkuNoticeController
+      paths-to-match: /coupon/seckillskunotice/**
+    - group: SeckillSkuRelationController
+      paths-to-match: /coupon/seckillskurelation/**
+    - group: SkuFullReductionController
+      paths-to-match: /coupon/skufullreduction/**
+    - group: SkuImagesController
+      paths-to-match: /product/skuimages/**
+    - group: SkuInfoController
+      paths-to-match: /product/skuinfo/**
+    - group: SkuLadderController
+      paths-to-match: /coupon/skuladder/**
+    - group: SkuSaleAttrValueController
+      paths-to-match: /product/skusaleattrvalue/**
+    - group: SpuBoundsController
+      paths-to-match: /coupon/spubounds/**
+    - group: SpuCommentController
+      paths-to-match: /product/spucomment/**
+    - group: SpuImagesController
+      paths-to-match: /product/spuimages/**
+    - group: SpuInfoController
+      paths-to-match: /product/spuinfo/**
+    - group: SpuInfoDescController
+      paths-to-match: /product/spuinfodesc/**
+    - group: WareInfoController
+      paths-to-match: /ware/wareinfo/**
+    - group: WareOrderTaskController
+      paths-to-match: /ware/wareordertask/**
+    - group: WareOrderTaskDetailController
+      paths-to-match: /ware/wareordertaskdetail/**
+    - group: WareSkuController
+      paths-to-match: /ware/waresku/**
+
+mybatis-plus:
+  # 扫描所有模块的 Mapper XML 文件
+  mapper-locations:
+    - classpath*:mapper/**/*.xml
+    - classpath*:product/mapper/**/*.xml
+    - classpath*:member/mapper/**/*.xml
+    - classpath*:order/mapper/**/*.xml
+    - classpath*:ware/mapper/**/*.xml
+    - classpath*:coupon/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: health,info,metrics,loggers
+        exclude: env,beans,threaddump,heapdump
+  endpoint:
+    health:
+      show-details: when_authorized
+logging:
+  level:
+    root: INFO
+    io.gulimall: INFO
+    io.niceseason.gulimall: INFO
+
+seckill:
+  upload:
+    cron: "0 0 3 * * ?"
+
+gulimall:
+  thread:
+    corePoolSize: 10
+    maxPoolSize: 20
+    keepAliveTime: 300
+
+coupon:
+  user:
+    name: test
+    age: 20
+
+thirdparty:
+  oss:
+    endpoint: oss-cn-hangzhou.aliyuncs.com
+    bucket: gulimall-niceseason
+    access-key: test
+    secret-key: test
+  sms:
+    host: http://dingxin.market.alicloudapi.com
+    path: /dx/sendSms
+    appcode: your-app-code
+
+order:
+  close-delay-minutes: 30
+
+ware:
+  lock:
+    max-minutes: 30
+    cleanup-interval-ms: 60000
+
+# 支付宝沙箱配置 - 请替换为你自己的沙箱配置
+# 获取地址: https://open.alipay.com/develop/sandbox/app
+alipay:
+  # 沙箱应用APPID
+  app_id: 2016102600763190
+  # 商户私钥（PKCS8格式）- 在沙箱环境"应用信息"中生成
+  merchant_private_key: MjXN6Hnj8k2GAriRFt0BS9gjihbl9Rt38VMNbBi3Vt3Cy6TOwANLLJ/DfnYjRqwCG81fkyKlDqdsamdfCiTysCa0gQKBgQDYQ45LSRxAOTyM5NliBmtev0lbpDa7FqXL0UFgBel5VgA1Ysp0+6ex2n73NBHbaVPEXgNMnTdzU3WF9uHF4Gj0mfUzbVMbj/YkkHDOZHBggAjEHCB87IKowq/uAH/++Qes2GipHHCTJlG6yejdxhOsMZXdCRnidNx5yv9+2JI37QKBgQCw0xn7ZeRBIOXxW7xFJw1WecUV7yaL9OWqKRHat3lFtf1Qo/87cLl+KeObvQjjXuUe07UkrS05h6ijWyCFlBo2V7Cdb3qjq4atUwScKfTJONnrF+fwTX0L5QgyQeDX5a4yYp4pLmt6HKh34sI5S/RSWxDm7kpj+/MjCZgp6Xc51g==
+  # 支付宝公钥 - 在沙箱环境"应用信息"中查看
+  alipay_public_key: MIIBIjA74UKxt2F8VMIRKrRAAAuIMuawIsl4Ye+G12LK8P1ZLYy7ZJpgZ+Wv5nOs3DdoEazgCERj/ON8lM1KBHZOAV+TkrIcyi7cD1gfv4a1usikrUqm8/qhFvoiUfyHJFv1ymT7C4BI6aHzQ2zcUlSQPGoPl4C11tgnSkm3DlH2JZKgaIMcCOnNH+qctjNh9yIV9zat2qUiXbxmrCTtxAmiI3I+eVsUNwvwIDAQAB
+  # 异步通知地址（支付成功后支付宝回调）- 需要公网可访问
+  # 本地测试可使用 ngrok/natapp 等内网穿透工具
+  notify_url: http://localhost:8080/payed/notify
+  # 同步返回地址（支付成功后页面跳转）
+  return_url: http://localhost:8080/memberOrder.html
+  # 沙箱网关地址（固定值）
+  gateway_url: https://openapi-sandbox.dl.alipaydev.com/gateway.do
+  # 签名方式（固定值）
+  sign_type: RSA2
+  # 字符编码（固定值）
+  charset: utf-8
