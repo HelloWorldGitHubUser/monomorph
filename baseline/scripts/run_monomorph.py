@@ -24,6 +24,7 @@ import prepare_inputs
 BASELINE_DIR = Path(__file__).resolve().parent.parent
 REPO_DIR = BASELINE_DIR.parent
 DEFAULT_MODEL = "mm_deepseek/deepseek-v4-pro::high"
+MAX_STARTUP_ATTEMPTS = 3
 
 
 def load_dotenv_file():
@@ -102,12 +103,24 @@ def run_app(app: str, cfg: dict, args, run_root: Path) -> dict:
     env.setdefault("REFACTOR_SERVER_PORT", str(50100 + list(json.loads((BASELINE_DIR / "apps.json").read_text())).index(app)))
     print(f"[{datetime.now():%H:%M:%S}] {app}: starting (logs in {run_dir / 'monomorph.log'})", flush=True)
     start = time.time()
-    with open(run_dir / "monomorph.log", "w") as log:
-        try:
-            returncode = subprocess.run(command, cwd=run_dir, env=env, stdout=log, stderr=subprocess.STDOUT,
-                                        timeout=args.timeout_hours * 3600).returncode
-        except subprocess.TimeoutExpired:
-            returncode = "timeout"
+    for attempt in range(1, MAX_STARTUP_ATTEMPTS + 1):
+        with open(run_dir / "monomorph.log", "w") as log:
+            try:
+                returncode = subprocess.run(command, cwd=run_dir, env=env, stdout=log, stderr=subprocess.STDOUT,
+                                            timeout=args.timeout_hours * 3600).returncode
+            except subprocess.TimeoutExpired:
+                returncode = "timeout"
+        # MonoMorph's local Java import-parser server sometimes does not answer its health check within the 15s window
+        # MonoMorph hard-codes (seen right after a container boot and when several apps start at once). That is a
+        # failure of the tool's startup, not a result of the method, so such a run is repeated (LLM calls are cached)
+        if returncode == 1 and attempt < MAX_STARTUP_ATTEMPTS and "waiting for gRPC server to be healthy" in \
+                (run_dir / "monomorph.log").read_text(errors="replace"):
+            (run_dir / "monomorph.log").rename(run_dir / f"monomorph.startup-failure-{attempt}.log")
+            print(f"[{datetime.now():%H:%M:%S}] {app}: import parser server not healthy, retrying "
+                  f"({attempt}/{MAX_STARTUP_ATTEMPTS - 1})", flush=True)
+            time.sleep(30)
+            continue
+        break
     result = {"app": app, "returncode": returncode, "wall_time_seconds": round(time.time() - start),
               "run_dir": str(run_dir), "command": command}
     (run_dir / "run_result.json").write_text(json.dumps(result, indent=2))

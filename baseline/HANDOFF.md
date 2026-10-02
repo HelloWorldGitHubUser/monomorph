@@ -62,6 +62,8 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
     3 路只验证过 5 分钟）。被停的应用从各自 `llm_cache.db` 回放已完成的调用；booking 用 `runs/dbg` 的缓存
   - 10:36 容器重启，进程全部终止，已用同样的命令恢复（磁盘上的缓存和日志保留）。恢复后 goodskill、youlai 同时走到导入解析而端口冲突，
     结果作废（已撤下）；run_monomorph.py 改为每应用独立端口后重跑
+  - 12:15 容器再次重启（13:09 才发现）。两次重启都发生在我的一个回合结束、且**没有挂着 Monitor** 之后几分钟；挂着 Monitor 时容器一直存活。**原因未证实**，推测是会话空闲时容器被回收。结论：长时间运行期间始终保持一个 Monitor，并且每次回复前先 re-arm
+  - 容器重启后第一次启动的应用容易撞上导入解析服务的 15 秒健康检查超时（端口独立也一样），已在 run_monomorph.py 加自动重试
   - 之前：06:18 起曾 3 路并行（用户同意）：瓶颈是 DeepSeek 响应时间，机器空闲（4 核 / 15GB，单个应用约 0.5GB + 一个 Maven 容器）。
     `run_parallel_and_push.sh v1 claude/charming-ritchie-o7xgln --timeout-hours 3 --image-suffix=-sandboxca` 启动 2 个 worker，
     另一个用 `--deliver lakeside` 等串行驱动留下的 lakeside 跑完、交付后再接活。日志 `runs/v1/worker-*.log`。

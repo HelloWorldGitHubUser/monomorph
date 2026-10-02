@@ -57,6 +57,7 @@
 | 文件 | 修改 | 原因 |
 |---|---|---|
 | `scripts/run_monomorph.py` | 静态分析数据放到 `runs/<tag>/analysis/<app>/`，不再放在 `runs/<tag>/<app>/analysis/` | MonoMorph 用 `app_name not in analysis_path`（子串判断）决定是否到 `<path>/<app>/` 读取，而分析 jar 总是写到 `<path>/<app>/`；路径里含应用名时读写目录不一致，启动即 `FileNotFoundError: typeData.json`。dry run 直接调用 `LocalAnalysis`，没有暴露这个问题 |
+| `scripts/run_monomorph.py` | 日志出现 `waiting for gRPC server to be healthy` 且返回码为 1 时，等 30 秒重跑（最多 3 次，LLM 调用走缓存；失败日志另存为 `monomorph.startup-failure-N.log`） | MonoMorph 在项目组装阶段启动本地 Java 导入解析服务，并只等 15 秒（写死）的健康检查。容器刚启动（磁盘缓存是冷的）或多个应用同时启动时，服务虽已监听端口，健康检查仍超时（booking、goodskill、youlai、newbee 实测；同一份缓存再跑一次就通过）。这是工具启动失败，不是方法的结果，不应作为 baseline 结果 |
 | `scripts/run_monomorph.py` | 每个应用用自己的 `REFACTOR_SERVER_PORT`（50100 + 序号） | MonoMorph 在项目组装阶段启动本地 Java 导入解析服务，端口默认写死 50051；并行的应用同时走到这一步就冲突，报 `Timeout (15s) waiting for gRPC server to be healthy`（booking、goodskill、youlai 实测，结果已作废重跑） |
 | `README.md`, `HANDOFF.md`, `scripts/build_sandbox_images.sh` | 命令写成 `--image-suffix=-sandboxca` | 不带等号时 argparse 把 `-sandboxca` 当成选项，报 `expected one argument` |
 
