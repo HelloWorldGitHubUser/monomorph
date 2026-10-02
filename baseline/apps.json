@@ -1,0 +1,62 @@
+{
+  "booking": {
+    "source_subdir": "booking-app",
+    "prepare": "flatten_booking",
+    "package": "io.bookingmonolith",
+    "java_version": "17"
+  },
+  "ecommerce": {
+    "source_subdir": ".",
+    "prepare": null,
+    "package": "com.hoangtien2k3.ecommerce",
+    "java_version": "17"
+  },
+  "goodskill": {
+    "source_subdir": ".",
+    "prepare": null,
+    "package": "com.goodskill",
+    "java_version": "21"
+  },
+  "gulimall": {
+    "source_subdir": ".",
+    "prepare": null,
+    "package": "io.gulimall",
+    "java_version": "8"
+  },
+  "lakeside": {
+    "source_subdir": ".",
+    "prepare": null,
+    "package": "com.lakesidemutual",
+    "java_version": "17"
+  },
+  "newbee": {
+    "source_subdir": ".",
+    "prepare": null,
+    "package": "ltd.newbee.mall",
+    "java_version": "8"
+  },
+  "passjava": {
+    "source_subdir": "passjava-monolith",
+    "prepare": null,
+    "package": "com.passjava",
+    "java_version": "8"
+  },
+  "petclinic": {
+    "source_subdir": "spring-petclinic-server",
+    "prepare": "flatten_petclinic",
+    "package": "org.springframework.samples.petclinic",
+    "java_version": "8"
+  },
+  "youlai": {
+    "source_subdir": ".",
+    "prepare": null,
+    "package": "com.youlai.mall",
+    "java_version": "17"
+  },
+  "zlt": {
+    "source_subdir": ".",
+    "prepare": null,
+    "package": "com.central",
+    "java_version": "17"
+  }
+}
