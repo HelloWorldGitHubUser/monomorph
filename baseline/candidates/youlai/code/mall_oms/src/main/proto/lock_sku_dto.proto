@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package com.youlai.mall.monomorph.dto.generated.proto.lockskudto;
+
+option java_multiple_files = true;
+option java_package = "com.youlai.mall.monomorph.dto.generated.proto.lockskudto";
+
+message LockSkuDTODTO {
+    int64 skuId = 1;
+    int32 quantity = 2;
+}
