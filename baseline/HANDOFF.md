@@ -56,7 +56,7 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
   `monomorph.attempt2.log`（崩溃）；`monomorph.attempt3-void.log` 是用已撤回的环检测跑的第三次，作废
 - [x] `dry_run.py` 新增规划阶段检查：petclinic、gulimall、zlt 必然在规划阶段崩溃，ecommerce 视决策而定
 - [ ] 跑出 10 个候选仓库：`run_all_and_push.sh v1 claude/charming-ritchie-o7xgln --timeout-hours 3 --image-suffix=-sandboxca`
-  在后台运行中（tag `v1`）。已交付的应用会跳过，中断后重跑同一命令即可续跑
+  在后台运行中（tag `v1`，驱动日志 `runs/v1/driver.log`；用 `setsid nohup` 启动，不受会话后台任务 2 小时限制）。已交付的应用会跳过，中断后重跑同一命令即可续跑
 - [ ] 候选仓库交付给用户的方式（见第 6 节）
 
 ## 4. 新会话的环境搭建（Claude Code 云环境）
