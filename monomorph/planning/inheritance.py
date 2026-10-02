@@ -11,6 +11,7 @@ class InheritanceHandler:
     def __init__(self, decomposition: UpdatedDecomposition, app_model: AppModel):
         self.decomposition = decomposition
         self.app_model = app_model
+        self._known_classes = set(app_model.get_class_names())
 
     def find_original_service(self, class_name: str) -> str:
         for partition in self.decomposition.partitions:
@@ -19,6 +20,9 @@ class InheritanceHandler:
 
     def get_inheritances(self, class_name: str) -> list[tuple[str, str]]:
         inheritances = []
+        if class_name not in self._known_classes:
+            # The static analysis does not cover every type (e.g. Java records): nothing is known about its parents
+            return inheritances
         for inheritance in self.app_model.get_inheritance(class_name):
             original_service = self.find_original_service(inheritance)
             if original_service is not None:

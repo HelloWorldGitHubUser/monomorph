@@ -117,6 +117,8 @@ class DependencyDetector:
                                   class_other_interactions: pd.DataFrame) -> (
             tuple)[list[tuple[str, str]], list[tuple[str, str]], list[tuple[str, str]]]:
         inner_classes = partition.classes + [dup[0] for dup in partition.duplicated_classes]
+        # Classes missing from the static analysis (e.g. Java records) have no interaction data
+        inner_classes = [c for c in dict.fromkeys(inner_classes) if c in class_interactions.index]
         outer_classes = [c for c in class_interactions.columns if c not in inner_classes]
         outgoings_class = class_interactions.loc[inner_classes, outer_classes] > 0
         cols1 = outgoings_class.index
