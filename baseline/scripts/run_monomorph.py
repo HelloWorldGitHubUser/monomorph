@@ -97,6 +97,9 @@ def run_app(app: str, cfg: dict, args, run_root: Path) -> dict:
         command.append("--use-multithreading")
     env = dict(os.environ)
     env.setdefault("MONOMORPH_LLM_INVOKE_TIMEOUT_SECONDS", "900")
+    # MonoMorph starts a local Java import-parser server on a fixed port (50051) during project assembly; apps running
+    # in parallel would collide there ("Timeout waiting for gRPC server to be healthy"), so each app gets its own port
+    env.setdefault("REFACTOR_SERVER_PORT", str(50100 + list(json.loads((BASELINE_DIR / "apps.json").read_text())).index(app)))
     print(f"[{datetime.now():%H:%M:%S}] {app}: starting (logs in {run_dir / 'monomorph.log'})", flush=True)
     start = time.time()
     with open(run_dir / "monomorph.log", "w") as log:

@@ -60,6 +60,8 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
   - 06:25 发现上游 `skip_standard_run` 导致所有应用在编译验证写日志时崩溃（`90859bc` 修复，用户确认）；停掉 lakeside/newbee/goodskill，
     booking 在 `runs/dbg` 验证修复有效（flight、passenger 服务编译通过）后，07:1x 改为 **2 个 worker**（编译阶段 4 核 CPU 吃紧，
     3 路只验证过 5 分钟）。被停的应用从各自 `llm_cache.db` 回放已完成的调用；booking 用 `runs/dbg` 的缓存
+  - 10:36 容器重启，进程全部终止，已用同样的命令恢复（磁盘上的缓存和日志保留）。恢复后 goodskill、youlai 同时走到导入解析而端口冲突，
+    结果作废（已撤下）；run_monomorph.py 改为每应用独立端口后重跑
   - 之前：06:18 起曾 3 路并行（用户同意）：瓶颈是 DeepSeek 响应时间，机器空闲（4 核 / 15GB，单个应用约 0.5GB + 一个 Maven 容器）。
     `run_parallel_and_push.sh v1 claude/charming-ritchie-o7xgln --timeout-hours 3 --image-suffix=-sandboxca` 启动 2 个 worker，
     另一个用 `--deliver lakeside` 等串行驱动留下的 lakeside 跑完、交付后再接活。日志 `runs/v1/worker-*.log`。
