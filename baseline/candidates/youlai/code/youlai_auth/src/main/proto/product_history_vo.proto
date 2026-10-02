@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package com.youlai.mall.monomorph.dto.generated.proto.producthistoryvo;
+
+option java_multiple_files = true;
+option java_package = "com.youlai.mall.monomorph.dto.generated.proto.producthistoryvo";
+
+message ProductHistoryVODTO {
+  int64 id = 1;
+  string name = 2;
+  string picUrl = 3;
+  int64 serialVersionUID = 4;
+}

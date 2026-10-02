@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package com.youlai.mall.monomorph.dto.generated.proto.memberauthdto;
+
+option java_multiple_files = true;
+option java_package = "com.youlai.mall.monomorph.dto.generated.proto.memberauthdto";
+
+// DTO representation for com.youlai.mall.model.ums.dto.MemberAuthDTO
+message MemberAuthDTODTO {
+  // 会员ID
+  int64 id = 1;
+
+  // 会员名(openId、mobile)
+  string username = 2;
+
+  // 状态(1:正常；0：禁用)
+  int32 status = 3;
+}
