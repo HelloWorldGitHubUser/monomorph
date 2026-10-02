@@ -71,7 +71,7 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
 
 | 应用 | 返回码 | 耗时 | 候选代码 | 说明 |
 |---|---|---|---|---|
-| booking | 1 | 15s | 无 | record 引发 `decision/tools.py` KeyError，已修复（`87c081b`），全部跑完后重跑 |
+| **booking** | **0** | 2759s | **有** | 3 个服务全部编译通过（含测试）：flight 1 轮、passenger 2 轮、booking-service 7 轮纠错（日志每轮都显示 attempt 1/20，即撞步数上限的轮次不计数）。0 个 API 类，没有生成 gRPC 代码，只是拆分 + 修到能编译。第 1、2 次运行作废（record KeyError；gRPC 健康检查偶发超时） |
 | petclinic | 1 | 712s | 无 | 11 个决策全部解析成功；规划阶段 `RecursionError`（方法缺陷，按决定不修，与 dry run 预测一致） |
 | zlt | 1 | 247s | 无 | 规划阶段 `ValueError: Could not find a matching microservice`（方法缺陷，不修，与 dry run 预测一致） |
 | newbee（json_mode 对照，tag `v1-jsonmode`，不替代 v1） | 运行中 | | | 用户要求：只对 newbee 设 `DEEPSEEK_STRUCTURED_OUTPUT_METHOD=json_mode`，复制 v1 的 `llm_cache.db`，代码生成调用回放、只有 parser 换成 JSON 模式。真实 API 上已能解析 v1 失败的那段输出 |
