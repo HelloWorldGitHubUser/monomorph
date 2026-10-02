@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package com.youlai.mall.monomorph.dto.generated.proto.memberaddressdto;
+
+option java_multiple_files = true;
+option java_package = "com.youlai.mall.monomorph.dto.generated.proto.memberaddressdto";
+
+message MemberAddressDTODTO {
+    int64 id = 1;
+    int64 memberId = 2;
+    string consigneeName = 3;
+    string consigneeMobile = 4;
+    string province = 5;
+    string city = 6;
+    string area = 7;
+    string detailAddress = 8;
+    int32 defaulted = 9;
+}

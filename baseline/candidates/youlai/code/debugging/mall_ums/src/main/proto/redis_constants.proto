@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package com.youlai.mall.monomorph.dto.generated.proto.redisconstants;
+
+option java_multiple_files = true;
+option java_package = "com.youlai.mall.monomorph.dto.generated.proto.redisconstants";
+
+message RedisConstantsDTO {
+    // 黑名单TOKEN Key前缀
+    string TOKEN_BLACKLIST_PREFIX = 1;  // "token:blacklist:"
+
+    // 图形验证码key前缀
+    string CAPTCHA_CODE_PREFIX = 2;     // "captcha_code:"
+
+    // 登录短信验证码key前缀
+    string LOGIN_SMS_CODE_PREFIX = 3;   // "sms_code:login"
+
+    // 注册短信验证码key前缀
+    string REGISTER_SMS_CODE_PREFIX = 4; // "sms_code:register"
+
+    // 角色和权限缓存前缀
+    string ROLE_PERMS_PREFIX = 5;       // "role_perms:"
+
+    // JWT 密钥对(包含公钥和私钥)
+    string JWK_SET_KEY = 6;             // "jwk_set"
+}

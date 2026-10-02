@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: youlai-mall-monolith
+  profiles:
+    active: dev
+
+# MyBatis-Plus配置
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  mapper-locations: classpath*:/mapper/**/*.xml
+
+# 接口文档配置
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.youlai.mall
+
+# knife4j的增强配置
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+
+# 安全配置
+security:
+  whitelist-paths:
+    - /oauth2/**
+    - /login/**
+    - /api/v1/users/register/**  # 用户注册相关接口（公开）
+    - /swagger-ui/**
+    - /v3/api-docs/**
+    - /webjars/**
+    - /doc.html
+    - /favicon.ico
+
+

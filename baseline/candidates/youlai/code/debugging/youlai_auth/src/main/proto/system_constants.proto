@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package com.youlai.mall.monomorph.dto.generated.proto.systemconstants;
+
+option java_multiple_files = true;
+option java_package = "com.youlai.mall.monomorph.dto.generated.proto.systemconstants";
+
+message SystemConstantsDTO {
+  int64 ROOT_NODE_ID = 1;
+  string DEFAULT_PASSWORD = 2;
+  string ROOT_ROLE_CODE = 3;
+}
