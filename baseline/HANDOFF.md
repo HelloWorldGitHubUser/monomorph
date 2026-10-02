@@ -87,7 +87,6 @@ Approach to Refactoring Monoliths into Microservices*，QRS 2025）作为 baseli
 | **booking** | **0** | 2759s | **有** | 3 个服务全部编译通过（含测试）：flight 1 轮、passenger 2 轮、booking-service 7 轮纠错（日志每轮都显示 attempt 1/20，即撞步数上限的轮次不计数）。0 个 API 类，没有生成 gRPC 代码，只是拆分 + 修到能编译。第 1、2 次运行作废（record KeyError；gRPC 健康检查偶发超时） |
 | petclinic | 1 | 712s | 无 | 11 个决策全部解析成功；规划阶段 `RecursionError`（方法缺陷，按决定不修，与 dry run 预测一致） |
 | zlt | 1 | 247s | 无 | 规划阶段 `ValueError: Could not find a matching microservice`（方法缺陷，不修，与 dry run 预测一致） |
-| newbee（json_mode 对照，tag `v1-jsonmode`，不替代 v1） | 运行中 | | | 用户要求：只对 newbee 设 `DEEPSEEK_STRUCTURED_OUTPUT_METHOD=json_mode`，复制 v1 的 `llm_cache.db`，代码生成调用回放、只有 parser 换成 JSON 模式。真实 API 上已能解析 v1 失败的那段输出 |
 | gulimall | 1 | 946s | 无 | 17 个 ID/DTO 决策全部解析成功；规划阶段 `ValueError: Could not find a matching microservice for class io.gulimall.vo.SocialUser`（`shared` 中的类按规则不属于任何 partition，却成了 API 类；方法缺陷，不修，与 dry run 预测一致） |
 | ecommerce | 1 | 298s | 无 | 6 个决策全部解析成功（5 个 DTO-based、1 个 ID-based）；规划阶段 `ValueError: Could not find a matching microservice for class ...ProductDataChangeEvent$Operation`（内部类不在任何 partition 中，partition 只列外部类；dry run 预测「全 DTO-Based 会崩」，LLM 的实际决策触发了它；方法缺陷，不修） |
 | **youlai** | **0** | 5428s（含启动失败后的重试） | **有** | 6 个服务全部编译通过（含测试）：mall-oms、mall-pms、mall-sms、mall-ums、youlai-auth、youlai-system，各 1～2 轮纠错，最长一个约 30 分钟。第 1、2 次运行因导入解析服务启动超时作废 |
