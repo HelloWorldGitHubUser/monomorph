@@ -1,0 +1,223 @@
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+spring:
+  application:
+    name: goodskill-mono
+  
+  # 允许循环依赖（原项目存在的设计）
+  main:
+    allow-circular-references: true
+  
+  # 数据源配置（ShardingSphere）
+  datasource:
+    driver-class-name: org.apache.shardingsphere.driver.ShardingSphereDriver
+    url: jdbc:shardingsphere:classpath:sharding-sphere.yml
+  
+  # Flyway配置
+  flyway:
+    enabled: false
+  
+  # MongoDB配置
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://mongo:27017/test}
+      database: test
+      auto-index-creation: true
+    
+    # Redis配置
+    redis:
+      host: ${REDIS_HOST:redis}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:123456}
+  
+  # 单实例改造：Kafka配置已注释
+  # kafka:
+  #   bootstrap-servers: ${KAFKA_SERVERS:kafka:9092}
+  #   consumer:
+  #     group-id: seckill
+  #     auto-offset-reset: earliest
+  
+  # Elasticsearch配置
+  elasticsearch:
+    uris: ${ELASTICSEARCH_URI:http://elasticsearch:9200}
+  
+  # GraphQL配置
+  graphql:
+    graphiql:
+      enabled: true
+  
+  # Spring AI配置
+  ai:
+    dashscope:
+      api-key: ${AI_DASHSCOPE_API_KEY:sk-placeholder}
+  
+  # 日期格式配置
+  mvc:
+    format:
+      date: yyyy-MM-dd HH:mm:ss
+      date-time: yyyy-MM-dd HH:mm:ss
+      time: HH:mm:ss
+  
+  # 输出ANSI彩色日志
+  output:
+    ansi:
+      enabled: ALWAYS
+  
+  # 开启虚拟线程
+  threads:
+    virtual:
+      enabled: true
+  
+
+
+# MyBatis Plus配置
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: deleteFlag
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# Sa-Token配置
+sa-token:
+  token-name: access_token
+  timeout: 604800
+  active-timeout: -1
+  is-concurrent: true
+  is-share: true
+  token-style: simple-uuid
+  is-log: true
+  is-print: true
+
+# 单实例改造：ZooKeeper配置已注释
+# zookeeper_ip: ${ZOOKEEPER_HOST:zookeeper}:${ZOOKEEPER_PORT:2181}
+
+# MinIO配置
+minio:
+  endpoint: ${MINIO_ENDPOINT:http://localhost:19000}
+  accessKey: ${MINIO_ACCESS_KEY:YghdgTEEJnvvrUm5nX70}
+  secretKey: ${MINIO_SECRET_KEY:hCv6xU4TEembK6Fr2pHvJWxlijKUXySDIS4sSTMK}
+  bucketName: ${MINIO_BUCKET:goodskill}
+
+# 支付宝配置
+alipay:
+  qrcodeImagePath: ${ALIPAY_QRCODE_PATH:}
+  appId: ${ALIPAY_APP_ID:}
+  privateKey: ${ALIPAY_PRIVATE_KEY:}
+  publicKey: ${ALIPAY_PUBLIC_KEY:}
+  gateway: ${ALIPAY_GATEWAY:openapi.alipaydev.com/gateway.do}
+  notifyUrl: ${ALIPAY_NOTIFY_URL:}
+  returnUrl: ${ALIPAY_RETURN_URL:}
+
+# Actuator配置
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  health:
+    # 禁用单体不需要的健康检查
+    nacosconfig:
+      enabled: false
+    nacosdiscovery:
+      enabled: false
+
+# SpringDoc/OpenAPI配置
+springdoc:
+  swagger-ui:
+    display-request-duration: true
+    groups-order: DESC
+    operationsSorter: method
+    disable-swagger-default-url: true
+    use-root-path: true
+  show-actuator: true
+  group-configs:
+    # - group: goodskill-mono
+    #   paths-to-match: /**
+    - group: AiController
+      paths-to-match:
+        - /example
+    - group: AssistantController
+      paths-to-match:
+        - /api/assistant/**
+    - group: GoodsController
+      paths-to-match:
+        - /seckill/goods/**
+    - group: LoginController
+      paths-to-match:
+        - /isLogin
+        - /tokenInfo
+        - /logout
+        - /register
+        - /login
+    - group: OrderController
+      paths-to-match:
+        - /deleteRecord
+        - /saveRecord
+        - /count
+        - /list
+        - /detail/**
+        - /cancel/**
+    - group: AdminOrderController
+      paths-to-match:
+        - /admin/**
+    - group: AlipayController
+      paths-to-match:
+        - /pay/alipay/**
+    - group: SeckillCustomerController
+      paths-to-match:
+        - /customer/**
+    - group: SeckillController
+      paths-to-match:
+        - /seckill/**
+      paths-to-exclude:
+        - /seckill/goods/**
+    - group: SeckillGraphqlController
+      paths-to-match:
+        - /graphql
+    - group: SeckillMockController
+      paths-to-match:
+        - /sychronized
+        - /task-info
+        - /task-time-info
+    - group: UserController
+      paths-to-match:
+        - /user/**
+
+# 单实例改造：ElasticJob配置已注释
+# elasticjob:
+#   reg-center:
+#     server-lists: ${ZOOKEEPER_HOST:zookeeper}:${ZOOKEEPER_PORT:2181}
+#     namespace: elasticjob-lite-springboot
+#   jobs:
+#     simpleJob:
+#       elasticJobClass: com.goodskill.service.job.MyJob
+#       cron: 0/6 * * * * ?
+#       shardingTotalCount: 1
+#       shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou
+#       overwrite: true
+#       jobShardingStrategyType: ROUND_ROBIN
+#     simpleJob2:
+#       elasticJobClass: com.goodskill.service.job.MyJob2
+#       cron: 0/6 * * * * ?
+#       shardingTotalCount: 1
+#       shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou
+#       overwrite: true
+#       jobShardingStrategyType: ROUND_ROBIN
+
+# 日志配置
+logging:
+  level:
+    com.goodskill: debug
+    org.springframework.data.mongodb: debug

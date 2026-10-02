@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package com.goodskill.monomorph.dto.generated.proto.orderstatusenum;
+
+option java_multiple_files = true;
+option java_package = "com.goodskill.monomorph.dto.generated.proto.orderstatusenum";
+
+message OrderStatusEnumDTO {
+    // Numeric code of the order status
+    int32 code = 1;
+
+    // Human-readable description of the status
+    string desc = 2;
+
+    // Original Java enum constant name
+    string name = 3;
+}
