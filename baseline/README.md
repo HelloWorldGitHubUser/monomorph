@@ -48,6 +48,7 @@
 | `monomorph/llm/custom_chat.py` | `DeepSeekChat.with_structured_output`：没有工具调用时，从消息文本里取第一个 `{` 到最后一个 `}` 按 schema 解析 | `tool_choice=auto` 下模型有时把 JSON 直接写在文本里而不调用工具。petclinic pilot 中 13 次 parser 调用有 5 次如此，其中 NamedEntity 三次重试都失败（第 3 次命中第 2 次的缓存），被默认成 ID-Based，而模型实际结论是 DTO-Based |
 | `monomorph/llm/factory.py` | fallback 包装的调用超时可由 `MONOMORPH_LLM_INVOKE_TIMEOUT_SECONDS` 配置（默认仍为 60s，运行脚本设为 900s） | thinking=high 的调用常超过 60s，超时会在 fallback 上重跑一遍 |
 | `monomorph/decision/tools.py` | `AnalysisTools` 只保留静态分析中存在的类 | 同下一行：分析器忽略 Java record，决策工具按 decomposition 的类名索引引用矩阵时 `KeyError` 崩溃（booking v1 实测，dry run 不构建决策工具所以没发现） |
+| `monomorph/monomorph.py` | `validate_microservice` 写 `..._with_tests.pkl` 前补 `os.makedirs` 和 `import pickle` | 上游写死 `skip_standard_run = True`，跳过的代码块里恰好创建日志目录并 `import pickle`；之后写纠错日志时 `FileNotFoundError`，补目录后又 `UnboundLocalError: pickle`。booking 编译纠错已成功却在此崩溃，所有走到编译验证的应用都会遇到（用户确认可修） |
 | `monomorph/planning/inheritance.py`, `monomorph/planning/dependencies.py` | 跳过静态分析中不存在的类 | MonoMorph 的分析器忽略 Java record（booking 45 个、ecommerce 26 个），原代码遇到会 KeyError 崩溃。这些类仍按 decomposition 复制，但 MonoMorph 看不到它们的跨服务使用 |
 
 运行脚本自身的修正（不是对 MonoMorph 的修改）：

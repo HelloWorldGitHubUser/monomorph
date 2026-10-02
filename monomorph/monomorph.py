@@ -701,6 +701,10 @@ class MonoMorph:
             results = correction_agent.run(with_tests=True)
             test_conversation_log_path = os.path.join(self.llm_response_path, microservice.name,
                                                  "compilation_correction_conversation_log_with_tests.pkl")
+            # The directory and the pickle import used to come from the standard run above, which is skipped
+            # (skip_standard_run)
+            import pickle
+            os.makedirs(os.path.dirname(test_conversation_log_path), exist_ok=True)
             with open(test_conversation_log_path, "wb") as f:
                 pickle.dump(results[1:], f)
             # Replace the corrected microservice files with the new ones
